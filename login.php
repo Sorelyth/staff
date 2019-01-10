@@ -1,7 +1,7 @@
 <?php session_start();
   include 'inc/db_config.php';
   include 'inc/funciones.php';
-  if(!isset($_SESSION['username'])){ header('Location: login.php');}
+  //if(!isset($_SESSION['username'])){ header('Location: login.php');}
   //if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
 ?>
 <!doctype html>
@@ -32,36 +32,40 @@
   </div>
 </header>
 
-<div id="cru-nav" class="visible-sm-up">
-  <div class="cru-container">
-    <ul>
-      <li id="top-menu-0" class="top-menu-item">
-        <a href="">Materiales DDSM</a>
-      </li>
-      <li id="top-menu-1" class="top-menu-item">
-        <a href="">Manual de identidad corporativa</a>
-      </li>
-      <li id="top-menu-2" class="top-menu-item">
-        <a href="">Informes</a>
-      </li>
-      <li id="top-menu-3" class="top-menu-item">
-        <a href="">Reporte de transferencias</a>
-      </li>
-    </ul>
-  </div>
-</div>
+
 </section>
 
 <section id="home">
   <div class="cru-container">
     <div class="row">
-      <div class="col-sm-12 integrity-opener">
+      <div class="col-sm-4 integrity-opener"></div>
+      <div class="col-sm-4 integrity-opener">
         <div class="title section">
-          <h1><center>Hola, es un gusto tenerte por aquí.</center></h1>
-          <br>
+          <div class="container-fluid">
+
+          <div class="form-group">
+            <div class="form-text"><h3 class="panel-title"><center>Iniciar Sesión</center></h3></div>
+              <form method="post" action="login.php">
+                <?php if($err){echo '<div class="alert-warning" role="alert">Usuario y/o Contraseña Incorrectos</div>';} ?>
+                <label for="inputEmail" class="sr-only">Correo Electrónico</label>
+                <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Correo electrónico" required autofocus>
+                <br>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Contraseña" required>
+                <br>
+                <button class="btn" name="accede" type="submit">Acceder</button>
+              </form>
+              <br>
+                <div class="form-group">
+                <label for="olvide">¿Olvidaste tu contraseña?</label>
+                <a href="olvido.php">Haz click aquí para recuperarla</a>
+                </div>
+              </div>
+            </div><!-- col-xs-4 -->
+          </div><!-- div row -->
         </div>
+        <div class="col-sm-4 integrity-opener"></div>
       </div>
-    </div>
   </div>
 </section>
 
