@@ -1,25 +1,30 @@
 function checkRegisterForm(form)
 {
-  re = /^\w+$/;
-  if(!re.test(form.username.value)) {
-    alert("Error: Nombre y Apellido solo puede contener letras!");
-    form.username.focus();
+  // re = /^\w+$/;
+  // if(!re.test(form.username.value)) {
+  //   alert("Error: Nombre y Apellido solo puede contener letras!");
+  //   form.username.focus();
+  //   return false;
+  // }
+  var foo="@cru.org";
+  if(!form.inputEmail.value.includes(foo)){
+    alert("El correo electrónico sólo puede ser del dominio de cru.org");
+    form.inputEmail.focus();
     return false;
   }
-
   if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
     if(form.pwd1.value.length < 6) {
-      alert("Error: La contrasena debe tener al menos 6 caracteres!");
+      alert("Error: La contrasena debe tener al menos 6 caracteres.");
       form.pwd1.focus();
       return false;
     }
     if((form.pwd1.value == form.username.value)) {
-      alert("Error: Contrasena debe ser diferente de nombre de usuario!");
+      alert("Error: Contrasena debe ser diferente de nombre de usuario.");
       form.pwd1.focus();
       return false;
     }
   } else {
-    alert("Error: Por favor, verifique que ha tecleado bien la contrasena!");
+    alert("Error: Por favor, verifique que ha tecleado bien la contrasena.");
     form.pwd1.focus();
     return false;
   }

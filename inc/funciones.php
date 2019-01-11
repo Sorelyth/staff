@@ -1,4 +1,18 @@
 <?php
+function getIdusuario($correo){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id_user FROM users_login WHERE correo='".$correo."'";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$idusuario);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $idusuario;
+}
+//----
 function getNombreyApellido($idusuario){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
@@ -15,7 +29,7 @@ function getNombreyApellido($idusuario){
 function buscarEmail($email){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
-  $sentencia="SELECT correo FROM users_login WHERE correo=".$email."";
+  $sentencia="SELECT correo FROM users_login WHERE correo='".$email."'";
   $result = mysqli_prepare($mysqli,$sentencia);
   mysqli_stmt_execute($result);
   mysqli_stmt_store_result($result);
@@ -48,7 +62,7 @@ function selectMes(){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$idmes,$mes);
-  echo '<select name="idmes" id="idmes"><option value="0" selected> </option>';
+  echo '<select class="col-sm-4 form-control" name="idmes" id="idmes"><option value="0" selected> </option>';
 
   while(mysqli_stmt_fetch($stmt)){
     echo '<option value="'.$idmes.'">'.$mes.'</option>';
@@ -58,24 +72,97 @@ function selectMes(){
   mysqli_close($mysqli);
 }
 //-----
-function RegistroUsuario($username,$email,$password){
+function selectComponente(){
   include 'db_config.php';
-  $sentencia="SELECT name, email FROM users WHERE name='".$username."' OR email='".$email."'";
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id,componente FROM componentes";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$idcomponente,$componente);
+  echo '<select class="col-sm-4 form-control" name="idcomponente" id="idcomponente"><option value="0" selected> </option>';
+
+  while(mysqli_stmt_fetch($stmt)){
+    echo '<option value="'.$idcomponente.'">'.$componente.'</option>';
+  }
+  echo '</select>';
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+}
+//-----
+function selectEstadoCivil(){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id,estado_civil FROM estados_civiles";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$idestadocivil,$estadocivil);
+  echo '<select class="col-sm-4 form-control" name="idestadocivil" id="idestadocivil"><option value="0" selected> </option>';
+
+  while(mysqli_stmt_fetch($stmt)){
+    echo '<option value="'.$idestadocivil.'">'.$estadocivil.'</option>';
+  }
+  echo '</select>';
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+}
+//-----
+function selectDepartamento(){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id,nombre FROM departamentos";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$iddpto,$dpto);
+  echo '<select class="col-sm-4 form-control" name="iddpto" id="iddpto" onchange="post("",{iddpto:iddpto})"><option value="0" selected> </option>';
+
+  while(mysqli_stmt_fetch($stmt)){
+    echo '<option value="'.$iddpto.'">'.$dpto.'</option>';
+  }
+  echo '</select>';
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+}
+//-----
+function selectMunicipio($iddpto){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id,nombre FROM municipios WHERE departamento_id=".$iddpto."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$idmcpo,$mcpo);
+  echo '<select class="col-sm-4 form-control" name="idmcpo" id="idmcpo"><option value="0" selected> </option>';
+
+  while(mysqli_stmt_fetch($stmt)){
+    echo '<option value="'.$idmcpo.'">'.$mcpo.'</option>';
+  }
+  echo '</select>';
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+}
+//-----
+function RegistroUsuario($email,$password){
+  include 'db_config.php';
+  $sentencia="SELECT correo FROM users_login WHERE correo='".$email."'";
   $result = mysqli_prepare($mysqli,$sentencia);
   mysqli_stmt_execute($result);
   mysqli_stmt_store_result($result);
   if(mysqli_stmt_num_rows($result)>0){mysqli_stmt_close($result);echo '<script type="text/javascript">alert("Usuario o Email ya existente. Intente otro nombre de usuario.")</script>';}
   else{
     mysqli_stmt_close($result);
-    $opciones = [ 'cost' => 12,];
-    $hash_pass = password_hash($password, PASSWORD_BCRYPT, $opciones);
-    $sentencia="INSERT INTO users (name,hash_pass,email) VALUES('".$username."','".$hash_pass."','".$email."')";
+    $hash_pass = password_hash($password, PASSWORD_DEFAULT);
+    $sentencia="INSERT INTO users_login (correo,hash_pass) VALUES('".$email."','".$hash_pass."')";
     $result = mysqli_prepare($mysqli,$sentencia);
     mysqli_stmt_execute($result);
     mysqli_stmt_store_result($result);
     mysqli_stmt_close($result);
     mysqli_close($mysqli);
-    header('Location: login.php');
+    session_start();
+    $_SESSION['idusuario']=getIdusuario($email);
+    header('Location: moreinfo.php');
   }
 }
 //-----
