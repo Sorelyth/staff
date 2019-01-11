@@ -47,7 +47,7 @@
             <button class="btn" name="findEmail" type="submit">Continuar</button>
           </form>
         </div>
-        <?php } else{ ?>
+      <?php } else{ }?>
       </div>
     </div>
   </div>
