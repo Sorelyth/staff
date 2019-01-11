@@ -66,17 +66,17 @@ function RegistroUsuario($username,$email,$password){
   }
 }
 //-----
-function LoginUsuario($username,$password){
+function LoginUsuario($correo,$hash_pass){
   include 'db_config.php';
-  $sentencia="SELECT name, email,hash_pass FROM users WHERE name='".$username."'";
+  $sentencia="SELECT id_user, correo, hash_pass FROM users_login WHERE correo='".$correo."'";
   $result = mysqli_prepare($mysqli,$sentencia);
   mysqli_stmt_execute($result);
   mysqli_stmt_store_result($result);
-  mysqli_stmt_bind_result($result,$user,$email,$hash_pass);
+  mysqli_stmt_bind_result($result,$id_user,$email,$hash_pass);
   mysqli_stmt_fetch($result);
   if(password_verify($password,$hash_pass)){
     session_start();
-    $_SESSION['username']=$user;
+    $_SESSION['id_user']=$id_user;
     $_SESSION['hash_pass']=$hash_pass;
     $_SESSION['email']=$email;
     header('Location: index.php');

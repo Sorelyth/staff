@@ -1,7 +1,7 @@
 <?php session_start();
   include 'inc/db_config.php';
   include 'inc/funciones.php';
-  if(!isset($_SESSION['username'])){ header('Location: login.php');}
+  if(!isset($_SESSION['email'])){ header('Location: login.php');}
   //if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
 ?>
 <!doctype html>
