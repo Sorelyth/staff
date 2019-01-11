@@ -12,6 +12,19 @@ function getNombreyApellido($idusuario){
   mysqli_close($mysqli);
   return [$nombre,$apellido];
 }
+function buscarEmail($email){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT correo FROM users_login WHERE correo=".$email."";
+  $result = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($result);
+  mysqli_stmt_store_result($result);
+  if(mysqli_stmt_num_rows($result)>0){
+    mysqli_stmt_close($result);
+    return true;
+  }
+  else{mysqli_stmt_close($result);return false;}
+}
 //-----
 function getMes($idmes){
   include 'db_config.php';
@@ -93,4 +106,5 @@ function transformarbooleano($valor){
   else{ $r='Sí';}
   return $r;
 }
+
 ?>

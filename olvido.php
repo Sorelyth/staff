@@ -1,7 +1,7 @@
 <?php session_start();
   include 'inc/db_config.php';
   include 'inc/funciones.php';
-  if(!isset($_SESSION['email'])){ header('Location: login.php');}
+  //if(!isset($_SESSION['email'])){ header('Location: login.php');}
   if(isset($_POST['findEmail'])){$respuesta=buscarEmail($_POST['forgottenEmail']);}
   //if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
 ?>
@@ -37,8 +37,8 @@
 <section id="home">
   <div class="cru-container">
     <div class="row">
-      <div class="col-sm-12 integrity-opener">
-        <?php if(!isset($_POST['findEmail'])) {?>
+      <div class="col-sm-4 integrity-opener">
+        <?php if(!isset($_POST['findEmail']) OR (isset($respuesta) AND $respuesta==false)) {?>
         <div class="form-group">
           <form method="post" acton="olvido.php">
             <label for="inputEmail" class="sr-only">Correo Electrónico</label>
@@ -47,7 +47,15 @@
             <button class="btn" name="findEmail" type="submit">Continuar</button>
           </form>
         </div>
-      <?php } else{ }?>
+      <?php } else{ if($respuesta){ //enviarCorreoRecuperacion($_POST['forgottenEmail']); ?>
+        <div class="alert alert-warning" role="alert">
+          Se ha enviado un mensaje a <?php echo $_POST['forgottenEmail']; ?> con las instrucciones para reiniciar tu contraseña.
+        </div>
+      <?php } else{ ?>
+        <div class="alert alert-danger" role="alert">
+          La dirección de correo electrónico <?php echo $_POST['forgottenEmail']; ?> no aparece en la base de dato. Por favor verifique.
+        </div>
+      <?php } } ?>
       </div>
     </div>
   </div>
