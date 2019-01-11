@@ -8,7 +8,7 @@
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Inicio</title>
+  <title>Inicio de sesión</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -44,11 +44,11 @@
           <div class="container-fluid">
 
           <div class="form-group">
-            <div class="form-text"><h3 class="panel-title"><center>Iniciar Sesión</center></h3></div>
+            <div class="form-text"><h3 class="panel-title"><center>Iniciar Sesión</center></h3></div><br>
               <form method="post" action="login.php">
                 <?php if($err){echo '<div class="alert-warning" role="alert">Usuario y/o Contraseña Incorrectos</div>';} ?>
                 <label for="inputEmail" class="sr-only">Correo Electrónico</label>
-                <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Correo electrónico" required autofocus>
+                <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Correo electrónico institucional" required autofocus>
                 <br>
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Contraseña" required>
@@ -57,7 +57,7 @@
               </form>
               <br>
                 <div class="form-group">
-                <label for="olvide">¿Olvidaste tu contraseña?</label>
+                <label for="olvide">¿Olvidaste tu contraseña?</label><br>
                 <a href="olvido.php">Haz click aquí para recuperarla</a>
                 </div>
               </div>
