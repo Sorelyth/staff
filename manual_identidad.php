@@ -1,8 +1,16 @@
+<?php
+  /*session_start();
+  include 'inc/db_config.php';
+  include 'inc/funciones.php';
+  if(!isset($_SESSION['email'])){ header('Location: login.php');}
+  //if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
+  */
+?>
 <!doctype html>
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Inicio</title>
+  <title>Manual de identidad corporativa</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -25,33 +33,14 @@
     </div>
   </div>
 </header>
-
-<div id="cru-nav" class="visible-sm-up">
-  <div class="cru-container">
-    <ul>
-      <li id="top-menu-0" class="top-menu-item">
-        <a href="">Materiales DDSM</a>
-      </li>
-      <li id="top-menu-1" class="top-menu-item">
-        <a href="">Manual de identidad corporativa</a>
-      </li>
-      <li id="top-menu-2" class="top-menu-item">
-        <a href="">Informes</a>
-      </li>
-      <li id="top-menu-3" class="top-menu-item">
-        <a href="">Reporte de transferencias</a>
-      </li>
-    </ul>
-  </div>
-</div>
 </section>
 
-<section id="home">
+<section id="cru-body">
   <div class="cru-container">
-    <div class="row">
+    <div class="cru-row">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
-          <h1><center>Hola, es un gusto tenerte por aquí.</center></h1>
+
           <br>
         </div>
       </div>
