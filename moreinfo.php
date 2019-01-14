@@ -51,7 +51,7 @@
           </div>
 
           <div class="form-group row">
-            <label for="lastname" class="col-sm-3 col-form-label"><i class="fas fa-address-book"></i>Apellidos</label>
+            <label for="lastname" class="col-sm-3 col-form-label"><i class="fas fa-address-book"></i> Apellidos</label>
             <input type="text" class="col-sm-4 form-control" id="lastname" name="lastname" required>
           </div>
 
@@ -66,7 +66,7 @@
           </div>
 
           <div class="form-group row">
-            <label for="iddpto" class="col-sm-3 col-form-label"><i class="fas fa-map-marker-alt"></i>Departamento donde resides</label>
+            <label for="iddpto" class="col-sm-3 col-form-label"><i class="fas fa-map-marker-alt"></i> Departamento donde resides</label>
             <?php selectDepartamento();?>
           </div>
 

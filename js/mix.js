@@ -66,6 +66,40 @@ function cambioDepartamento(){
     }
   });
 }
+function buscarCoach(texto){
+  $('#resultado').show();
+  $.ajax({
+    type: "post",
+    dataType: "html",
+    data: {accion: "buscar_coach",buscar:texto},
+    url: "ajax_requests.php",
+    cache: false,
+    // beforeSend: function() {
+    //    $('#res3').html('loading please wait...');
+    // },
+    success: function(htmldata) {
+    //alert(htmldata);
+       $("#resultado").html(htmldata);
+    }
+  });
+}
+function seleccionarcoach(idcoach,idpersona){
+  $('#resultado').hide();
+  $.ajax({
+    type: "post",
+    dataType: "html",
+    data: {accion: "seleccion_coach",idcoach:idcoach,idpersona:idpersona},
+    url: "ajax_requests.php",
+    cache: false,
+    // beforeSend: function() {
+    //    $('#res3').html('loading please wait...');
+    // },
+    success: function(htmldata) {
+    //alert(htmldata);
+       $("#coach").val(htmldata);
+    }
+  });
+}
 function Logout(){
   post('index.php',{out:0});
 }

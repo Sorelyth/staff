@@ -1,10 +1,9 @@
 <?php
-  /*session_start();
+  session_start();
   include 'inc/db_config.php';
   include 'inc/funciones.php';
-  if(!isset($_SESSION['email'])){ header('Location: login.php');}
+  if(!isset($_SESSION['idusuario'])){ header('Location: login.php');}
   //if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
-  */
 ?>
 <!doctype html>
 <html lang="es">
@@ -56,7 +55,14 @@
     <div class="cru-row">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
-
+          <div class="card w-25" style="text-align:center;">
+            <h4 class="card-title">Nuevo informe</h4>
+            <span class="card-img-top"><i class="far fa-calendar-plus fa-7x"></i></span>
+            <div class="card-body">
+              <p class="card-text">Entra aquí para crear un nuevo informe mensual.</p>
+              <a href="informe_nuevo.php" class="btn btn-primary">Ir</a>
+            </div>
+          </div>
           <br>
         </div>
       </div>

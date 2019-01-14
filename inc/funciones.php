@@ -20,14 +20,42 @@ function getNombreyApellido($idusuario){
   $stmt = mysqli_prepare($mysqli,$sentencia);
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
-  mysqli_stmt_bind_result($stmt,$nombre,$apellido);
+  mysqli_stmt_bind_result($stmt,$nombre,$apellidos);
   mysqli_stmt_fetch($stmt);
   mysqli_stmt_close($stmt);
   mysqli_close($mysqli);
-  return [$nombre,$apellido];
+  echo $nombre.' '.$apellidos;
 }
 //------
-function buscarEmail($email){
+function getCiudad($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT nombre AS ciudad FROM municipios where id=(SELECT id_ciudad FROM users_info WHERE id_user=".$idusuario.")";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$ciudad);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  echo $ciudad;
+}
+//------
+function getComponente($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT componente FROM componentes where id=(SELECT id_componente FROM users_info WHERE id_user=".$idusuario.")";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$componente);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  echo $componente;
+}
+//------
+function existeEmail($email){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
   $sentencia="SELECT correo FROM users_login WHERE correo='".$email."'";
@@ -39,6 +67,37 @@ function buscarEmail($email){
     return true;
   }
   else{mysqli_stmt_close($result);return false;}
+}
+//------
+function buscarCoach($texto){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id_user, nombre, apellidos FROM users_info WHERE nombre LIKE '%".$texto."%'OR apellidos LIKE '%".$texto."%' OR CONCAT(nombre,' ',apellidos) LIKE '%".$texto."%' LIMIT 5";
+  $result = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($result);
+  mysqli_stmt_store_result($result);
+  mysqli_stmt_bind_result($result,$idpersona,$nombre,$apellidos);
+  $html_ret = '<ul class="list-group list-group-flush">';
+  while(mysqli_stmt_fetch($result)){
+    $html_ret .= '<li class="list-group item list-group-item-action" onclick="seleccionarcoach('.$idpersona.')"><a>'.$nombre.' '.$apellidos.'</a></li>';
+  }
+  $html_ret .= '</ul>';
+  mysqli_stmt_close($result);
+  mysqli_close($mysqli);
+  return $html_ret;
+}
+//-----
+function cambiarCoach($idcoach,$idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="UPDATE users_info SET id_coach=".$idcoach." WHERE id_user=".$idusuario."";
+  $result = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($result);
+  mysqli_stmt_store_result($result);
+  $html_ret = getNombreyApellido($idcoach);
+  mysqli_stmt_close($result);
+  mysqli_close($mysqli);
+  return $html_ret;
 }
 //-----
 function getMes($idmes){
@@ -207,9 +266,7 @@ function LoginUsuario($correo,$password){
   mysqli_stmt_fetch($result);
   if(password_verify($password,$hash_pass)){
     session_start();
-    $_SESSION['id_user']=$id_user;
-    $_SESSION['hash_pass']=$hash_pass;
-    $_SESSION['email']=$email;
+    $_SESSION['idusuario']=$id_user;
     header('Location: index.php');
   }
   else{
