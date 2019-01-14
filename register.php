@@ -12,6 +12,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie-edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/mix.js"></script>
   <link href="css/fonts.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link rel="stylesheet" href="css/clientlibs.min.css" type="text/css">
@@ -40,10 +42,10 @@
       <div class="col-sm-2"></div>
       <div class="col-sm integrity-opener">
         <br>
-        <form method="post" action="register.php" onsubmit="checkRegisterForm(this)">
+        <form method="post" action="register.php" onsubmit="return checkRegisterForm()">
         <div class="form-group row">
         <label for="inputEmail" class="col-sm-4 col-form-label">Correo electrónico institucional</label>
-          <input type="email" class="col-sm-4 form-control" id="inputEmail" name="inputEmail" placeholder="nombre.apellido@cru.org">
+          <input type="email" class="col-sm-4 form-control" id="inputEmail" name="inputEmail" placeholder="nombre.apellido@cru.org" required>
           <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
         </div>
         <div class="form-group row">
@@ -55,7 +57,7 @@
           <label for="pwd2" class="col-sm-4 col-form-label">Repite tu contraseña</label>
           <input type="password" class="col-sm-4 form-control" id="pwd2" name="pwd2" placeholder="">
         </div>
-        <button type="submit" class="btn btn-primary" name="registro" id="registro">Continuar</button>
+        <button type="submit" class="btn btn-light" name="registro" id="registro">Continuar</button>
       </form>
       </div>
       <div class="col-sm-2"></div>

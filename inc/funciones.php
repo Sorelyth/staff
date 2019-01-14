@@ -26,6 +26,7 @@ function getNombreyApellido($idusuario){
   mysqli_close($mysqli);
   return [$nombre,$apellido];
 }
+//------
 function buscarEmail($email){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
@@ -62,7 +63,7 @@ function selectMes(){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$idmes,$mes);
-  echo '<select class="col-sm-4 form-control" name="idmes" id="idmes"><option value="0" selected> </option>';
+  echo '<select class="col-sm-4 form-control" name="idmes" id="idmes" required><option value="0" selected> </option>';
 
   while(mysqli_stmt_fetch($stmt)){
     echo '<option value="'.$idmes.'">'.$mes.'</option>';
@@ -80,7 +81,7 @@ function selectComponente(){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$idcomponente,$componente);
-  echo '<select class="col-sm-4 form-control" name="idcomponente" id="idcomponente"><option value="0" selected> </option>';
+  echo '<select class="col-sm-4 form-control" name="idcomponente" id="idcomponente" required><option value="0" selected> </option>';
 
   while(mysqli_stmt_fetch($stmt)){
     echo '<option value="'.$idcomponente.'">'.$componente.'</option>';
@@ -98,7 +99,7 @@ function selectEstadoCivil(){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$idestadocivil,$estadocivil);
-  echo '<select class="col-sm-4 form-control" name="idestadocivil" id="idestadocivil"><option value="0" selected> </option>';
+  echo '<select class="col-sm-4 form-control" name="idestadocivil" id="idestadocivil" required><option value="0" selected> </option>';
 
   while(mysqli_stmt_fetch($stmt)){
     echo '<option value="'.$idestadocivil.'">'.$estadocivil.'</option>';
@@ -116,10 +117,10 @@ function selectDepartamento(){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$iddpto,$dpto);
-  echo '<select class="col-sm-4 form-control" name="iddpto" id="iddpto" onchange="post("",{iddpto:iddpto})"><option value="0" selected> </option>';
+  echo '<select class="col-sm-4 form-control" name="iddpto" id="iddpto" onchange="cambioDepartamento();" required><option value="0"> </option>';
 
   while(mysqli_stmt_fetch($stmt)){
-    echo '<option value="'.$iddpto.'">'.$dpto.'</option>';
+    echo '<option value="'.$iddpto.'"'.checkSelection($iddpto,$_POST['iddpto']).'>'.$dpto.'</option>';
   }
   echo '</select>';
   mysqli_stmt_close($stmt);
@@ -134,25 +135,36 @@ function selectMunicipio($iddpto){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$idmcpo,$mcpo);
-  echo '<select class="col-sm-4 form-control" name="idmcpo" id="idmcpo"><option value="0" selected> </option>';
+  $html_ret = '<label for="idmcpo" class="col-sm-3 col-form-label">Ciudad donde resides</label>';
+  $html_ret .= '<select class="col-sm-4 form-control" name="idmcpo" id="idmcpo" required><option value="0"> </option>';
 
   while(mysqli_stmt_fetch($stmt)){
-    echo '<option value="'.$idmcpo.'">'.$mcpo.'</option>';
+    $html_ret .= '<option value="'.$idmcpo.'"'.checkSelection($idmcpo,$_POST['idmcpo']).'>'.$mcpo.'</option>';
   }
-  echo '</select>';
+  $html_ret .= '</select>';
   mysqli_stmt_close($stmt);
   mysqli_close($mysqli);
+  return $html_ret;
 }
 //-----
 function RegistroUsuario($email,$password){
   include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
   $sentencia="SELECT correo FROM users_login WHERE correo='".$email."'";
+  $res = mysqli_query($mysqli, $sentencia);
+  if (mysqli_connect_errno()) {
+      printf("Connect failed: %s\n", mysqli_connect_error());
+      exit();
+  }
+  if (!$res) {
+    echo $sentencia;
+    printf("Error: %s\n", mysqli_error($mysqli));
+  }
   $result = mysqli_prepare($mysqli,$sentencia);
   mysqli_stmt_execute($result);
   mysqli_stmt_store_result($result);
-  if(mysqli_stmt_num_rows($result)>0){mysqli_stmt_close($result);echo '<script type="text/javascript">alert("Usuario o Email ya existente. Intente otro nombre de usuario.")</script>';}
+  if(mysqli_stmt_num_rows($result)>0){mysqli_stmt_close($result);echo '<script type="text/javascript">alert("Correo electronico ya existente en la base de datos.");</script>';}
   else{
-    mysqli_stmt_close($result);
     $hash_pass = password_hash($password, PASSWORD_DEFAULT);
     $sentencia="INSERT INTO users_login (correo,hash_pass) VALUES('".$email."','".$hash_pass."')";
     $result = mysqli_prepare($mysqli,$sentencia);
@@ -166,8 +178,27 @@ function RegistroUsuario($email,$password){
   }
 }
 //-----
-function LoginUsuario($correo,$hash_pass){
+function MoreInfoUsuario($id_user,$name,$lastname,$doc_id,$phone,$address,$idmcpo,$gender,$idestadocivil,$birthdate,$idcomponente){
   include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="INSERT INTO users_info (id_user,nombre,apellidos,doc_id,telefono,direccion,sexo,id_ciudad,id_componente,id_estado_civil,fecha_nacimiento,id_coach) VALUES(".$id_user.",'".$name."','".$lastname."',".$doc_id.",'".$phone."','".$address."','".$gender."',".$idmcpo.",".$idcomponente.",".$idestadocivil.",'".$birthdate."',NULL)";
+  $res = mysqli_query($mysqli, $sentencia);
+  echo $sentencia;
+  if (mysqli_connect_errno()) {
+      printf("Connect failed: %s\n", mysqli_connect_error());
+      exit();
+  }
+  if (!$res) {
+    echo $sentencia;
+    printf("Error: %s\n", mysqli_error($mysqli));
+  }
+  mysqli_close($mysqli);
+  header('Location: login.php');
+}
+//----
+function LoginUsuario($correo,$password){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
   $sentencia="SELECT id_user, correo, hash_pass FROM users_login WHERE correo='".$correo."'";
   $result = mysqli_prepare($mysqli,$sentencia);
   mysqli_stmt_execute($result);
@@ -191,6 +222,11 @@ function LoginUsuario($correo,$hash_pass){
 function transformarbooleano($valor){
   if($valor==0){$r='No';}
   else{ $r='Sí';}
+  return $r;
+}
+function checkSelection($valor,$post_value){
+  if(isset($post_value)){if($valor==$post_value){$r='selected';}else{$r='';}}
+  else{ $r='';}
   return $r;
 }
 

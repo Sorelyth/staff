@@ -2,20 +2,22 @@
   include 'inc/db_config.php';
   include 'inc/funciones.php';
   if(!isset($_SESSION['idusuario'])){header('Location:register.php');}
+  if(isset($_POST['moreinfo'])){MoreInfoUsuario($_SESSION['idusuario'],$_POST['name'],$_POST['lastname'],$_POST['doc_id'],$_POST['phone'],$_POST['address'],$_POST['idmcpo'],$_POST['gender'],$_POST['idestadocivil'],$_POST['birthdate'],$_POST['idcomponente']);}
 ?>
 <!doctype html>
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Registro</title>
+  <title>Registro - Información personal</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie-edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/mix.js"></script>
   <link href="css/fonts.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link rel="stylesheet" href="css/clientlibs.min.css" type="text/css">
-  <script src="js/mix.js"></script>
 </head>
 
 <body class="sans-serif lh-copy cru-scorpion" style="padding-top: 0px;">
@@ -40,39 +42,45 @@
       <div class="col-sm-2"></div>
       <div class="col-sm integrity-opener">
         <br>
-        <form method="post" action="moreinfo.php" onsubmit="return checkMoreInfoForm(this)">
+        <form method="post" action="moreinfo.php">
 
           <div class="form-group row">
-          <label for="name" class="col-sm-3 col-form-label"><i class="fas fa-address-book"></i>Nombre</label>
-            <input type="text" class="col-sm-4 form-control" id="name" name="name">
+          <label for="name" class="col-sm-3 col-form-label"><i class="fas fa-address-book"></i> Nombre</label>
+            <input type="text" class="col-sm-4 form-control" id="name" name="name" required>
             <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
           </div>
 
           <div class="form-group row">
             <label for="lastname" class="col-sm-3 col-form-label">Apellidos</label>
-            <input type="text" class="col-sm-4 form-control" id="lastname" name="lastname">
+            <input type="text" class="col-sm-4 form-control" id="lastname" name="lastname" required>
           </div>
 
           <div class="form-group row">
-            <label for="doc_id" class="col-sm-3 col-form-label"><i class="far fa-address-card"></i>Número de documento de identidad</label>
-            <input type="text" class="col-sm-4 form-control" id="doc_id" name="doc_id">
+            <label for="doc_id" class="col-sm-3 col-form-label"><i class="far fa-address-card"></i> Número de documento de identidad</label>
+            <input type="text" class="col-sm-4 form-control" id="doc_id" name="doc_id" required>
           </div>
 
           <div class="form-group row">
-            <label for="phone" class="col-sm-3 col-form-label"><i class="fas fa-mobile-alt"></i>Teléfono celular</label>
-            <input type="number" class="col-sm-4 form-control" id="phone" name="phone">
+            <label for="phone" class="col-sm-3 col-form-label"><i class="fas fa-mobile-alt"></i> Teléfono celular</label>
+            <input type="number" class="col-sm-4 form-control" id="phone" name="phone" required>
           </div>
 
           <div class="form-group row">
             <label for="iddpto" class="col-sm-3 col-form-label">Departamento donde resides</label>
             <?php selectDepartamento();?>
-            <label for="idmcpo" class="col-sm-3 col-form-label">Ciudad donde resides</label>
-            <?php if(isset($_POST['iddpto'])){selectMunicipio($_POST['iddpto']);}?>
+          </div>
+
+          <div class="form-group row" id="selectmunicipio">
           </div>
 
           <div class="form-group row">
-            <label for="gender" class="col-sm-3 col-form-label"><i class="fas fa-male"><i class="fas fa-female"></i></i>Género</label>
-            <select class="col-sm-4 form-control" id="gender" name="gender">
+            <label for="address" class="col-sm-3 col-form-label">Dirección</label>
+            <input type="text" class="col-sm-4 form-control" id="address" name="address" required>
+          </div>
+
+          <div class="form-group row">
+            <label for="gender" class="col-sm-3 col-form-label"><i class="fas fa-male"><i class="fas fa-female"></i></i> Género</label>
+            <select class="col-sm-4 form-control" id="gender" name="gender" required>
               <option value="0" selected> </option>
               <option value="F">Femenino</option>
               <option value="M">Masculino</option>
@@ -80,22 +88,22 @@
           </div>
 
           <div class="form-group row">
-            <label for="idestadocivil" class="col-sm-3 col-form-label">Estado civil</label>
+            <label for="idestadocivil" class="col-sm-3 col-form-label"> Estado civil</label>
             <?php selectEstadoCivil(); ?>
           </div>
 
           <div class="form-group row">
-            <label for="birthdate" class="col-sm-3 col-form-label">Fecha de Nacimiento</label>
-            <input type="date" class="col-sm-4 form-control" id="birthdate" name="birthdate">
+            <label for="birthdate" class="col-sm-3 col-form-label"> Fecha de Nacimiento</label>
+            <input type="date" class="col-sm-4 form-control" id="birthdate" name="birthdate" required>
           </div>
 
           <div class="form-group row">
-            <label for="idcomponente" class="col-sm-3 col-form-label">Componente principal en el que sirves</label>
+            <label for="idcomponente" class="col-sm-3 col-form-label"> Componente principal en el que sirves</label>
             <?php selectComponente(); ?>
           </div>
 
 
-        <button type="submit" class="btn btn-primary" name="registro" id="registro">Continuar</button>
+        <button type="submit" class="btn btn-light" name="moreinfo" id="moreinfo">Finalizar</button>
       </form>
       </div>
       <div class="col-sm-2"></div>
