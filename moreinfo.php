@@ -51,7 +51,7 @@
           </div>
 
           <div class="form-group row">
-            <label for="lastname" class="col-sm-3 col-form-label">Apellidos</label>
+            <label for="lastname" class="col-sm-3 col-form-label"><i class="fas fa-address-book"></i>Apellidos</label>
             <input type="text" class="col-sm-4 form-control" id="lastname" name="lastname" required>
           </div>
 
@@ -66,7 +66,7 @@
           </div>
 
           <div class="form-group row">
-            <label for="iddpto" class="col-sm-3 col-form-label">Departamento donde resides</label>
+            <label for="iddpto" class="col-sm-3 col-form-label"><i class="fas fa-map-marker-alt"></i>Departamento donde resides</label>
             <?php selectDepartamento();?>
           </div>
 
@@ -74,7 +74,7 @@
           </div>
 
           <div class="form-group row">
-            <label for="address" class="col-sm-3 col-form-label">Dirección</label>
+            <label for="address" class="col-sm-3 col-form-label"><i class="fas fa-map-pin"></i>Dirección</label>
             <input type="text" class="col-sm-4 form-control" id="address" name="address" required>
           </div>
 
@@ -93,12 +93,12 @@
           </div>
 
           <div class="form-group row">
-            <label for="birthdate" class="col-sm-3 col-form-label"> Fecha de Nacimiento</label>
+            <label for="birthdate" class="col-sm-3 col-form-label"><i class="fas fa-calendar-alt"></i> Fecha de Nacimiento</label>
             <input type="date" class="col-sm-4 form-control" id="birthdate" name="birthdate" required>
           </div>
 
           <div class="form-group row">
-            <label for="idcomponente" class="col-sm-3 col-form-label"> Componente principal en el que sirves</label>
+            <label for="idcomponente" class="col-sm-3 col-form-label"><i class="fas fa-briefcase"></i> Componente principal en el que sirves</label>
             <?php selectComponente(); ?>
           </div>
 

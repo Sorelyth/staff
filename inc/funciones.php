@@ -135,7 +135,7 @@ function selectMunicipio($iddpto){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$idmcpo,$mcpo);
-  $html_ret = '<label for="idmcpo" class="col-sm-3 col-form-label">Ciudad donde resides</label>';
+  $html_ret = '<label for="idmcpo" class="col-sm-3 col-form-label"><i class="fas fa-map-marked-alt"></i>Ciudad donde resides</label>';
   $html_ret .= '<select class="col-sm-4 form-control" name="idmcpo" id="idmcpo" required><option value="0"> </option>';
 
   while(mysqli_stmt_fetch($stmt)){
