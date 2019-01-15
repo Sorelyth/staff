@@ -72,7 +72,7 @@
           <div>
           <div>
             <div class="col-sm-12">
-              <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/Manual_de_identidad.pdf">
+              <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">
                 <img src="img/cru_logo.png" class="" style="margin:0 auto;">
               </a>
             </div>
