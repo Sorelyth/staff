@@ -72,7 +72,7 @@ function existeEmail($email){
 function buscarCoach($texto){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
-  $sentencia="SELECT id_user, nombre, apellidos FROM users_info WHERE nombre LIKE '%".$texto."%'OR apellidos LIKE '%".$texto."%' OR CONCAT(nombre,' ',apellidos) LIKE '%".$texto."%' LIMIT 5";
+  $sentencia="SELECT id_user, nombre, apellidos FROM users_info WHERE nombre LIKE '%".$texto."%' OR apellidos LIKE '%".$texto."%' OR CONCAT(nombre,' ',apellidos) LIKE '%".$texto."%' LIMIT 5";
   $result = mysqli_prepare($mysqli,$sentencia);
   mysqli_stmt_execute($result);
   mysqli_stmt_store_result($result);
@@ -216,13 +216,13 @@ function RegistroUsuario($email,$password){
       exit();
   }
   if (!$res) {
-    echo $sentencia;
+    //echo $sentencia;
     printf("Error: %s\n", mysqli_error($mysqli));
   }
   $result = mysqli_prepare($mysqli,$sentencia);
   mysqli_stmt_execute($result);
   mysqli_stmt_store_result($result);
-  if(mysqli_stmt_num_rows($result)>0){mysqli_stmt_close($result);echo '<script type="text/javascript">alert("Correo electronico ya existente en la base de datos.");</script>';}
+  if(mysqli_stmt_num_rows($result)>0){mysqli_stmt_close($result);echo '<script type="text/javascript">alert("Correo electronico ya existente en la base de datos.");</script>';header('Location: login.php');}
   else{
     $hash_pass = password_hash($password, PASSWORD_DEFAULT);
     $sentencia="INSERT INTO users_login (correo,hash_pass) VALUES('".$email."','".$hash_pass."')";
@@ -242,7 +242,7 @@ function MoreInfoUsuario($id_user,$name,$lastname,$doc_id,$phone,$address,$idmcp
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
   $sentencia="INSERT INTO users_info (id_user,nombre,apellidos,doc_id,telefono,direccion,sexo,id_ciudad,id_componente,id_estado_civil,fecha_nacimiento,id_coach) VALUES(".$id_user.",'".$name."','".$lastname."',".$doc_id.",'".$phone."','".$address."','".$gender."',".$idmcpo.",".$idcomponente.",".$idestadocivil.",'".$birthdate."',NULL)";
   $res = mysqli_query($mysqli, $sentencia);
-  echo $sentencia;
+  //echo $sentencia;
   if (mysqli_connect_errno()) {
       printf("Connect failed: %s\n", mysqli_connect_error());
       exit();

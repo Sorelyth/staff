@@ -2,7 +2,8 @@
   include 'inc/db_config.php';
   include 'inc/funciones.php';
   if(!isset($_SESSION['idusuario'])){header('Location:register.php');}
-  if(isset($_POST['moreinfo'])){MoreInfoUsuario($_SESSION['idusuario'],$_POST['name'],$_POST['lastname'],$_POST['doc_id'],$_POST['phone'],$_POST['address'],$_POST['idmcpo'],$_POST['gender'],$_POST['idestadocivil'],$_POST['birthdate'],$_POST['idcomponente']);}
+  if(isset($_POST['moreinfo'])){MoreInfoUsuario($_SESSION['idusuario'],$_POST['name'],$_POST['lastname'],$_POST['doc_id'],$_POST['phone'],$_POST['address'],$_POST['idmcpo'],$_POST['gender'],$_POST['idestadocivil'],$_POST['birthdate'],
+    $_POST['idcomponente']);}
 ?>
 <!doctype html>
 <html lang="es">
@@ -24,7 +25,7 @@
 <section id="cru-header-nav" class="hidden-print">
 <header id="cru-header">
   <div class="cru-container">
-    <div class="cru-row">
+    <div class="row">
       <div class="cru-col-3">
         <a class="logo" href="https://www.cru.org/">
         <img src="img/cru_logo.png">
@@ -38,7 +39,7 @@
 
 <section id="home">
   <div class="cru-container">
-    <div class="row">
+    <div class="cru-row">
       <div class="col-sm-2"></div>
       <div class="col-sm integrity-opener">
         <br>

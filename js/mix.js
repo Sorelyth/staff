@@ -83,12 +83,12 @@ function buscarCoach(texto){
     }
   });
 }
-function seleccionarcoach(idcoach,idpersona){
+function seleccionarcoach(idcoach){
   $('#resultado').hide();
   $.ajax({
     type: "post",
     dataType: "html",
-    data: {accion: "seleccion_coach",idcoach:idcoach,idpersona:idpersona},
+    data: {accion: "seleccion_coach",idcoach:idcoach},
     url: "ajax_requests.php",
     cache: false,
     // beforeSend: function() {

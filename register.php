@@ -24,7 +24,7 @@
 <section id="cru-header-nav" class="hidden-print">
 <header id="cru-header">
   <div class="cru-container">
-    <div class="cru-row">
+    <div class="row">
       <div class="cru-col-3">
         <a class="logo" href="https://www.cru.org/">
         <img src="img/cru_logo.png">
@@ -38,7 +38,7 @@
 
 <section id="home">
   <div class="cru-container">
-    <div class="row">
+    <div class="cru-row">
       <div class="col-sm-2"></div>
       <div class="col-sm integrity-opener">
         <br>
@@ -50,12 +50,12 @@
         </div>
         <div class="form-group row">
           <label for="pwd1" class="col-sm-4 col-form-label">Contraseña</label>
-          <input type="password" class="col-sm-4 form-control" id="pwd1" name="pwd1" placeholder="" aria-describedby="pwdHelp">
+          <input type="password" class="col-sm-4 form-control" id="pwd1" name="pwd1" placeholder="" aria-describedby="pwdHelp" required>
           </div>
           <small id="pwdHelp" class="form-text text-muted">Debe tener al menos 6 caracteres.</small>
           <div class="form-group row">
           <label for="pwd2" class="col-sm-4 col-form-label">Repite tu contraseña</label>
-          <input type="password" class="col-sm-4 form-control" id="pwd2" name="pwd2" placeholder="">
+          <input type="password" class="col-sm-4 form-control" id="pwd2" name="pwd2" placeholder="" required>
         </div>
         <button type="submit" class="btn btn-light" name="registro" id="registro">Continuar</button>
       </form>

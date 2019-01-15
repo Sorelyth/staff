@@ -1,7 +1,7 @@
 <?php
 session_start();
+//include 'inc/db_config';
 include 'inc/funciones.php';
-include 'inc/db_config';
 if(isset($_POST['accion']) && !empty($_POST['accion'])){
   $action = $_POST['accion'];
   switch($action){
