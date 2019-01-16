@@ -21,7 +21,9 @@ INSERT INTO `componentes` (`id`, `componente`) VALUES
 (4, 'Atletas en Acción'),
 (5, 'Movimiento Global de Iglesias'),
 (6, 'Mujeres de Hoy'),
-(7, 'Vida en Familia');
+(7, 'Vida en Familia'),
+(8, 'Estrategias digitales'),
+(9, 'Operaciones');
 
 CREATE TABLE `departamentos` (
   `id` bigint(20) NOT NULL,
@@ -39,7 +41,7 @@ INSERT INTO `departamentos` (`id`, `nombre`, `codigo`) VALUES
 (7, 'Caqueta', 18),
 (8, 'Cauca', 19),
 (9, 'Cesar', 20),
-(10, 'Cordova', 23),
+(10, 'Cordoba', 23),
 (11, 'Cundinamarca', 25),
 (12, 'Choco', 27),
 (13, 'Huila', 41),
@@ -64,6 +66,17 @@ INSERT INTO `departamentos` (`id`, `nombre`, `codigo`) VALUES
 (32, 'Vaupes', 97),
 (33, 'Vichada', 99);
 
+CREATE TABLE `discipulos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `id_discipulador` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO `discipulos` (`id`, `nombre`, `apellido`, `id_discipulador`) VALUES
+(1, 'Paula', 'Simarra', 14),
+(3, 'otra', 'loca', 14);
+
 CREATE TABLE `estados_civiles` (
   `id` int(11) NOT NULL,
   `estado_civil` varchar(255) COLLATE utf8_spanish_ci NOT NULL
@@ -78,13 +91,51 @@ CREATE TABLE `informes` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_mes` int(11) NOT NULL,
-  `year` int(11) NOT NULL
+  `year` varchar(11) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-CREATE TABLE `informes_text_content` (
+INSERT INTO `informes` (`id`, `id_user`, `id_mes`, `year`) VALUES
+(31, 14, 7, '1997'),
+(32, 14, 3, '1991');
+
+CREATE TABLE `informes_discipulos` (
+  `id` int(11) NOT NULL,
   `id_informe` int(11) NOT NULL,
-  `respuesta` text COLLATE utf8_spanish_ci NOT NULL
+  `id_discipulo` int(11) NOT NULL,
+  `id_fase` int(11) NOT NULL,
+  `historia` text COLLATE utf8_spanish_ci NOT NULL,
+  `id_discipulador` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO `informes_discipulos` (`id`, `id_informe`, `id_discipulo`, `id_fase`, `historia`, `id_discipulador`) VALUES
+(2, 29, 1, 3, '1', 14),
+(3, 30, 1, 1, '1', 14),
+(4, 31, 1, 1, '1', 14),
+(5, 31, 3, 3, '1', 14);
+
+CREATE TABLE `informes_text_content` (
+  `id` int(11) NOT NULL,
+  `id_informe` int(11) NOT NULL,
+  `respuesta` text COLLATE utf8_spanish_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO `informes_text_content` (`id`, `id_informe`, `respuesta`) VALUES
+(163, 31, ''),
+(164, 31, '1'),
+(165, 31, '1'),
+(166, 31, 'Si'),
+(167, 31, ''),
+(168, 31, '1'),
+(169, 31, '1'),
+(170, 31, '1'),
+(171, 31, ''),
+(172, 31, '1'),
+(173, 31, '1'),
+(174, 31, '1'),
+(175, 31, ''),
+(176, 31, '1'),
+(177, 31, '1'),
+(178, 31, '1');
 
 CREATE TABLE `meses` (
   `id` int(11) NOT NULL,
@@ -99,7 +150,7 @@ INSERT INTO `meses` (`id`, `mes`) VALUES
 (5, 'Mayo'),
 (6, 'Junio'),
 (7, 'Julio'),
-(8, 'Agoto'),
+(8, 'Agosto'),
 (9, 'Septiembre'),
 (10, 'Octubre'),
 (11, 'Noviembre'),
@@ -1252,11 +1303,13 @@ CREATE TABLE `users_info` (
   `id_componente` int(11) NOT NULL,
   `id_estado_civil` int(11) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
-  `id_coach` int(11) DEFAULT NULL
+  `id_coach` int(11) DEFAULT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-INSERT INTO `users_info` (`id_user`, `nombre`, `apellidos`, `doc_id`, `telefono`, `direccion`, `sexo`, `id_ciudad`, `id_componente`, `id_estado_civil`, `fecha_nacimiento`, `id_coach`) VALUES
-(10, 'Sujeto', 'Prueba', '123456789', '3003003030', 'Clle falsa numero 123', 'F', 368, 2, 3, '1988-08-18', NULL);
+INSERT INTO `users_info` (`id_user`, `nombre`, `apellidos`, `doc_id`, `telefono`, `direccion`, `sexo`, `id_ciudad`, `id_componente`, `id_estado_civil`, `fecha_nacimiento`, `id_coach`, `admin`) VALUES
+(10, 'Sujeto', 'Prueba', '123456789', '3003003030', 'Clle falsa numero 123', 'F', 368, 2, 3, '1988-08-18', 10, 0),
+(14, 'Sore', 'VIllar', '1235670', '39377924', 'por ahi', 'F', 452, 1, 1, '1992-08-27', 10, 0);
 
 CREATE TABLE `users_login` (
   `id_user` int(11) NOT NULL,
@@ -1265,7 +1318,8 @@ CREATE TABLE `users_login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO `users_login` (`id_user`, `correo`, `hash_pass`) VALUES
-(10, 'sujeto.prueba@cru.org', '$2y$10$DgGwr7809ngXEkMp2Y0ZNu1upf8zq1ifk0OE0cFCCXd6B4PM6mDI2');
+(10, 'sujeto.prueba@cru.org', '$2y$10$DgGwr7809ngXEkMp2Y0ZNu1upf8zq1ifk0OE0cFCCXd6B4PM6mDI2'),
+(14, 'sore.villar@cru.org', '$2y$10$Y/vvamr/diUharC01ual7.C1OZtI5024RCbdWK2EtpcrTO6lnhcou');
 
 
 ALTER TABLE `componentes`
@@ -1274,7 +1328,16 @@ ALTER TABLE `componentes`
 ALTER TABLE `departamentos`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `discipulos`
+  ADD PRIMARY KEY (`id`);
+
 ALTER TABLE `informes`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `informes_discipulos`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `informes_text_content`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `meses`
@@ -1290,12 +1353,18 @@ ALTER TABLE `users_login`
 
 ALTER TABLE `departamentos`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+ALTER TABLE `discipulos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 ALTER TABLE `informes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+ALTER TABLE `informes_discipulos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `informes_text_content`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
 ALTER TABLE `municipios`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1127;
 ALTER TABLE `users_login`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
