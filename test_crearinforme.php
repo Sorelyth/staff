@@ -1,7 +1,7 @@
 <?php
 session_start();
-//include 'inc/db_config';
 include 'inc/funciones.php';
+//if(isset($_POST['dale'])){echo crearInforme($_SESSION['idusuario'],$_POST['idmes'],$_POST['year']);}
 if(isset($_POST['accion']) && !empty($_POST['accion'])){
   $action = $_POST['accion'];
   switch($action){
@@ -15,3 +15,29 @@ if(isset($_POST['accion']) && !empty($_POST['accion'])){
   }
 }
 ?>
+<button name="dale" onclick="nuevoinforme();">go</button>
+  <?php selectMes(); ?><input type="text" name="year" id="year">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  function nuevoinforme(){
+    var mes = document.getElementById("idmes").value;
+    var year = document.getElementById("year").value;
+    //var idinforme;
+    $.ajax({
+      type: "post",
+      dataType: "html",
+      data: {accion: "crear_informe",mes:mes,year:year},
+      url: "test_crearinforme.php",
+      cache: false,
+      // beforeSend: function() {
+      //    $('#res3').html('loading please wait...');
+      // },
+      success: function(response) {
+        var idinforme = response;
+        alert(idinforme);
+        $('#year').val(response)
+      }
+    });
+  }
+  </script>
