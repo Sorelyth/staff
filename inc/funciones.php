@@ -1,4 +1,18 @@
 <?php
+function isAdmin($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT admin FROM users_info WHERE id_user=".$idusuario."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$admin);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $admin;
+}
+//----
 function getIdusuario($correo){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);

@@ -1,10 +1,9 @@
 <?php
-  /*session_start();
+  session_start();
   include 'inc/db_config.php';
   include 'inc/funciones.php';
-  if(!isset($_SESSION['email'])){ header('Location: login.php');}
-  //if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
-*/
+  if(!isset($_SESSION['idusuario'])){ header('Location: login.php');}
+  if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
 ?>
 
 <!doctype html>
@@ -19,6 +18,8 @@
   <link href="css/fonts.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link rel="stylesheet" href="css/clientlibs.min.css" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/mix.js"></script>
 </head>
 
 <body class="sans-serif lh-copy cru-scorpion" style="padding-top: 0px;">

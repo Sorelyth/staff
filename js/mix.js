@@ -107,7 +107,7 @@ function tiempoconcentrado(respuesta){
       '<label for="pregunta5" class="col-sm-3 col-form-label"><p style="font-weight:bold;">'+
       '¿Qué te enseñó Dios? ¿Cómo te ayudaron y ayudaste a '+
       'tus líderes en el proceso del DDSM durante este mes?</p></label>'+
-      '<input type="text" class="col-sm-8 form-control" name="pregunta5" id="pregunta5" required>'+
+      '<textarea class="col-sm-8 form-control" name="pregunta5" id="pregunta5" required></textarea>'+
       '</div>'+
       '<p>Presentar estadísticas diagnosticas manual del alumno DDSM, personales y del equipo a cargo.</p>';
   }
@@ -119,7 +119,7 @@ function tiempoconcentrado(respuesta){
       'socios tuviste este mes? ¿Qué acciones tuviste con tus actuales socios que comunicaron, '+
       'gratitud, visión y amor hacia ellos? ¿Qué acciones tomaste con tu equipo que comunicaron, '+
       'gratitud, visión y amor hacia ellos?</p></label>'+
-      '<input type="text" class="col-sm-8 form-control" name="pregunta5" id="pregunta5" required>'+
+      '<textarea class="col-sm-8 form-control" name="pregunta5" id="pregunta5" required></textarea>'+
     '</div>';
   }
 }

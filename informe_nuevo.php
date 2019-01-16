@@ -46,10 +46,10 @@
   <div class="cru-container">
     <ul>
       <li id="top-menu-0" class="top-menu-item">
-        <a href="">Buscar informes</a>
+        <a href="buscar_informes.php">Buscar informes</a>
       </li>
       <li id="top-menu-1" class="top-menu-item">
-        <a href="informe_nuevo.php">Crear informe</a>
+        <a href="">Crear informe</a>
       </li>
       <li id="top-menu-2" class="top-menu-item">
         <a href="">Ver informes antiguos</a>
@@ -134,12 +134,12 @@
           <div class="form-group row">
             <label for="pregunta1" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Cómo estás cultivando tu relación con Dios? ¿De que maneras estas viviendo
              tu vida en comunidad? (¿quién o quienes te cuidan? y ¿como?)</p></label>
-            <input type="text" class="col-sm-8 form-control" name="pregunta1" id="pregunta1">
+            <textarea class="col-sm-8 form-control" name="pregunta1" id="pregunta1"></textarea>
           </div>
 
           <div class="form-group row">
             <label for="pregunta2" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Qué hiciste que fomentó una cultura de oración en tu equipo?</p></label>
-            <input type="text" class="col-sm-8 form-control" name="pregunta2" id="pregunta2">
+            <textarea class="col-sm-8 form-control" name="pregunta2" id="pregunta2"></textarea>
           </div>
 
           <div class="alert alert-primary" role="alert" style="background-color:#007398;">
@@ -150,7 +150,7 @@
             <label for="pregunta3" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Preparaste las lecciones de Formación de Nuevos Misioneros de este mes?,
                ¿De las sesiones de este mes de coaching en cuantas participaste?, ¿Aplicaste lo aprendido en tu ministerio?, ¿Cómo? Cuéntanos lo más significativo en este
                mes de este y otros procesos deformación que estés llevando.</p></label>
-            <input type="text" class="col-sm-8 form-control" id="pregunta3" name="pregunta3" >
+            <textarea class="col-sm-8 form-control" id="pregunta3" name="pregunta3" ></textarea>
           </div>
 
           <div class="alert alert-primary" role="alert" style="background-color:#3eb1c8;">
@@ -206,7 +206,7 @@
             <label for="pregunta12" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Personas nuevas en cada fase:</p></label>
             <input type="number" class="col-sm-1 form-control" id="pregunta12" name="pregunta12" required>
             <label for="pregunta13" class="col-sm-1 col-form-label"><p style="font-weight:bold;">Sus nombres:</p></label>
-            <input type="text" class="col-sm-3 form-control" id="pregunta13" name="pregunta13">
+            <textarea class="col-sm-3 form-control" id="pregunta13" name="pregunta13"></textarea>
           </div>
           <br>
           <hr class="my-6">
@@ -250,7 +250,7 @@
             <div class="form-group row">
               <label for="pregunta14" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Cómo está tu equipo
                  supervisando regularmente que sus líderes estén formando discípulos multiplicadores?</p></label>
-              <input type="text" class="col-sm-8 form-control" id="pregunta14" name="pregunta14" required>
+              <textarea class="col-sm-8 form-control" id="pregunta14" name="pregunta14" required></textarea>
             </div>
 
 
@@ -264,17 +264,17 @@
                   desarrollar a cada miembro de tu Equipo de manera integral (personal, comunitaria y misional)?
                    ¿Qué acciones tomaron para mejorar los procesos claves del equipo? ¿Qué acciones tomó tu equipo
                     este mes para movilizar nuevos voluntarios a involucrarse en la visión y misión?</p></label>
-              <input type="text" class="col-sm-8 form-control" id="pregunta15" name="pregunta15" required>
+              <textarea class="col-sm-8 form-control" id="pregunta15" name="pregunta15" required></textarea>
             </div>
 
             <div class="form-group row">
               <label for="pregunta16" class="col-sm-3 col-form-label"><h3 style="font-weight:bold;">¿Hay algo significativo
                  fuera de lo anteriormente preguntado que quieras compartirnos?</h3></label>
-              <input type="text" class="col-sm-8 form-control" id="pregunta16" name="pregunta16" required>
+              <textarea class="col-sm-8 form-control" id="pregunta16" name="pregunta16" required></textarea>
             </div>
 
 
-            <button type="submit" class="btn btn-light" onclick="nuevoinforme();" id="enviarinforme">Finalizar</button>
+            <center><button type="submit" class="btn btn-light btn-lg" onclick="nuevoinforme();" id="enviarinforme">Finalizar</button></center>
             <br>
           </form>
           <br>
