@@ -350,7 +350,7 @@ function cuantosDiscipulos($idusuario){
 }
 //---------------
 function selectFase($iddiscipulo){
-  echo '<select class="col-sm-2" name="fase_'.$iddiscipulo.'" id="fase_'.$iddiscipulo.'"><option value="0" selected> </option>';
+  echo '<select class="col-sm-2" name="fase_'.$iddiscipulo.'" id="fase_'.$iddiscipulo.'" required><option value="0" selected> </option>';
   echo '<option value=1> Conectar </option>';
   echo '<option value=2> Experimentar </option>';
   echo '<option value=3> Comprometer </option>';
@@ -384,30 +384,52 @@ function tablaDiscipulosInformes($idusuario){
   mysqli_close($mysqli);
 }
 //-----------
-function crearInforme($id_user,$mes,$year){
+function existeInforme($id_user,$mes,$year){
   include 'db_config.php';
-  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
-  $sentencia="INSERT INTO informes (id_user,id_mes,year) VALUES(".$id_user.",".$mes.",'".$year."')";
-  $res = mysqli_query($mysqli, $sentencia);
-  //echo $sentencia;
-  if (mysqli_connect_errno()) {
-      printf("Connect failed: %s\n", mysqli_connect_error());
-      exit();
-  }
-  if (!$res) {
-    echo $sentencia;
-    printf("Error: %s\n", mysqli_error($mysqli));
-  }
-  $sentencia="SELECT id FROM informes ORDER BY id DESC LIMIT 1";
+  $mysqli=mysqli_connect($db_host,$db_user,$db_password,$db_schema);
+  $sentencia = "SELECT id FROM informes WHERE id_user=".$id_user." AND id_mes=".$mes." AND year=".$year."";
   $result = mysqli_prepare($mysqli,$sentencia);
   mysqli_stmt_execute($result);
   mysqli_stmt_store_result($result);
-  mysqli_stmt_bind_result($result,$idinforme);
-  mysqli_stmt_fetch($result);
-  mysqli_close($mysqli);
-  return $idinforme;
+  mysqli_stmt_store_result($result);
+  if(mysqli_stmt_num_rows($result)>0){
+    mysqli_stmt_close($result);
+    return true;
+  }
+  else{
+    return false;
+  }
 }
-
+//-----------
+function crearInforme($id_user,$mes,$year){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  if(existeInforme($id_user,$mes,$year)){
+    return 0;
+  }
+  else{
+    $sentencia="INSERT INTO informes (id_user,id_mes,year) VALUES(".$id_user.",".$mes.",'".$year."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    //echo $sentencia;
+    if (mysqli_connect_errno()) {
+        printf("Connect failed: %s\n", mysqli_connect_error());
+        exit();
+    }
+    if (!$res) {
+      echo $sentencia;
+      printf("Error: %s\n", mysqli_error($mysqli));
+    }
+    $sentencia="SELECT id FROM informes ORDER BY id DESC LIMIT 1";
+    $result = mysqli_prepare($mysqli,$sentencia);
+    mysqli_stmt_execute($result);
+    mysqli_stmt_store_result($result);
+    mysqli_stmt_bind_result($result,$idinforme);
+    mysqli_stmt_fetch($result);
+    mysqli_close($mysqli);
+    return $idinforme;
+  }
+}
+//----------------
 function llenarInforme($idinforme,$iddiscipulo,$respuesta2,$respuesta3,$respuesta4){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
@@ -439,5 +461,32 @@ function informeDiscipulos($idinforme,$iddiscipulo,$fase,$historia,$idusuario){
     echo $sentencia;
     printf("Error: %s\n", mysqli_error($mysqli));
   }
+}
+//------
+function contenidoInforme($idinforme){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT * FROM discipulos WHERE id_discipulador=".$idusuario."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$iddiscipulo,$nombre,$apellidos);
+  echo '<input type="number" readonly id="cuantosdiscipulos" value='.cuantosDiscipulos($idusuario).' hidden>';
+  $k=1;
+  while(mysqli_stmt_fetch($stmt)){
+    echo '<br>';
+    echo '<div class="form-group row">';
+    echo '<input type="number" readonly id="iddiscipulo_'.$k.'" value='.$iddiscipulo.' hidden>';
+    echo '<label for="nombre_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;">Nombre y apellido</label>';
+    echo '<input id="nombre_'.$iddiscipulo.'" name="nombre_'.$iddiscipulo.'" type="text" readonly class="col-sm-2" style="font-weight:bold;" value="'.$nombre.' '.$apellidos.'">';
+    echo '<label for="fase_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;">Fase</label>';
+    echo selectFase($iddiscipulo);
+    echo '<label for="historia_'.$iddiscipulo.'" class="col-sm-2" style="font-weight:bold;">Historia  de guerra con esta persona en este mes</label>';
+    echo '<input class="col-sm-3" type="text" name="historia_'.$iddiscipulo.'" id="historia_'.$iddiscipulo.'">';
+    echo '</div>';
+    $k++;
+  }
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
 }
 ?>
