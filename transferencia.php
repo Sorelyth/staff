@@ -30,6 +30,13 @@
         <img src="img/cru_logo.png">
         </a>
       </div>
+
+      <div class="cru-col-9 cru-text-right">
+        <div class="signin">
+          <a class="signin-name" onclick="logout();">Cerrar sesión</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </header>
@@ -38,24 +45,78 @@
   <div class="cru-container">
     <ul>
       <li id="top-menu-0" class="top-menu-item">
-        <a href="">Socio inscrito</a>
+        <a href="material.php">Materiales DDSM</a>
       </li>
       <li id="top-menu-1" class="top-menu-item">
-        <a href="">Socio nuevo</a>
+        <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
+      </li>
+      <li id="top-menu-2" class="top-menu-item">
+        <a href="informe.php">Informes</a>
+      </li>
+      <li id="top-menu-3" class="top-menu-item">
+        <a href="transferencia.php">Reporte de transferencias</a>
       </li>
     </ul>
   </div>
 </div>
 </section>
 
-<section id="cru-body">
+<section id="menu">
   <div class="cru-container">
-    <div class="cru-row">
+    <div class="row-sm-12 justify-content-sm-center">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
-
+          <h2 style="text-align:center;">
+            <br>¿Qué vas a hacer hoy?
+          </h2>
           <br>
         </div>
+      </div>
+
+      <div class="col-sm-12 integrity-opener">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="socio_inscrito.php">
+                    <center><i class="fas fa-user-check fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    SOCIO INSCRITO<br>
+                    Diligencia aquí la<br>transferencia de un<br>socio ya registrado.
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="socio_nuevo.php">
+                    <center><i class="fas fa-user-plus fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    SOCIO NUEVO<br>
+                    Diligencia aquí el registro<br>de un nuevo socio.
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <br>
       </div>
     </div>
   </div>

@@ -32,6 +32,13 @@
         <img src="img/cru_logo.png">
         </a>
       </div>
+
+      <div class="cru-col-9 cru-text-right">
+        <div class="signin">
+          <a class="signin-name" onclick="logout();">Cerrar sesión</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </header>

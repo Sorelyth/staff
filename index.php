@@ -49,7 +49,12 @@
     <div class="row-sm-12 justify-content-sm-center">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
-          <h1><center>¡Hola, es un gusto tenerte por aquí!</center></h1>
+          <h1 style="text-align:center;">
+            ¡Hola, es un gusto tenerte por aquí!
+          </h1>
+          <h3 style="text-align:center;">
+            ¿Qué vas a hacer hoy?
+          </h3>
           <br>
         </div>
       </div>
@@ -61,7 +66,7 @@
           <div>
           <div>
             <div class="col">
-              <a href="">
+              <a href="material.php">
                 <center><i class="fas fa-folder-open fa-7x"></i></center>
               </a>
             </div>

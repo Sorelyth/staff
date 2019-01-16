@@ -29,6 +29,13 @@
         <img src="img/cru_logo.png">
         </a>
       </div>
+
+      <div class="cru-col-9 cru-text-right">
+        <div class="signin">
+          <a class="signin-name" onclick="logout();">Cerrar sesión</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </header>
@@ -37,32 +44,94 @@
   <div class="cru-container">
     <ul>
       <li id="top-menu-0" class="top-menu-item">
-        <a href="">Buscar informes</a>
+        <a href="material.php">Materiales DDSM</a>
       </li>
       <li id="top-menu-1" class="top-menu-item">
-        <a href="informe_nuevo.php">Crear informe</a>
+        <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
       </li>
       <li id="top-menu-2" class="top-menu-item">
-        <a href="">Ver informes antiguos</a>
+        <a href="informe.php">Informes</a>
+      </li>
+      <li id="top-menu-3" class="top-menu-item">
+        <a href="transferencia.php">Reporte de transferencias</a>
       </li>
     </ul>
   </div>
 </div>
 </section>
 
-<section id="cru-body">
+<section id="menu">
   <div class="cru-container">
-    <div class="cru-row">
+    <div class="row-sm-12 justify-content-sm-center">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
-          <div class="card w-25" style="text-align:center;">
-            <h4 class="card-title">Nuevo informe</h4>
-            <span class="card-img-top"><i class="far fa-calendar-plus fa-7x"></i></span>
-            <div class="card-body">
-              <p class="card-text">Entra aquí para crear un nuevo informe mensual.</p>
-              <a href="informe_nuevo.php" class="btn btn-primary">Ir</a>
+          <h2 style="text-align:center;">
+            <br>¿Qué vas a hacer hoy?
+          </h2>
+          <br>
+        </div>
+      </div>
+
+      <div class="col-sm-12 integrity-opener">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="">
+                    <center><i class="fas fa-search fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    BUSCAR INFORMES
+                  </p>
+                </div>
+              </div>
+              </div>
             </div>
           </div>
+
+          <div class="col-sm-4">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="informe_nuevo.php">
+                    <center><i class="fas fa-calendar-plus fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    CREAR INFORME
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="">
+                    <center><i class="fas fa-eye fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    VER INFORMES<br>ANTIGUOS
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
           <br>
         </div>
       </div>
