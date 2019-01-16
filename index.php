@@ -1,10 +1,10 @@
 <?php
-  /* session_start();
+  /*session_start();
   include 'inc/db_config.php';
   include 'inc/funciones.php';
   if(!isset($_SESSION['email'])){ header('Location: login.php');}
   //if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
-  */
+*/
 ?>
 
 <!doctype html>
@@ -31,6 +31,14 @@
         <img src="img/cru_logo.png">
         </a>
       </div>
+
+<!--"boton" cerrar sesion ubicado en el header heredando css de clase "signin"-->
+      <div class="cru-col-9 cru-text-right">
+        <div class="signin">
+          <a class="signin-name" onclick="logout();">Cerrar sesión</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </header>
@@ -38,7 +46,7 @@
 
 <section id="menu">
   <div class="cru-container">
-    <div class="row justify-content-sm-center">
+    <div class="row-sm-12 justify-content-sm-center">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
           <h1><center>¡Hola, es un gusto tenerte por aquí!</center></h1>
@@ -46,18 +54,18 @@
         </div>
       </div>
 
-  <div class="col-sm-10 integrity-opener">
+  <div class="col-sm-12 integrity-opener">
     <div class="row">
-      <div class="col-sm integrity-col">
+      <div class="col-sm-3">
         <div class="text-image parbase section">
           <div>
           <div>
-            <div class="col-sm-12">
+            <div class="col">
               <a href="">
-                <img src="img/cru_logo.png" class="" style="margin:0 auto;">
+                <center><i class="fas fa-folder-open fa-7x"></i></center>
               </a>
             </div>
-            <div class="col-sm-12">
+            <div class="col">
               <p style="text-align:center;"><br>
                 MATERIALES DDSM
               </p>
@@ -67,18 +75,18 @@
         </div>
       </div>
 
-      <div class="col-sm integrity-col">
+      <div class="col-sm-3">
         <div class="text-image parbase section">
           <div>
           <div>
-            <div class="col-sm-12">
+            <div class="col">
               <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">
-                <img src="img/cru_logo.png" class="" style="margin:0 auto;">
+                <center><i class="fas fa-book fa-7x"></i></center>
               </a>
             </div>
-            <div class="col-sm-12">
+            <div class="col">
               <p style="text-align:center;"><br>
-                MANUAL DE IDENTIDAD CORPORATIVA
+                MANUAL DE IDENTIDAD<br>CORPORATIVA
               </p>
             </div>
           </div>
@@ -86,16 +94,16 @@
         </div>
       </div>
 
-      <div class="col-sm integrity-col">
+      <div class="col-sm-3">
         <div class="text-image parbase section">
           <div>
           <div>
-            <div class="col-sm-12">
+            <div class="col">
               <a href="informe.php">
-                <img src="img/cru_logo.png" class="" style="margin:0 auto;">
+                <center><i class="fas fa-file-alt fa-7x"></i></center>
               </a>
             </div>
-            <div class="col-sm-12">
+            <div class="col">
               <p style="text-align:center;"><br>
                 INFORMES
               </p>
@@ -105,18 +113,18 @@
         </div>
       </div>
 
-      <div class="col-sm integrity-col">
+      <div class="col-sm-3">
         <div class="text-image parbase section">
           <div>
           <div>
-            <div class="col-sm-12">
+            <div class="col">
               <a href="transferencia.php">
-                <img src="img/cru_logo.png" class="" style="margin:0 auto;">
+                <center><i class="fas fa-money-check-alt fa-7x"></i></center>
               </a>
             </div>
-            <div class="col-sm-12">
+            <div class="col">
               <p style="text-align:center;"><br>
-                REPORTE DE TRANSFERENCIA
+                REPORTE DE<br>TRANSFERENCIA
               </p>
             </div>
           </div>
