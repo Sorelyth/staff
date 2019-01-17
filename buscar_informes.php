@@ -9,7 +9,7 @@
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Nuevo informe</title>
+  <title>Buscar informes</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -46,12 +46,15 @@
   <div class="cru-container">
     <ul>
       <li id="top-menu-0" class="top-menu-item">
-        <a href="">Buscar informes</a>
+        <a href="index.php">Inicio</a>
       </li>
       <li id="top-menu-1" class="top-menu-item">
-        <a href="informe_nuevo.php">Crear informe</a>
+        <a href="buscar_informes.php">Buscar informes</a>
       </li>
       <li id="top-menu-2" class="top-menu-item">
+        <a href="informe_nuevo.php">Crear informe</a>
+      </li>
+      <li id="top-menu-3" class="top-menu-item">
         <a href="">Ver informes antiguos</a>
       </li>
     </ul>

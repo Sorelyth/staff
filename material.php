@@ -1,10 +1,10 @@
 <?php
-  /*session_start();
+  session_start();
   include 'inc/db_config.php';
   include 'inc/funciones.php';
-  if(!isset($_SESSION['email'])){ header('Location: login.php');}
-  //if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
-  */
+  if(!isset($_SESSION['idusuario'])){ header('Location: login.php');}
+  if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -45,15 +45,18 @@
   <div class="cru-container">
     <ul>
       <li id="top-menu-0" class="top-menu-item">
-        <a href="material.php">Materiales DDSM</a>
+        <a href="index.php">Inicio</a>
       </li>
       <li id="top-menu-1" class="top-menu-item">
-        <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
+        <a href="material.php">Materiales DDSM</a>
       </li>
       <li id="top-menu-2" class="top-menu-item">
-        <a href="informe.php">Informes</a>
+        <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
       </li>
       <li id="top-menu-3" class="top-menu-item">
+        <a href="informe.php">Informes</a>
+      </li>
+      <li id="top-menu-4" class="top-menu-item">
         <a href="transferencia.php">Reporte de transferencias</a>
       </li>
     </ul>
@@ -66,11 +69,189 @@
     <div class="row-sm-12 justify-content-sm-center">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
-          <h2 style="text-align:center;">
-            <br>¿Qué vas a hacer hoy?
-          </h2>
+          <h3 style="text-align:center;">
+            <br>A continuación tienes todo lo necesario para<br>que comiences o continues este proceso.
+          </h3>
           <br>
         </div>
+      </div>
+
+      <div class="col-sm-12 integrity-opener">
+        <div class="row">
+          <div class="col-sm">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="assets/Manual_Alumno_DDSM_Colombia.pdf">
+                    <center><i class="fas fa-file-pdf fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    MANUAL DEL ALUMNO
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="La_carpeta_negra.pdf">
+                    <center><i class="fas fa-file-pdf fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    LA CARPETA NEGRA
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="assets/Presentacion_DDSM.pptx">
+                    <center><i class="fas fa-file-powerpoint fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    PRESENTACIÓN DDSM
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="assets/Imprimibles.pptx">
+                    <center><i class="fas fa-file-powerpoint fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    LLAMADO Y FOTOS
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="assets/Necesidad_financiera.docx">
+                    <center><i class="fas fa-file-word fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    NECESIDAD FINANCIERA
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"><br><br></div>
+        <div class="row">
+          <div class="col-sm">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="assets/Politica_financiera.docx">
+                    <center><i class="fas fa-file-word fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    POLITICA FINANCIERA
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="assets/Actitud_Mensaje_1.wma">
+                    <center><i class="fas fa-file-audio fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    AUDIO DE LA ACTITUD #1
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="assets/Actitud_Mensaje_2.wma">
+                    <center><i class="fas fa-file-audio fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    AUDIO DE LA ACTITUD #2
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="assets/Logo_Cru_Colombia.png">
+                    <center><i class="fas fa-file-image fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    LOGO DE CRU EN FORMATO PNG
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"><br></div>
       </div>
     </div>
   </div>

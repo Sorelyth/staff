@@ -1,10 +1,10 @@
 <?php
-  /*session_start();
+  session_start();
   include 'inc/db_config.php';
   include 'inc/funciones.php';
-  if(!isset($_SESSION['email'])){ header('Location: login.php');}
-  //if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
-  */
+  if(!isset($_SESSION['idusuario'])){ header('Location: login.php');}
+  if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -45,9 +45,12 @@
   <div class="cru-container">
     <ul>
       <li id="top-menu-0" class="top-menu-item">
-        <a href="socio_inscrito.php">Socio inscrito</a>
+        <a href="index.php">Inicio</a>
       </li>
       <li id="top-menu-1" class="top-menu-item">
+        <a href="socio_inscrito.php">Socio inscrito</a>
+      </li>
+      <li id="top-menu-2" class="top-menu-item">
         <a href="socio_nuevo.php">Socio nuevo</a>
       </li>
     </ul>
