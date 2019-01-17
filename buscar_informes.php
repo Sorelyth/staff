@@ -48,9 +48,11 @@
       <li id="top-menu-0" class="top-menu-item">
         <a href="index.php">Inicio</a>
       </li>
+      <?php if(isAdmin($_SESSION['idusuario'])){ ?>
       <li id="top-menu-1" class="top-menu-item">
         <a href="buscar_informes.php">Buscar informes</a>
       </li>
+      <?php } ?>
       <li id="top-menu-2" class="top-menu-item">
         <a href="informe_nuevo.php">Crear informe</a>
       </li>

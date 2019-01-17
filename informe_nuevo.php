@@ -48,9 +48,11 @@
       <li id="top-menu-0" class="top-menu-item">
         <a href="index.php">Inicio</a>
       </li>
+      <?php if(isAdmin($_SESSION['idusuario'])){ ?>
       <li id="top-menu-1" class="top-menu-item">
         <a href="buscar_informes.php">Buscar informes</a>
       </li>
+      <?php } ?>
       <li id="top-menu-2" class="top-menu-item">
         <a href="informe_nuevo.php">Crear informe</a>
       </li>
@@ -64,7 +66,7 @@
 
 <section id="cru-body">
   <div class="cru-container">
-    <div class="cru-row">
+    <div class="row-sm-12 justify-content-sm-center">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
           <center><h1>Informe mensual</h1></center>
@@ -109,7 +111,7 @@
           <hr class="my-6">
 
           <div class="jumbotron-fluid">
-            <div class="row"><div class="col-sm-3"></div><h4 style="color:#007398;">Basado en los 5 esenciales contesta las preguntas que verás a continuación</h4></div>
+            <div class="row-sm justify-content-sm-center"><div class="col-sm-3"></div><h4 style="color:#007398;">Basado en los 5 esenciales contesta las preguntas que verás a continuación</h4></div>
             <br>
             <div class="row">
               <div class="col-sm-3"></div>
@@ -150,8 +152,8 @@
           </div>
 
           <div class="form-group row">
-            <label for="pregunta3" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Preparaste las lecciones de Formación de Nuevos Misioneros de este mes?,
-               ¿De las sesiones de este mes de coaching en cuantas participaste?, ¿Aplicaste lo aprendido en tu ministerio?, ¿Cómo? Cuéntanos lo más significativo en este
+            <label for="pregunta3" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Preparaste las lecciones de Formación de Nuevos Misioneros de este mes?
+               ¿De las sesiones de este mes de coaching en cuantas participaste? ¿Aplicaste lo aprendido en tu ministerio? ¿Cómo? Cuéntanos lo más significativo en este
                mes de este y otros procesos deformación que estés llevando.</p></label>
             <textarea class="col-sm-8 form-control" id="pregunta3" name="pregunta3" ></textarea>
           </div>
@@ -218,10 +220,10 @@
           <center><h4>Tus discípulos</h4></center>
           <br>
 
-              <div class="row justify-content-center">
+              <div class="row justify-content-sm-center">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
-                  <button class="btn btn-primary" title="Agregar un nuevo discípulo" onclick=modalnuevodiscipulo();>Agregar</button>
+                  <center><button class="btn btn-primary" title="Agregar un nuevo discípulo" onclick=modalnuevodiscipulo();>Agregar</button></center>
                 </div>
                   <!-- Modal -->
                   <div class="modal" id="discipulo_modal">
@@ -263,7 +265,7 @@
 
             <div class="form-group row">
               <label for="pregunta15" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Qué has hecho para
-                 comunicar el propósito de tu equipo, la visión y misión en este mes?¿Qué has hecho en este mes para
+                 comunicar el propósito de tu equipo, la visión y misión en este mes? ¿Qué has hecho en este mes para
                   desarrollar a cada miembro de tu Equipo de manera integral (personal, comunitaria y misional)?
                    ¿Qué acciones tomaron para mejorar los procesos claves del equipo? ¿Qué acciones tomó tu equipo
                     este mes para movilizar nuevos voluntarios a involucrarse en la visión y misión?</p></label>
