@@ -32,11 +32,26 @@
         </a>
       </div>
 
-      <div class="cru-col-9 cru-text-right">
-        <div class="signin">
-          <a class="signin-name" onclick="logout();">Cerrar sesión</a>
-        </div>
-      </div>
+      <!--css para barra vertical que sirva como separador-->
+            <style>
+            #vertical-bar{
+              border-left: 1px solid #bebebe;
+              width:1px;
+              height:40px;}
+            </style>
+
+      <!--"botones" ubicados en el header heredando css de clase "signin"-->
+          <div class="col-sm-6 cru-text-right">
+            <div class="signin">
+              <a class="signin-name" href="editar_perfil.php">Editar perfil</a>
+            </div>
+          </div>
+          <div id="vertical-bar"></div>
+          <div class="col-sm-2">
+            <div class="signin">
+              <a class="signin-name" onclick="logout();">Cerrar sesión</a>
+            </div>
+          </div>
 
     </div>
   </div>
@@ -166,7 +181,7 @@
     </div>
   <div class="tc">
     <a href="https://www.facebook.com/crulac" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
-    <a href="https://www.instagram.com/crulac" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
+    <a href="https://www.instagram.com/cru_lac" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
     <a href="https://twitter.com/Cru_LAC" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-twitter"></a>
   </div>
   </div>
