@@ -303,7 +303,7 @@ function seleccionarpersona(idpersona){
   $('#resultado').hide();
   $('#idpersona').val(idpersona);
 }
-function buscainformesporpersona(){
+function buscarinformesporpersona(){
   var idpersona = document.getElementById('idpersona').value;
   $.ajax({
     type: "post",
@@ -338,7 +338,7 @@ function buscarinformespormes(){
     }
   });
 }
-function buscainformesporpersona(){
+function buscarinformesporpersona(){
   var idpersona = document.getElementById('idpersona').value;
   var idmes= document.getElementById('idmes').value;
   var year= document.getElementById('year').value;
