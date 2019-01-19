@@ -184,29 +184,29 @@
           </div>
           <div class="form-group row">
             <label for="pregunta7" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Seguimiento:</p></label>
-            <input type="number" class="col-sm-1 form-control" id="pregunta7" name="pregunta7" required>
-          </div>
-          <div class="form-group row">
-            <label for="pregunta8" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Discípulos multiplicadores:</p></label>
             <input type="number" class="col-sm-1 form-control" id="pregunta8" name="pregunta8" required>
           </div>
           <div class="form-group row">
-            <label for="pregunta9" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Comunidades misionales:</p></label>
+            <label for="pregunta8" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Discípulos multiplicadores:</p></label>
             <input type="number" class="col-sm-1 form-control" id="pregunta9" name="pregunta9" required>
           </div>
           <div class="form-group row">
-            <label for="pregunta10" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Comunidades misionales catalíticas:</p></label>
+            <label for="pregunta9" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Comunidades misionales:</p></label>
             <input type="number" class="col-sm-1 form-control" id="pregunta10" name="pregunta10" required>
           </div>
           <div class="form-group row">
-            <label for="pregunta11" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Personas que mantuvieron su fase:</p></label>
+            <label for="pregunta10" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Comunidades misionales catalíticas:</p></label>
             <input type="number" class="col-sm-1 form-control" id="pregunta11" name="pregunta11" required>
           </div>
           <div class="form-group row">
-            <label for="pregunta12" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Personas nuevas en cada fase:</p></label>
+            <label for="pregunta11" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Personas que mantuvieron su fase:</p></label>
             <input type="number" class="col-sm-1 form-control" id="pregunta12" name="pregunta12" required>
+          </div>
+          <div class="form-group row">
+            <label for="pregunta12" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Personas nuevas en cada fase:</p></label>
+            <input type="number" class="col-sm-1 form-control" id="pregunta13" name="pregunta13" required>
             <label for="pregunta13" class="col-sm-1 col-form-label"><p style="font-weight:bold;">Sus nombres:</p></label>
-            <textarea class="col-sm-3 form-control" id="pregunta13" name="pregunta13"></textarea>
+            <textarea class="col-sm-3 form-control" id="pregunta14" name="pregunta14"></textarea>
           </div>
           <br>
           <hr class="my-6">
@@ -248,9 +248,9 @@
             <br>
 
             <div class="form-group row">
-              <label for="pregunta14" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Cómo está tu equipo
+              <label for="pregunta15" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Cómo está tu equipo
                  supervisando regularmente que sus líderes estén formando discípulos multiplicadores?</p></label>
-              <textarea class="col-sm-8 form-control" id="pregunta14" name="pregunta14" required></textarea>
+              <textarea class="col-sm-8 form-control" id="pregunta15" name="pregunta15" required></textarea>
             </div>
 
 
@@ -259,20 +259,32 @@
             </div>
 
             <div class="form-group row">
-              <label for="pregunta15" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Qué has hecho para
+              <label for="pregunta16" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Qué has hecho para
                  comunicar el propósito de tu equipo, la visión y misión en este mes?¿Qué has hecho en este mes para
                   desarrollar a cada miembro de tu Equipo de manera integral (personal, comunitaria y misional)?
                    ¿Qué acciones tomaron para mejorar los procesos claves del equipo? ¿Qué acciones tomó tu equipo
                     este mes para movilizar nuevos voluntarios a involucrarse en la visión y misión?</p></label>
-              <textarea class="col-sm-8 form-control" id="pregunta15" name="pregunta15" required></textarea>
-            </div>
-
-            <div class="form-group row">
-              <label for="pregunta16" class="col-sm-3 col-form-label"><h3 style="font-weight:bold;">¿Hay algo significativo
-                 fuera de lo anteriormente preguntado que quieras compartirnos?</h3></label>
               <textarea class="col-sm-8 form-control" id="pregunta16" name="pregunta16" required></textarea>
             </div>
 
+            <div class="form-group row">
+              <label for="pregunta17" class="col-sm-3 col-form-label"><h3 style="font-weight:bold;">¿Hay algo significativo
+                 fuera de lo anteriormente preguntado que quieras compartirnos?</h3></label>
+              <textarea class="col-sm-8 form-control" id="pregunta17" name="pregunta17" required></textarea>
+            </div>
+
+            <div class="alert alert-light" role="alert" >
+              <h4 style="font-weight:bold;">Archivos adicionales requeridos.</h4>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="cuentadecobro"><h4 style="font-weight:bold;"><i class="fas fa-file-invoice-dollar"></i>Subir cuenta de cobro</h4></label>
+                <input type="file" class="col-sm-4" id="cuentadecobro" name="cuentadecobro" required>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="seguridadsocial"><h4 style="font-weight:bold;"><i class="fas fa-clipboard"></i>Subir planilla de seguridad social</h4></label>
+                <input type="file" class="col-sm-4" id="seguridadsocial" name="seguridadsocial">
+            </div>
 
             <center><button type="submit" class="btn btn-light btn-lg" onclick="nuevoinforme();" id="enviarinforme">Finalizar</button></center>
             <br>
@@ -286,7 +298,7 @@
 <script>
 $("#enviarinforme").prop('disabled', true);
 
-var toValidate = $('#pregunta4,#pregunta5,#pregunta6,#pregunta7,#pregunta8,#pregunta9,#pregunta10,#pregunta11,#pregunta12,#pregunta13,#pregunta14,#pregunta15,#pregunta16'),
+var toValidate = $('#pregunta4,#pregunta5,#pregunta6,#pregunta7,#pregunta8,#pregunta9,#pregunta10,#pregunta11,#pregunta12,#pregunta13,#pregunta14,#pregunta15,#pregunta16,#pregunta17,#seguridadsocial,#cuentadecobro'),
     valid = false;
 toValidate.change(function () {
     if ($(this).val().length > 0) {

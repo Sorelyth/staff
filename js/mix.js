@@ -24,6 +24,9 @@ function post(path, parameters) {
         $(document.body).append(form);
         form.submit();
 }
+function mostrarinforme(idpersona,idinforme){
+  post('mostrar_informe.php',{idpersona:idpersona,idinforme:idinforme});
+}
 function checkRegisterForm(){
   var email = document.getElementById("inputEmail").value;
   var pwd1 = document.getElementById("pwd1").value;
@@ -100,6 +103,7 @@ function seleccionarcoach(idcoach){
     }
   });
 }
+
 function tiempoconcentrado(respuesta){
   var div_pregunta = document.getElementById("div_pregunta5");
   if(respuesta==1){
@@ -190,6 +194,7 @@ function seguircreacion(){
     var respuesta14 = document.getElementById("pregunta14").value;
     var respuesta15 = document.getElementById("pregunta15").value;
     var respuesta16 = document.getElementById("pregunta16").value;
+    var respuesta17 = document.getElementById("pregunta17").value;
     $.ajax({
       type: "post",
       dataType: "html",
@@ -234,7 +239,7 @@ function seguircreacion(){
     $.ajax({
       type: "post",
       dataType: "html",
-      data: {accion: "llenar_informe",idinforme:idinforme,respuesta1:respuesta13,respuesta2:respuesta14,respuesta3:respuesta15,respuesta4:respuesta16},
+      data: {accion: "llenar_informe_ultimo",idinforme:idinforme,respuesta1:respuesta13,respuesta2:respuesta14,respuesta3:respuesta15,respuesta4:respuesta16,respuesta5:respuesta17},
       url: "ajax_requests.php",
       cache: false,
       // beforeSend: function() {
@@ -276,4 +281,154 @@ function seguircreacion(){
 
 function logout(){
   post('index.php',{out:0});
+}
+function buscarpersona(texto){
+  $('#resultado').show();
+  $.ajax({
+    type: "post",
+    dataType: "html",
+    data: {accion: "buscar_persona",buscar:texto},
+    url: "ajax_requests.php",
+    cache: false,
+    // beforeSend: function() {
+    //    $('#res3').html('loading please wait...');
+    // },
+    success: function(htmldata) {
+    //alert(htmldata);
+       $("#resultado").html(htmldata);
+    }
+  });
+}
+function seleccionarpersona(idpersona){
+  $('#resultado').hide();
+  $('#idpersona').val(idpersona);
+}
+function buscainformesporpersona(){
+  var idpersona = document.getElementById('idpersona').value;
+  $.ajax({
+    type: "post",
+    dataType: "html",
+    data: {accion: "buscar_informes_persona",idpersona:idpersona},
+    url: "ajax_requests.php",
+    cache: false,
+    // beforeSend: function() {
+    //    $('#res3').html('loading please wait...');
+    // },
+    success: function(htmldata) {
+    //alert(htmldata);
+       $("#resultados_busqueda").html(htmldata);
+    }
+  });
+}
+function buscarinformespormes(){
+  var idmes= document.getElementById('idmes').value;
+  var year= document.getElementById('year').value;
+  $.ajax({
+    type: "post",
+    dataType: "html",
+    data: {accion: "buscar_informes_mes",mes:idmes,year:year},
+    url: "ajax_requests.php",
+    cache: false,
+    // beforeSend: function() {
+    //    $('#res3').html('loading please wait...');
+    // },
+    success: function(htmldata) {
+    //alert(htmldata);
+       $("#resultados_busqueda").html(htmldata);
+    }
+  });
+}
+function buscainformesporpersona(){
+  var idpersona = document.getElementById('idpersona').value;
+  var idmes= document.getElementById('idmes').value;
+  var year= document.getElementById('year').value;
+  $.ajax({
+    type: "post",
+    dataType: "html",
+    data: {accion: "buscar_informes_persona_mes",idpersona:idpersona,mes:idmes,year:year},
+    url: "ajax_requests.php",
+    cache: false,
+    // beforeSend: function() {
+    //    $('#res3').html('loading please wait...');
+    // },
+    success: function(htmldata) {
+    //alert(htmldata);
+       $("#resultados_busqueda").html(htmldata);
+    }
+  });
+}
+function modalnuevosocio(){
+  var modal = document.getElementById("socio_modal");
+  modal.style.display="block";
+}
+function cerrarmodalsocio(){
+  var modal = document.getElementById("socio_modal");
+  modal.style.display="none";
+}
+function seleccionartiposocio(){
+  var tiposocio = document.getElementById("idtiposocio").value;
+  var div_formulario_socio = document.getElementById("formulario_socio");
+  if(tiposocio==1){
+    div_formulario_socio.innerHTML = '<div class="form-group row"><label class="col-sm-2" for="socio_name">Nombre completo</label>'+
+    '<input type="text" name="socio_name" id="socio_name" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_id">Documento de identificación</label>'+
+    '<input type="text" name="socio_id" id="socio_id" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_email">Correo electrónico</label>'+
+    '<input type="email" name="socio_email" id="socio_email" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_phone">Número de teléfono</label>'+
+    '<input type="text" name="socio_phone" id="socio_phone" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_address">Dirección y ciudad</label>'+
+    '<input type="text" name="socio_address" id="socio_address" class="col-sm-6" required></div>';
+  }
+  if(tiposocio==2){
+    div_formulario_socio.innerHTML = '<div class="form-group row"><label class="col-sm-2" for="socio_empresa">Nombre jurídico de la empresa</label>'+
+    '<input type="text" name="socio_empresa" id="socio_empresa" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_id">NIT</label>'+
+    '<input type="text" name="socio_id" id="socio_id" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_name">Nombre completo del contacto de la empresa</label>'+
+    '<input type="text" name="socio_name" id="socio_name" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_email">Correo electrónico</label>'+
+    '<input type="email" name="socio_email" id="socio_email" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_phone">Número de teléfono</label>'+
+    '<input type="text" name="socio_phone" id="socio_phone" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_address">Dirección y ciudad</label>'+
+    '<input type="text" name="socio_address" id="socio_address" class="col-sm-6" required></div>';
+  }
+  if(tiposocio==0){ div_formulario_socio.innerHTML = '';}
+}
+function nuevosocio(){
+  // var nombre = document.getElementById("discipulo_name").value;
+  // var apellidos = document.getElementById("discipulo_lastname").value;
+  // $.ajax({
+  //   type: "post",
+  //   dataType: "html",
+  //   data: {accion: "nuevo_discipulo",nombre:nombre,apellidos:apellidos},
+  //   url: "ajax_requests.php",
+  //   cache: false,
+  //   // beforeSend: function() {
+  //   //    $('#res3').html('loading please wait...');
+  //   // },
+  //   success: function() {
+  //       alert("Se ha guardado tu discípulo con éxito");
+  //      $("#agregardiscipuloModal").hide();
+  //      $("#losdiscipulos").load(" #losdiscipulos");
+  //
+  //   }
+  // });
+}
+function seleccionarsocio(idsocio,idtiposocio){
+  $.ajax({
+    type: "post",
+    dataType: "html",
+    data: {accion: "info_socio",idsocio:idsocio,idtiposocio:idtiposocio},
+    url: "ajax_requests.php",
+    cache: false,
+    // beforeSend: function() {
+    //    $('#res3').html('loading please wait...');
+    // },
+    success: function(htmldata) {
+    //alert(htmldata);
+       $("#info_socio").html(htmldata);
+    }
+  });
 }

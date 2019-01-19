@@ -4,12 +4,13 @@
   include 'inc/funciones.php';
   if(!isset($_SESSION['idusuario'])){ header('Location: login.php');}
   if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
+
 ?>
 <!doctype html>
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Buscar informes</title>
+  <title>Reporte de transferencias</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -42,64 +43,75 @@
     </div>
   </div>
 </header>
+
 <div id="cru-nav" class="visible-sm-up">
   <div class="cru-container">
-    <ul><?php if(isAdmin($_SESSION['idusuario'])){ ?>
+    <ul>
       <li id="top-menu-0" class="top-menu-item">
-        <a href="">Buscar informes</a>
+        <a href="material.php">Materiales DDSM</a>
       </li>
-      <?php } ?>
       <li id="top-menu-1" class="top-menu-item">
-        <a href="informe_nuevo.php">Crear informe</a>
+        <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
       </li>
       <li id="top-menu-2" class="top-menu-item">
-        <a href="">Ver informes antiguos</a>
+        <a href="informe.php">Informes</a>
+      </li>
+      <li id="top-menu-3" class="top-menu-item">
+        <a href="transferencia.php">Reporte de transferencias</a>
       </li>
     </ul>
   </div>
 </div>
 </section>
 
-<section id="cru-body">
+<section id="menu">
   <div class="cru-container">
-    <div class="cru-row">
+    <div class="row-sm-12 justify-content-sm-center">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
-          <center><h1>Módulo de búsqueda de informes</h1></center>
+          <h2 style="text-align:center;">
+            <br>Selecciona a tus socios registrados o agrega uno nuevo.
+          </h2>
           <br>
+          <div class="form-group row">
+            <div class="col-sm-1"></div>
+            <?php selectSocios($_SESSION['idusuario']); ?>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-1"><button class="btn btn-primary" onclick="modalnuevosocio();">Agregar nuevo socio</button></div>
+          </div>
+          <!-- Modal -->
+          <div class="modal" id="socio_modal">
+              <div class="modal-body">
+                <div class="form-group row">
+                  <select class="col-sm-2 form-control" id="idtiposocio" name="idtiposocio"  onchange="seleccionartiposocio();">
+                    <option value=0 selected></option>
+                    <option value=1>Persona</option>
+                    <option value=2>Empresa</option>
+                  </select>
+                </div>
+                <div id="formulario_socio"></div>
+                <div class="row" style="text-align:center;">
+                  <div class="col-sm-3"></div>
+                  <button type="button" class="btn btn-secondary" onclick="cerrarmodalsocio();">Cerrar</button>
+                  <div class="col-sm-1"></div>
+                  <button type="button" class="btn btn-primary" onclick="nuevosocio();" id="guardarsocio">Guardar</button>
+                </div>
+              </div>
+          </div>
         </div>
-        <div class="form-group row">
-          <label for="perona" class="col-sm-3 col-form-label"><i class="fas fa-hands-helping"></i> Nombre de persona </label>
-          <input type="text" class="col-sm-5 form-control-plaintext" id="persona" name="persona" placeholder="Escribe su nombre aquí" onkeyup="buscarPersona(this.value)" required>
-          <input type="number" hidden id="idpersona">
-          <button class="btn btn-light" onclick="buscarinformesporpersona();" id="informesporpersona">Buscar informes por persona</button>
-        </div>
-        <div class="form-group row"><div class="col-sm-3"></div><div class="col-sm-5" id="resultado"></div></div>
-        <div class="form-group row">
-          <label for="idmes" class="col-sm-3 col-form-label"><i class="fas fa-calendar"></i> Mes y año del informe </label>
-          <?php selectMes();?>
-          <div class="col-sm-1"></div>
-          <input type="text" class="col-sm-1 form-control" name="year" id="year" placeholder="Año">
-          <div class="col-sm-1"></div>
-          <button class="btn btn-light" onclick="buscarinformespormes();" id="informespormes">Buscar informes por mes y año</button>
-        </div>
-        <div class="form-group row" style="text-align:center;">
-          <center>
-            <button class="btn btn-light" onclick="buscarinformesporpersonaymes();" id="informesporpersonaymes">Buscar informes por persona, mes y año</button>
-          </center>
-        </div>
-        <div id="resultados_busqueda">
-        </div>
+        <br>
+        <div id="info_socio"></div>
+        <div id="formulario_transferencia"></div>
       </div>
     </div>
+  </div>
 </section>
-
 <script>
-$("#informesporpersona").prop('disabled', true);
-$("#informespormes").prop('disabled', true);
-$("#informesporpersonaymes").prop('disabled', true);
+$("#guardarsocio").prop('disabled', true);
+//$("#informespormes").prop('disabled', true);
 
-var toValidate1 = $('#persona'),
+
+var toValidate1 = $('#socio_name,#socio_id,#socio_email,#socio_address'),
     valid1 = false;
 toValidate1.change(function () {
     if ($(this).val().length > 0) {
@@ -115,57 +127,35 @@ toValidate1.change(function () {
         }
     });
     if (valid1 === true) {
-        $("#informesporpersona").prop('disabled', false);
+        $("#guardarsocio").prop('disabled', false);
     } else {
-        $("#informesporpersona").prop('disabled', true);
+        $("#guardarsocio").prop('disabled', true);
     }
 });
 
-var toValidate2 = $('#year'),
-    valid2 = false;
-toValidate2.change(function () {
-    if ($(this).val().length > 0) {
-        $(this).data('valid2', true);
-    } else {
-        $(this).data('valid2', false);
-    }
-    toValidate2.each(function () {
-        if ($(this).data('valid2') == true) {
-            valid2 = true;
-        } else {
-            valid2 = false;
-        }
-    });
-    if (valid2 === true) {
-        $("#informespormes").prop('disabled', false);
-    } else {
-        $("#informespormes").prop('disabled', true);
-    }
-});
+// var toValidate2 = $('#year'),
+//     valid2 = false;
+// toValidate2.change(function () {
+//     if ($(this).val().length > 0) {
+//         $(this).data('valid2', true);
+//     } else {
+//         $(this).data('valid2', false);
+//     }
+//     toValidate2.each(function () {
+//         if ($(this).data('valid2') == true) {
+//             valid2 = true;
+//         } else {
+//             valid2 = false;
+//         }
+//     });
+//     if (valid2 === true) {
+//         $("#informespormes").prop('disabled', false);
+//     } else {
+//         $("#informespormes").prop('disabled', true);
+//     }
+// });
 
-var toValidate3 = $('#persona,#year'),
-    valid3 = false;
-toValidate3.change(function () {
-    if ($(this).val().length > 0) {
-        $(this).data('valid3', true);
-    } else {
-        $(this).data('valid3', false);
-    }
-    toValidate3.each(function () {
-        if ($(this).data('valid3') == true) {
-            valid3 = true;
-        } else {
-            valid3 = false;
-        }
-    });
-    if (valid3 === true) {
-        $("#informesporpersonaymes").prop('disabled', false);
-    } else {
-        $("#informesporpersonaymes").prop('disabled', true);
-    }
-});
 </script>
-
 <footer class="white bg-cru-scorpion-dark pv4 hidden-print" id="main-footer">
   <div class="container">
     <div class="row pb4">

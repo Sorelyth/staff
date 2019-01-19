@@ -27,6 +27,34 @@ function getIdusuario($correo){
   return $idusuario;
 }
 //----
+function getNombre($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT nombre FROM users_info WHERE id_user=".$idusuario."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$nombre);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $nombre;
+}
+//----
+function getApellidos($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT apellidos FROM users_info WHERE id_user=".$idusuario."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$apellidos);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $apellidos;
+}
+//----
 function getNombreyApellido($idusuario){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
@@ -69,6 +97,20 @@ function getComponente($idusuario){
   echo $componente;
 }
 //------
+function getidComponente($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id_componente FROM users_info WHERE id_user=".$idusuario."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$idcomponente);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $idcomponente;
+}
+//------
 function getCoach($idusuario){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
@@ -86,6 +128,132 @@ function getCoach($idusuario){
   else{mysqli_stmt_close($stmt);mysqli_close($mysqli);echo '';}
 }
 //------
+function getTelefono($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT telefono FROM users_info WHERE id_user='".$idusuario."'";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$telefono);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $telefono;
+}
+//----
+function getDireccion($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT direccion FROM users_info WHERE id_user='".$idusuario."'";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$direccion);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $direccion;
+}
+//----
+function getDocId($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT doc_id FROM users_info WHERE id_user=".$idusuario."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$doc_id);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $doc_id;
+}
+//----
+function getSexo($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT sexo FROM users_info WHERE id_user=".$idusuario."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$sexo);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $sexo;
+}
+//----
+function getidEstadoCivil($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id_estado_civil FROM users_info WHERE id_user=".$idusuario."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$idestadocivil);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $idestadocivil;
+}
+//----
+function getFechaNacimiento($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT fecha_nacimiento FROM users_info WHERE id_user=".$idusuario."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$fechanacimiento);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $fechanacimiento;
+}
+//----
+function getidCiudad($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id_ciudad FROM users_info WHERE id_user=".$idusuario."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$idciudad);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $idciudad;
+}
+//----
+function getDepartamento($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT nombre FROM departamentos WHERE id=(SELECT departamento_id from municipios WHERE id=(SELECT id_ciudad FROM users_info WHERE id_user=".$idusuario."))";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$departamento);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $departamento;
+}
+//----
+function getidDepartamento($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT departamento_id from municipios WHERE id=(SELECT id_ciudad FROM users_info WHERE id_user=".$idusuario.")";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$iddepartamento);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $iddepartamento;
+}
+//----
 function existeEmail($email){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
@@ -111,6 +279,24 @@ function buscarCoach($texto){
   $html_ret = '<ul class="list-group list-group-flush">';
   while(mysqli_stmt_fetch($result)){
     $html_ret .= '<li class="list-group item list-group-item-action" onclick="seleccionarcoach('.$idpersona.')"><a>'.$nombre.' '.$apellidos.'</a></li>';
+  }
+  $html_ret .= '</ul>';
+  mysqli_stmt_close($result);
+  mysqli_close($mysqli);
+  return $html_ret;
+}
+//------
+function buscarPersona($texto){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id_user, nombre, apellidos FROM users_info WHERE nombre LIKE '%".$texto."%' OR apellidos LIKE '%".$texto."%' OR CONCAT(nombre,' ',apellidos) LIKE '%".$texto."%' LIMIT 5";
+  $result = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($result);
+  mysqli_stmt_store_result($result);
+  mysqli_stmt_bind_result($result,$idpersona,$nombre,$apellidos);
+  $html_ret = '<ul class="list-group list-group-flush">';
+  while(mysqli_stmt_fetch($result)){
+    $html_ret .= '<li class="list-group item list-group-item-action" onclick="seleccionarpersona('.$idpersona.')"><a>'.$nombre.' '.$apellidos.'</a></li>';
   }
   $html_ret .= '</ul>';
   mysqli_stmt_close($result);
@@ -153,7 +339,7 @@ function selectMes(){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$idmes,$mes);
-  echo '<select class="col-sm-1 form-control" name="idmes" id="idmes" required><option value="0" selected> </option>';
+  echo '<select class="col-sm-1 form-control" name="idmes" id="idmes" required><option value="0"> </option>';
 
   while(mysqli_stmt_fetch($stmt)){
     echo '<option value="'.$idmes.'">'.$mes.'</option>';
@@ -171,10 +357,14 @@ function selectComponente(){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$idcomponente,$componente);
-  echo '<select class="col-sm-4 form-control" name="idcomponente" id="idcomponente" required><option value="0" selected> </option>';
+  echo '<select class="col-sm-4 form-control" name="idcomponente" id="idcomponente" required><option value="0"> </option>';
 
   while(mysqli_stmt_fetch($stmt)){
-    echo '<option value="'.$idcomponente.'">'.$componente.'</option>';
+    if(isset($_SESSION['idusuario'])){
+      $componente_actual = getidComponente($_SESSION['idusuario']);
+      echo '<option value="'.$idcomponente.'" '.checkSelection($idcomponente,$componente_actual).'>'.$componente.'</option>';
+    }
+    else{echo '<option value="'.$idcomponente.'">'.$componente.'</option>';}
   }
   echo '</select>';
   mysqli_stmt_close($stmt);
@@ -189,10 +379,14 @@ function selectEstadoCivil(){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$idestadocivil,$estadocivil);
-  echo '<select class="col-sm-4 form-control" name="idestadocivil" id="idestadocivil" required><option value="0" selected> </option>';
+  echo '<select class="col-sm-4 form-control" name="idestadocivil" id="idestadocivil" required><option value="0"> </option>';
 
   while(mysqli_stmt_fetch($stmt)){
-    echo '<option value="'.$idestadocivil.'">'.$estadocivil.'</option>';
+    if(isset($_SESSION['idusuario'])){
+      $estadocivil_actual = getidEstadoCivil($_SESSION['idusuario']);;
+      echo '<option value="'.$idestadocivil.'" '.checkSelection($idestadocivil,$estadocivil_actual).'>'.$estadocivil.'</option>';
+    }
+    else{echo '<option value="'.$idestadocivil.'">'.$estadocivil.'</option>';}
   }
   echo '</select>';
   mysqli_stmt_close($stmt);
@@ -208,9 +402,12 @@ function selectDepartamento(){
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$iddpto,$dpto);
   echo '<select class="col-sm-4 form-control" name="iddpto" id="iddpto" onchange="cambioDepartamento();" required><option value="0"> </option>';
-
   while(mysqli_stmt_fetch($stmt)){
-    echo '<option value="'.$iddpto.'"'.checkSelection($iddpto,$_POST['iddpto']).'>'.$dpto.'</option>';
+    if(isset($_SESSION['idusuario'])){
+      $dpto_actual = getidDepartamento($_SESSION['idusuario']);
+      echo '<option value="'.$iddpto.'" '.checkSelection($iddpto,$dpto_actual).'>'.$dpto.'</option>';
+    }
+    else {echo '<option value="'.$iddpto.'" '.checkSelection($iddpto,$_POST['iddpto']).'>'.$dpto.'</option>';}
   }
   echo '</select>';
   mysqli_stmt_close($stmt);
@@ -229,7 +426,11 @@ function selectMunicipio($iddpto){
   $html_ret .= '<select class="col-sm-4 form-control" name="idmcpo" id="idmcpo" required><option value="0"> </option>';
 
   while(mysqli_stmt_fetch($stmt)){
-    $html_ret .= '<option value="'.$idmcpo.'"'.checkSelection($idmcpo,$_POST['idmcpo']).'>'.$mcpo.'</option>';
+    if(isset($_SESSION['idusuario'])){
+      $mcpo_actual = getidCiudad($_SESSION['idusuario']);
+      $html_ret .= '<option value="'.$idmcpo.'" '.checkSelection($idmcpo,$mcpo_actual).'>'.$mcpo.'</option>';
+    }
+    else{$html_ret .= '<option value="'.$idmcpo.'" '.checkSelection($idmcpo,$_POST['idmcpo']).'>'.$mcpo.'</option>';}
   }
   $html_ret .= '</select>';
   mysqli_stmt_close($stmt);
@@ -307,6 +508,26 @@ function LoginUsuario($correo,$password){
   mysqli_close($mysqli);
 }
 //-----
+function UpdateInfoUsuario($id_user,$name,$lastname,$doc_id,$phone,$address,$idmcpo,$gender,$idestadocivil,$birthdate,$idcomponente){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  echo "algo";
+  //$sentencia = "eso";
+  $sentencia="UPDATE users_info SET nombre='".$name."', apellidos='".$lastname."', doc_id='".$doc_id."', telefono='".$phone."',direccion='".$address."',sexo='".$gender."',id_ciudad=".$idmcpo.",id_componente=".$idcomponente.",id_estado_civil=".$idestadocivil.",fecha_nacimiento='".$birthdate."' WHERE id_user=".$id_user."";
+  $res = mysqli_query($mysqli, $sentencia);
+  echo $sentencia;
+  if (mysqli_connect_errno()) {
+      printf("Connect failed: %s\n", mysqli_connect_error());
+      exit();
+  }
+  if (!$res) {
+    echo $sentencia;
+    printf("Error: %s\n", mysqli_error($mysqli));
+  }
+  mysqli_close($mysqli);
+  header('Location: index.php');
+}
+//----
 function transformarbooleano($valor){
   if($valor==0){$r='No';}
   else{ $r='Sí';}
@@ -384,10 +605,56 @@ function tablaDiscipulosInformes($idusuario){
   mysqli_close($mysqli);
 }
 //-----------
+function getFaseeHistoria($idinforme,$iddiscipulo){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id_fase,historia FROM informes_discipulos WHERE id_informe=".$idinforme." AND id_discipulo=".$iddiscipulo."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$idfase,$historia);
+  mysqli_stmt_fetch($stmt);
+  switch($idfase){
+    case 1 : $fase='Conectar';break;
+    case 2 : $fase='Experimentar';break;
+    case 3 : $fase='Comprometer';break;
+  }
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return [$fase,$historia];
+}
+//------------
+function mostrarTablaDiscipulos($idusuario,$idinforme){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id,nombre,apellido FROM discipulos WHERE id_discipulador=".$idusuario."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$iddiscipulo,$nombre,$apellidos);
+  echo '<input type="number" readonly id="cuantosdiscipulos" value='.cuantosDiscipulos($idusuario).' hidden>';
+  $k=1;
+  while(mysqli_stmt_fetch($stmt)){
+    echo '<br>';
+    echo '<div class="form-group row">';
+    echo '<input type="number" readonly id="iddiscipulo_'.$k.'" value='.$iddiscipulo.' hidden>';
+    echo '<label for="nombre_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;">Nombre y apellido: </label>';
+    echo '<input id="nombre_'.$iddiscipulo.'" name="nombre_'.$iddiscipulo.'" type="text" readonly class="col-sm-2" style="font-weight:bold;" value="'.$nombre.' '.$apellidos.'">';
+    echo '<label for="fase_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;"> Fase: </label>';
+    echo getFaseeHistoria($idinforme,$iddiscipulo)[0];
+    echo '</div>';
+    echo '<label for="historia_'.$iddiscipulo.'" class="col-sm-2" style="font-weight:bold;"> Historia  de guerra con esta persona en este mes:</label>';
+    echo '<p readonly class="col-sm-3" id="historia_'.$iddiscipulo.'">'.getFaseeHistoria($idinforme,$iddiscipulo)[1].'</p>';
+    $k++;
+  }
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+}
+//-----------
 function existeInforme($id_user,$mes,$year){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user,$db_password,$db_schema);
-  $sentencia = "SELECT id FROM informes WHERE id_user=".$id_user." AND id_mes=".$mes." AND year=".$year."";
+  $sentencia = "SELECT id FROM informes WHERE id_user=".$id_user." AND id_mes=".$mes." AND year='".$year."'";
   $result = mysqli_prepare($mysqli,$sentencia);
   mysqli_stmt_execute($result);
   mysqli_stmt_store_result($result);
@@ -447,6 +714,23 @@ function llenarInforme($idinforme,$iddiscipulo,$respuesta2,$respuesta3,$respuest
   return true;
 }
 //------
+function llenarInformeUltimo($idinforme,$iddiscipulo,$respuesta2,$respuesta3,$respuesta4,$respuesta5){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="INSERT INTO informes_text_content (id_informe,respuesta) VALUES(".$idinforme.",'".$respuesta1."'), (".$idinforme.",'".$respuesta2."'),(".$idinforme.",'".$respuesta3."'),(".$idinforme.",'".$respuesta4."'),(".$idinforme.",'".$respuesta5."')";
+  $res = mysqli_query($mysqli, $sentencia);
+  //echo $sentencia;
+  if (mysqli_connect_errno()) {
+      printf("Connect failed: %s\n", mysqli_connect_error());
+      exit();
+  }
+  if (!$res) {
+    echo $sentencia;
+    printf("Error: %s\n", mysqli_error($mysqli));
+  }
+  return true;
+}
+//-----------------------
 function informeDiscipulos($idinforme,$iddiscipulo,$fase,$historia,$idusuario){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
@@ -463,30 +747,127 @@ function informeDiscipulos($idinforme,$iddiscipulo,$fase,$historia,$idusuario){
   }
 }
 //------
-function contenidoInforme($idinforme){
+function buscarInformesPersona($idpersona){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
-  $sentencia="SELECT * FROM discipulos WHERE id_discipulador=".$idusuario."";
+  $sentencia = "SELECT id,id_mes,year FROM informes WHERE id_user=".$idpersona."";
+  $result = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($result);
+  mysqli_stmt_store_result($result);
+  mysqli_stmt_bind_result($result,$idinforme,$idmes,$year);
+  if(mysqli_stmt_num_rows($result)>0){
+    $html_ret = '<h4><strong><center>'.getNombreyApellido($idpersona).'</center></strong></h4>';
+    while(mysqli_stmt_fetch($result)){
+      $html_ret .= '<div class="row">';
+      $html_ret .= '<div class="col-sm-4">';
+      $html_ret .= ' '.getMes($idmes).' de '.$year;
+      $html_ret .= '</div>';
+      $html_ret .= '<div class="col-sm-1"></div>';
+      $html_ret .= '<div class="col-sm-1">';
+      $html_ret .= '<button class="btn btn-light" onclick="mostrarinforme('.$idpersona.','.$idinforme.')"><i class="fab fa-wpforms fa-2x></i>"</button>';
+      $html_ret .= '</div></div>';
+      $html_ret .= nl2br("\n");
+    }
+    return $html_ret;
+  }
+  else{
+    $html_ret = '<h3> No se encontraron informes con este criterio de búsqueda.</h3>';
+    return $html_ret;
+  }
+  mysqli_stmt_close($result);
+  mysqli_close($mysqli);
+}
+//------
+function buscarInformesMes($mes,$year){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia = "SELECT id,id_user FROM informes WHERE  id_mes=".$mes." AND year='".$year."'";
+  $result = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($result);
+  mysqli_stmt_store_result($result);
+  mysqli_stmt_bind_result($result,$idinforme,$idpersona);
+  if(mysqli_stmt_num_rows($result)>0){
+    $html_ret = '<h4><strong><center>'.getMes($idmes).' de '.$year.'</center></strong></h4>';
+    while(mysqli_stmt_fetch($result)){
+      $html_ret .= '<div class="row">';
+      $html_ret .= '<div class="col-sm-4">';
+      $html_ret .= ' '.getNombreyApellido($idpersona).' ';
+      $html_ret .= '</div>';
+      $html_ret .= '<div class="col-sm-1"></div>';
+      $html_ret .= '<div class="col-sm-1">';
+      $html_ret .= '<button class="btn btn-light" onclick="mostrarinforme('.$idpersona.','.$idinforme.')"><i class="fab fa-wpforms fa-2x></i>"</button>';
+      $html_ret .= '</div></div>';
+      $html_ret .= nl2br("\n");
+    }
+    return $html_ret;
+  }
+  else{
+    $html_ret = '<h3> No se encontraron informes con este criterio de búsqueda.</h3>';
+    return $html_ret;
+  }
+  mysqli_stmt_close($result);
+  mysqli_close($mysqli);
+}
+//------
+function buscarInformesPersonaMes($idpersona,$mes,$year){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia = "SELECT id FROM informes WHERE id_user=".$idpersona." AND id_mes=".$mes." AND year='".$year."'";
+  $result = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($result);
+  mysqli_stmt_store_result($result);
+  mysqli_stmt_bind_result($result,$idinforme);
+  if(mysqli_stmt_num_rows($result)>0){
+    $html_ret = '<h4><strong><center>'.getMes($idmes).' de '.$year.'</center></strong></h4>';
+    while(mysqli_stmt_fetch($result)){
+      $html_ret .= '<div class="row">';
+      $html_ret .= '<div class="col-sm-4">';
+      $html_ret .= ' '.getNombreyApellido($idpersona).' ';
+      $html_ret .= '</div>';
+      $html_ret .= '<div class="col-sm-1"></div>';
+      $html_ret .= '<div class="col-sm-1">';
+      $html_ret .= '<button class="btn btn-light" onclick="mostrarinforme('.$idpersona.','.$idinforme.')"><i class="fab fa-wpforms fa-2x></i>"</button>';
+      $html_ret .= '</div></div>';
+      $html_ret .= nl2br("\n");
+    }
+    return $html_ret;
+  }
+  else{
+    $html_ret = '<h3> No se encontraron informes con este criterio de búsqueda.</h3>';
+    return $html_ret;
+  }
+  mysqli_stmt_close($result);
+  mysqli_close($mysqli);
+}
+//------
+function selectSocios($idusuario){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id,id_tipo_socio,nombre_completo FROM socios WHERE id_user=".$idusuario."";
   $stmt = mysqli_prepare($mysqli,$sentencia);
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
-  mysqli_stmt_bind_result($stmt,$iddiscipulo,$nombre,$apellidos);
-  echo '<input type="number" readonly id="cuantosdiscipulos" value='.cuantosDiscipulos($idusuario).' hidden>';
-  $k=1;
+  mysqli_stmt_bind_result($stmt,$idsocio,$idtiposocio,$socio);
+  echo '<select class="col-sm-4 form-control" name="idsocio" id="idsocio"><option value="0"> </option>';
   while(mysqli_stmt_fetch($stmt)){
-    echo '<br>';
-    echo '<div class="form-group row">';
-    echo '<input type="number" readonly id="iddiscipulo_'.$k.'" value='.$iddiscipulo.' hidden>';
-    echo '<label for="nombre_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;">Nombre y apellido</label>';
-    echo '<input id="nombre_'.$iddiscipulo.'" name="nombre_'.$iddiscipulo.'" type="text" readonly class="col-sm-2" style="font-weight:bold;" value="'.$nombre.' '.$apellidos.'">';
-    echo '<label for="fase_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;">Fase</label>';
-    echo selectFase($iddiscipulo);
-    echo '<label for="historia_'.$iddiscipulo.'" class="col-sm-2" style="font-weight:bold;">Historia  de guerra con esta persona en este mes</label>';
-    echo '<input class="col-sm-3" type="text" name="historia_'.$iddiscipulo.'" id="historia_'.$iddiscipulo.'">';
-    echo '</div>';
-    $k++;
+    echo '<option value="'.$idsocio.'" onclick="seleccionarsocio('.$idsocio.','.$idtiposocio.')">'.$socio.'</option>';
   }
+  echo '</select>';
   mysqli_stmt_close($stmt);
   mysqli_close($mysqli);
 }
-?>
+//------
+// function infoSocio($idsocio,$idtiposocio){
+//   include 'db_config.php';
+//   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+//   $sentencia="SELECT info FROM socios_info WHERE id_socio=".$idsocio."";
+//   $stmt = mysqli_prepare($mysqli,$sentencia);
+//   mysqli_stmt_execute($stmt);
+//   mysqli_stmt_store_result($stmt);
+//   mysqli_stmt_bind_result($stmt,$info);
+//   while(mysqli_stmt_fetch($stmt)){
+//   }
+//   mysqli_stmt_close($stmt);
+//   mysqli_close($mysqli);
+// }
+//------
