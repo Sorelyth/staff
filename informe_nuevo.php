@@ -203,7 +203,6 @@
             <input type="number" class="col-sm-1 form-control" id="pregunta7" name="pregunta7" required>
           </div>
           <div class="form-group row">
-<<<<<<< HEAD
             <label for="pregunta7" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Seguimiento:</p></label>
             <input type="number" class="col-sm-1 form-control" id="pregunta8" name="pregunta8" required>
           </div>
@@ -227,31 +226,6 @@
             <label for="pregunta12" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Personas nuevas en cada fase:</p></label>
             <input type="number" class="col-sm-1 form-control" id="pregunta13" name="pregunta13" required>
             <label for="pregunta13" class="col-sm-1 col-form-label"><p style="font-weight:bold;">Sus nombres:</p></label>
-=======
-            <label for="pregunta8" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Seguimiento:</p></label>
-            <input type="number" class="col-sm-1 form-control" id="pregunta8" name="pregunta8" required>
-          </div>
-          <div class="form-group row">
-            <label for="pregunta9" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Discípulos multiplicadores:</p></label>
-            <input type="number" class="col-sm-1 form-control" id="pregunta9" name="pregunta9" required>
-          </div>
-          <div class="form-group row">
-            <label for="pregunta10" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Comunidades misionales:</p></label>
-            <input type="number" class="col-sm-1 form-control" id="pregunta10" name="pregunta10" required>
-          </div>
-          <div class="form-group row">
-            <label for="pregunta11" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Comunidades misionales catalíticas:</p></label>
-            <input type="number" class="col-sm-1 form-control" id="pregunta11" name="pregunta11" required>
-          </div>
-          <div class="form-group row">
-            <label for="pregunta12" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Personas que mantuvieron su fase:</p></label>
-            <input type="number" class="col-sm-1 form-control" id="pregunta12" name="pregunta12" required>
-          </div>
-          <div class="form-group row">
-            <label for="pregunta13" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Personas nuevas en cada fase:</p></label>
-            <input type="number" class="col-sm-1 form-control" id="pregunta13" name="pregunta13" required>
-            <label for="pregunta14" class="col-sm-1 col-form-label"><p style="font-weight:bold;">Sus nombres:</p></label>
->>>>>>> 735e0f48e37469176ea1bff8a24d770255b55737
             <textarea class="col-sm-3 form-control" id="pregunta14" name="pregunta14"></textarea>
           </div>
           <br>
@@ -306,11 +280,7 @@
 
             <div class="form-group row">
               <label for="pregunta16" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Qué has hecho para
-<<<<<<< HEAD
                  comunicar el propósito de tu equipo, la visión y misión en este mes?¿Qué has hecho en este mes para
-=======
-                 comunicar el propósito de tu equipo, la visión y misión en este mes? ¿Qué has hecho en este mes para
->>>>>>> 735e0f48e37469176ea1bff8a24d770255b55737
                   desarrollar a cada miembro de tu Equipo de manera integral (personal, comunitaria y misional)?
                    ¿Qué acciones tomaron para mejorar los procesos claves del equipo? ¿Qué acciones tomó tu equipo
                     este mes para movilizar nuevos voluntarios a involucrarse en la visión y misión?</p></label>
@@ -321,13 +291,10 @@
               <label for="pregunta17" class="col-sm-3 col-form-label"><h3 style="font-weight:bold;">¿Hay algo significativo
                  fuera de lo anteriormente preguntado que quieras compartirnos?</h3></label>
               <textarea class="col-sm-8 form-control" id="pregunta17" name="pregunta17" required></textarea>
-<<<<<<< HEAD
             </div>
 
             <div class="alert alert-light" role="alert" >
               <h4 style="font-weight:bold;">Archivos adicionales requeridos.</h4>
-=======
->>>>>>> 735e0f48e37469176ea1bff8a24d770255b55737
             </div>
 
             <div class="form-group row">
@@ -351,11 +318,7 @@
 <script>
 $("#enviarinforme").prop('disabled', true);
 
-<<<<<<< HEAD
 var toValidate = $('#pregunta4,#pregunta5,#pregunta6,#pregunta7,#pregunta8,#pregunta9,#pregunta10,#pregunta11,#pregunta12,#pregunta13,#pregunta14,#pregunta15,#pregunta16,#pregunta17,#seguridadsocial,#cuentadecobro'),
-=======
-var toValidate = $('#pregunta4,#pregunta5,#pregunta6,#pregunta7,#pregunta8,#pregunta9,#pregunta10,#pregunta11,#pregunta12,#pregunta13,#pregunta14,#pregunta15,#pregunta16,#pregunta17'),
->>>>>>> 735e0f48e37469176ea1bff8a24d770255b55737
     valid = false;
 toValidate.change(function () {
     if ($(this).val().length > 0) {

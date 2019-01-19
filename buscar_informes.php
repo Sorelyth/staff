@@ -59,15 +59,11 @@
 </header>
 <div id="cru-nav" class="visible-sm-up">
   <div class="cru-container">
-    <ul><?php if(isAdmin($_SESSION['idusuario'])){ ?>
+    <ul>
       <li id="top-menu-0" class="top-menu-item">
         <a href="index.php">Inicio</a>
       </li>
-<<<<<<< HEAD
-      <?php } ?>
-=======
       <?php if(isAdmin($_SESSION['idusuario'])){ ?>
->>>>>>> 735e0f48e37469176ea1bff8a24d770255b55737
       <li id="top-menu-1" class="top-menu-item">
         <a href="buscar_informes.php">Buscar informes</a>
       </li>
