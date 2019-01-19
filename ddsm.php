@@ -108,7 +108,7 @@
               <div>
               <div>
                 <div class="col">
-                  <a href="La_carpeta_negra.pdf">
+                  <a href="assets/La_carpeta_negra.pdf">
                     <center><i class="fas fa-file-pdf fa-7x"></i></center>
                   </a>
                 </div>
