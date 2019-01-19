@@ -89,7 +89,7 @@
         </div>
         <div class="form-group row">
           <label for="perona" class="col-sm-3 col-form-label"><i class="fas fa-hands-helping"></i> Nombre de persona </label>
-          <input type="text" class="col-sm-5 form-control-plaintext" id="persona" name="persona" placeholder="Escribe su nombre aquí" onkeyup="buscarPersona(this.value)" required>
+          <input type="text" class="col-sm-5 form-control-plaintext" id="persona" name="persona" placeholder="Escribe su nombre aquí" onkeyup="buscarpersona(this.value)" required>
           <input type="number" hidden id="idpersona">
           <button class="btn btn-light" onclick="buscarinformesporpersona();" id="informesporpersona">Buscar informes por persona</button>
         </div>
