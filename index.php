@@ -33,13 +33,26 @@
         </a>
       </div>
 
-<!--"boton" cerrar sesion ubicado en el header heredando css de clase "signin"-->
-      <div class="cru-col-9 cru-text-right">
+  <!--css para barra vertical que sirva como separador-->
+        <style>
+        #vertical-bar{
+          border-left: 1px solid #bebebe;
+          width:1px;
+          height:40px;}
+        </style>
+
+  <!--"botones" ubicados en el header heredando css de clase "signin"-->
+      <div class="col-sm-6 cru-text-right">
+        <div class="signin">
+          <a class="signin-name" href="editar_perfil.php">Editar perfil</a>
+        </div>
+      </div>
+      <div id="vertical-bar"></div>
+      <div class="col-sm-2">
         <div class="signin">
           <a class="signin-name" onclick="logout();">Cerrar sesión</a>
         </div>
       </div>
-
     </div>
   </div>
 </header>
@@ -67,13 +80,13 @@
           <div>
           <div>
             <div class="col">
-              <a href="material.php">
+              <a href="recursos.php">
                 <center><i class="fas fa-folder-open fa-7x"></i></center>
               </a>
             </div>
             <div class="col">
               <p style="text-align:center;"><br>
-                MATERIALES DDSM
+                RECURSOS
               </p>
             </div>
           </div>
@@ -86,7 +99,7 @@
           <div>
           <div>
             <div class="col">
-              <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">
+              <a href="assets/Manual_de_identidad.pdf">
                 <center><i class="fas fa-book fa-7x"></i></center>
               </a>
             </div>
@@ -161,11 +174,13 @@
         ©1994-2018 Cru. All Rights Reserved.
       </span>
     </div>
-  <div class="tc">
-    <a href="https://www.facebook.com/crulac" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
-    <a href="https://www.instagram.com/crulac" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
-    <a href="https://twitter.com/Cru_LAC" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-twitter"></a>
-  </div>
+    <div class="tc">
+      <a href="https://www.facebook.com/CruVPC/" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
+      <a href="https://www.instagram.com/cru.colombia" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
+      <a href="ops.colombia@cru.org" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa fa-envelope"></a>
+      <a href="+57%203184447781" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-whatsapp"></a>
+      <a href="tel:" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fas fa-mobile-alt"></a>
+    </div>
   </div>
   </div>
 </footer>

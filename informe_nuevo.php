@@ -33,11 +33,26 @@
         </a>
       </div>
 
-      <div class="cru-col-9 cru-text-right">
-        <div class="signin">
-          <a class="signin-name" onclick="logout();">Cerrar sesión</a>
-        </div>
-      </div>
+      <!--css para barra vertical que sirva como separador-->
+            <style>
+            #vertical-bar{
+              border-left: 1px solid #bebebe;
+              width:1px;
+              height:40px;}
+            </style>
+
+      <!--"botones" ubicados en el header heredando css de clase "signin"-->
+          <div class="col-sm-6 cru-text-right">
+            <div class="signin">
+              <a class="signin-name" href="editar_perfil.php">Editar perfil</a>
+            </div>
+          </div>
+          <div id="vertical-bar"></div>
+          <div class="col-sm-2">
+            <div class="signin">
+              <a class="signin-name" onclick="logout();">Cerrar sesión</a>
+            </div>
+          </div>
 
     </div>
   </div>
@@ -46,12 +61,17 @@
   <div class="cru-container">
     <ul>
       <li id="top-menu-0" class="top-menu-item">
+        <a href="index.php">Inicio</a>
+      </li>
+      <?php if(isAdmin($_SESSION['idusuario'])){ ?>
+      <li id="top-menu-1" class="top-menu-item">
         <a href="buscar_informes.php">Buscar informes</a>
       </li>
-      <li id="top-menu-1" class="top-menu-item">
-        <a href="">Crear informe</a>
-      </li>
+      <?php } ?>
       <li id="top-menu-2" class="top-menu-item">
+        <a href="informe_nuevo.php">Crear informe</a>
+      </li>
+      <li id="top-menu-3" class="top-menu-item">
         <a href="">Ver informes antiguos</a>
       </li>
     </ul>
@@ -61,7 +81,7 @@
 
 <section id="cru-body">
   <div class="cru-container">
-    <div class="cru-row">
+    <div class="row-sm-12 justify-content-sm-center">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
           <center><h1>Informe mensual</h1></center>
@@ -106,7 +126,7 @@
           <hr class="my-6">
 
           <div class="jumbotron-fluid">
-            <div class="row"><div class="col-sm-3"></div><h4 style="color:#007398;">Basado en los 5 esenciales contesta las preguntas que verás a continuación</h4></div>
+            <div class="row-sm justify-content-sm-center"><div class="col-sm-3"></div><h4 style="color:#007398;">Basado en los 5 esenciales contesta las preguntas que verás a continuación</h4></div>
             <br>
             <div class="row">
               <div class="col-sm-3"></div>
@@ -147,8 +167,8 @@
           </div>
 
           <div class="form-group row">
-            <label for="pregunta3" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Preparaste las lecciones de Formación de Nuevos Misioneros de este mes?,
-               ¿De las sesiones de este mes de coaching en cuantas participaste?, ¿Aplicaste lo aprendido en tu ministerio?, ¿Cómo? Cuéntanos lo más significativo en este
+            <label for="pregunta3" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Preparaste las lecciones de Formación de Nuevos Misioneros de este mes?
+               ¿De las sesiones de este mes de coaching en cuantas participaste? ¿Aplicaste lo aprendido en tu ministerio? ¿Cómo? Cuéntanos lo más significativo en este
                mes de este y otros procesos deformación que estés llevando.</p></label>
             <textarea class="col-sm-8 form-control" id="pregunta3" name="pregunta3" ></textarea>
           </div>
@@ -183,6 +203,7 @@
             <input type="number" class="col-sm-1 form-control" id="pregunta7" name="pregunta7" required>
           </div>
           <div class="form-group row">
+<<<<<<< HEAD
             <label for="pregunta7" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Seguimiento:</p></label>
             <input type="number" class="col-sm-1 form-control" id="pregunta8" name="pregunta8" required>
           </div>
@@ -206,6 +227,31 @@
             <label for="pregunta12" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Personas nuevas en cada fase:</p></label>
             <input type="number" class="col-sm-1 form-control" id="pregunta13" name="pregunta13" required>
             <label for="pregunta13" class="col-sm-1 col-form-label"><p style="font-weight:bold;">Sus nombres:</p></label>
+=======
+            <label for="pregunta8" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Seguimiento:</p></label>
+            <input type="number" class="col-sm-1 form-control" id="pregunta8" name="pregunta8" required>
+          </div>
+          <div class="form-group row">
+            <label for="pregunta9" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Discípulos multiplicadores:</p></label>
+            <input type="number" class="col-sm-1 form-control" id="pregunta9" name="pregunta9" required>
+          </div>
+          <div class="form-group row">
+            <label for="pregunta10" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Comunidades misionales:</p></label>
+            <input type="number" class="col-sm-1 form-control" id="pregunta10" name="pregunta10" required>
+          </div>
+          <div class="form-group row">
+            <label for="pregunta11" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Comunidades misionales catalíticas:</p></label>
+            <input type="number" class="col-sm-1 form-control" id="pregunta11" name="pregunta11" required>
+          </div>
+          <div class="form-group row">
+            <label for="pregunta12" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Personas que mantuvieron su fase:</p></label>
+            <input type="number" class="col-sm-1 form-control" id="pregunta12" name="pregunta12" required>
+          </div>
+          <div class="form-group row">
+            <label for="pregunta13" class="col-sm-3 col-form-label"><p style="font-weight:bold;">Personas nuevas en cada fase:</p></label>
+            <input type="number" class="col-sm-1 form-control" id="pregunta13" name="pregunta13" required>
+            <label for="pregunta14" class="col-sm-1 col-form-label"><p style="font-weight:bold;">Sus nombres:</p></label>
+>>>>>>> 735e0f48e37469176ea1bff8a24d770255b55737
             <textarea class="col-sm-3 form-control" id="pregunta14" name="pregunta14"></textarea>
           </div>
           <br>
@@ -215,10 +261,10 @@
           <center><h4>Tus discípulos</h4></center>
           <br>
 
-              <div class="row justify-content-center">
+              <div class="row justify-content-sm-center">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
-                  <button class="btn btn-primary" title="Agregar un nuevo discípulo" onclick=modalnuevodiscipulo();>Agregar</button>
+                  <center><button class="btn btn-primary" title="Agregar un nuevo discípulo" onclick=modalnuevodiscipulo();>Agregar</button></center>
                 </div>
                   <!-- Modal -->
                   <div class="modal" id="discipulo_modal">
@@ -260,7 +306,11 @@
 
             <div class="form-group row">
               <label for="pregunta16" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Qué has hecho para
+<<<<<<< HEAD
                  comunicar el propósito de tu equipo, la visión y misión en este mes?¿Qué has hecho en este mes para
+=======
+                 comunicar el propósito de tu equipo, la visión y misión en este mes? ¿Qué has hecho en este mes para
+>>>>>>> 735e0f48e37469176ea1bff8a24d770255b55737
                   desarrollar a cada miembro de tu Equipo de manera integral (personal, comunitaria y misional)?
                    ¿Qué acciones tomaron para mejorar los procesos claves del equipo? ¿Qué acciones tomó tu equipo
                     este mes para movilizar nuevos voluntarios a involucrarse en la visión y misión?</p></label>
@@ -271,10 +321,13 @@
               <label for="pregunta17" class="col-sm-3 col-form-label"><h3 style="font-weight:bold;">¿Hay algo significativo
                  fuera de lo anteriormente preguntado que quieras compartirnos?</h3></label>
               <textarea class="col-sm-8 form-control" id="pregunta17" name="pregunta17" required></textarea>
+<<<<<<< HEAD
             </div>
 
             <div class="alert alert-light" role="alert" >
               <h4 style="font-weight:bold;">Archivos adicionales requeridos.</h4>
+=======
+>>>>>>> 735e0f48e37469176ea1bff8a24d770255b55737
             </div>
 
             <div class="form-group row">
@@ -298,7 +351,11 @@
 <script>
 $("#enviarinforme").prop('disabled', true);
 
+<<<<<<< HEAD
 var toValidate = $('#pregunta4,#pregunta5,#pregunta6,#pregunta7,#pregunta8,#pregunta9,#pregunta10,#pregunta11,#pregunta12,#pregunta13,#pregunta14,#pregunta15,#pregunta16,#pregunta17,#seguridadsocial,#cuentadecobro'),
+=======
+var toValidate = $('#pregunta4,#pregunta5,#pregunta6,#pregunta7,#pregunta8,#pregunta9,#pregunta10,#pregunta11,#pregunta12,#pregunta13,#pregunta14,#pregunta15,#pregunta16,#pregunta17'),
+>>>>>>> 735e0f48e37469176ea1bff8a24d770255b55737
     valid = false;
 toValidate.change(function () {
     if ($(this).val().length > 0) {
@@ -337,11 +394,13 @@ toValidate.change(function () {
         ©1994-2018 Cru. All Rights Reserved.
       </span>
     </div>
-  <div class="tc">
-    <a href="https://www.facebook.com/crulac" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
-    <a href="https://www.instagram.com/crulac" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
-    <a href="https://twitter.com/Cru_LAC" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-twitter"></a>
-  </div>
+    <div class="tc">
+      <a href="https://www.facebook.com/CruVPC/" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
+      <a href="https://www.instagram.com/cru.colombia" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
+      <a href="ops.colombia@cru.org" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa fa-envelope"></a>
+      <a href="+57%203184447781" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-whatsapp"></a>
+      <a href="tel:" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fas fa-mobile-alt"></a>
+    </div>
   </div>
   </div>
 </footer>
