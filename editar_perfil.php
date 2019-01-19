@@ -34,6 +34,27 @@
     </div>
   </div>
 </header>
+<div id="cru-nav" class="visible-sm-up">
+  <div class="cru-container">
+    <ul>
+      <li id="top-menu-0" class="top-menu-item">
+        <a href="index.php">Inicio</a>
+      </li>
+      <li id="top-menu-1" class="top-menu-item">
+        <a href="recursos.php">Recursos</a>
+      </li>
+      <li id="top-menu-2" class="top-menu-item">
+        <a href="assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
+      </li>
+      <li id="top-menu-3" class="top-menu-item">
+        <a href="informe.php">Informes</a>
+      </li>
+      <li id="top-menu-4" class="top-menu-item">
+        <a href="reporte_transferencias.php">Reporte de transferencias</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
 </section>
 

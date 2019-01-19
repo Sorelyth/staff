@@ -1,8 +1,9 @@
-function post(path, parameters) {
+function post(path, parameters,target="_self") {
         var form = $('<form></form>');
 
         form.attr("method", "post");
         form.attr("action", path);
+        form.attr("target",target);
 
         $.each(parameters, function(key, value) {
             if ( typeof value == 'object' || typeof value == 'array' ){
@@ -25,7 +26,7 @@ function post(path, parameters) {
         form.submit();
 }
 function mostrarinforme(idpersona,idinforme){
-  post('mostrar_informe.php',{idpersona:idpersona,idinforme:idinforme});
+  post('mostrar_informe.php',{idpersona:idpersona,idinforme:idinforme},"_blank");
 }
 function checkRegisterForm(){
   var email = document.getElementById("inputEmail").value;
@@ -301,10 +302,25 @@ function buscarpersona(texto){
 }
 function seleccionarpersona(idpersona){
   $('#resultado').hide();
-  $('#idpersona').val(idpersona);
+  $.ajax({
+    type: "post",
+    dataType: "html",
+    data: {accion: "seleccion_persona",idpersona:idpersona},
+    url: "ajax_requests.php",
+    cache: false,
+    // beforeSend: function() {
+    //    $('#res3').html('loading please wait...');
+    // },
+    success: function(htmldata) {
+    //alert(htmldata);
+       $("#persona").val(htmldata);
+       $('#idpersona').val(idpersona);
+    }
+  });
 }
 function buscarinformesporpersona(){
   var idpersona = document.getElementById('idpersona').value;
+  //alert(idpersona);
   $.ajax({
     type: "post",
     dataType: "html",
@@ -315,7 +331,6 @@ function buscarinformesporpersona(){
     //    $('#res3').html('loading please wait...');
     // },
     success: function(htmldata) {
-    //alert(htmldata);
        $("#resultados_busqueda").html(htmldata);
     }
   });
@@ -338,7 +353,7 @@ function buscarinformespormes(){
     }
   });
 }
-function buscarinformesporpersona(){
+function buscarinformesporpersonaymes(){
   var idpersona = document.getElementById('idpersona').value;
   var idmes= document.getElementById('idmes').value;
   var year= document.getElementById('year').value;

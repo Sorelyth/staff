@@ -9,7 +9,7 @@
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Layout</title>
+  <title>Informes antiguos</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -17,6 +17,7 @@
   <link href="css/fonts.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link rel="stylesheet" href="css/clientlibs.min.css" type="text/css">
+  <link rel="stylesheet" href="css/modal.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/mix.js"></script>
 </head>
@@ -56,44 +57,44 @@
     </div>
   </div>
 </header>
-
 <div id="cru-nav" class="visible-sm-up">
   <div class="cru-container">
     <ul>
       <li id="top-menu-0" class="top-menu-item">
         <a href="index.php">Inicio</a>
       </li>
+      <?php if(isAdmin($_SESSION['idusuario'])){ ?>
       <li id="top-menu-1" class="top-menu-item">
-        <a href="recursos.php">Recursos</a>
+        <a href="buscar_informes.php">Buscar informes</a>
       </li>
+      <?php } ?>
       <li id="top-menu-2" class="top-menu-item">
-        <a href="assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
+        <a href="informe_nuevo.php">Crear informe</a>
       </li>
       <li id="top-menu-3" class="top-menu-item">
-        <a href="informe.php">Informes</a>
-      </li>
-      <li id="top-menu-4" class="top-menu-item">
-        <a href="reporte_transferencias.php">Reporte de transferencias</a>
+        <a href="informes_antiguos.php">Ver informes antiguos</a>
       </li>
     </ul>
   </div>
 </div>
 </section>
 
-<section id="menu">
+<section id="cru-body">
   <div class="cru-container">
-    <div class="row-sm-12 justify-content-sm-center">
+    <div class="cru-row">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
-          <h2 style="text-align:center;">
-            <br>¿Qué vas a hacer hoy?
-          </h2>
+          <center><h1>Tus informes antiguos</h1></center>
           <br>
+        </div>
+        <br>
+        <div id="resultados_busqueda">
+          <?php echo buscarInformesPersona($_SESSION['idusuario']);?>
         </div>
       </div>
     </div>
-  </div>
 </section>
+
 
 <footer class="white bg-cru-scorpion-dark pv4 hidden-print" id="main-footer">
   <div class="container">
@@ -111,13 +112,13 @@
         ©1994-2018 Cru. All Rights Reserved.
       </span>
     </div>
-  <div class="tc">
-    <a href="https://www.facebook.com/CruVPC/" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
-    <a href="https://www.instagram.com/cru.colombia" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
-    <a href="ops.colombia@cru.org" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa fa-envelope"></a>
-    <a href="+57%203184447781" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-whatsapp"></a>
-    <a href="tel:" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fas fa-mobile-alt"></a>
-  </div>
+    <div class="tc">
+      <a href="https://www.facebook.com/CruVPC/" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
+      <a href="https://www.instagram.com/cru.colombia" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
+      <a href="ops.colombia@cru.org" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa fa-envelope"></a>
+      <a href="+57%203184447781" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-whatsapp"></a>
+      <a href="tel:" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fas fa-mobile-alt"></a>
+    </div>
   </div>
   </div>
 </footer>

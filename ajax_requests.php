@@ -15,6 +15,7 @@ if(isset($_POST['accion']) && !empty($_POST['accion'])){
     case 'informe_discipulos' : echo informeDiscipulos($_POST['idinforme'],$_POST['iddiscipulo'],$_POST['fase'],$_POST['historia'],$_SESSION['idusuario']);break;
     case 'contenido_informe' : echo contenidoInforme($_POST['idinforme']); break;
     case 'buscar_persona' : echo buscarPersona($_POST['buscar']);break;
+    case 'seleccion_persona' : echo getNombreyApellido($_POST['idpersona']);break;
     case 'buscar_informes_persona' : echo buscarInformesPersona($_POST['idpersona']);break;
     case 'buscar_informes_mes' : echo buscarInformesMes($_POST['mes'],$_POST['year']);break;
     case 'buscar_informes_persona_mes' : echo buscarInformesPersonaMes($_POST['idpersona'],$_POST['mes'],$_POST['year']);break;

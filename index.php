@@ -137,7 +137,7 @@
           <div>
           <div>
             <div class="col">
-              <a href="transferencia.php">
+              <a href="reporte_transferencias.php">
                 <center><i class="fas fa-money-check-alt fa-7x"></i></center>
               </a>
             </div>

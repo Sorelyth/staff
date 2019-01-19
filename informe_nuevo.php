@@ -72,7 +72,7 @@
         <a href="informe_nuevo.php">Crear informe</a>
       </li>
       <li id="top-menu-3" class="top-menu-item">
-        <a href="">Ver informes antiguos</a>
+        <a href="informes_antiguos.php">Ver informes antiguos</a>
       </li>
     </ul>
   </div>

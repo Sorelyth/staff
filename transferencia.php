@@ -72,7 +72,7 @@
         <a href="informe.php">Informes</a>
       </li>
       <li id="top-menu-4" class="top-menu-item">
-        <a href="transferencia.php">Reporte de transferencias</a>
+        <a href="reporte_transferencias.php">Reporte de transferencias</a>
       </li>
     </ul>
   </div>
