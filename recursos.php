@@ -10,7 +10,7 @@
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Reporte de transferencias</title>
+  <title>Recursos</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -84,28 +84,27 @@
     <div class="row-sm-12 justify-content-sm-center">
       <div class="col-sm-12 integrity-opener">
         <div class="title section">
-          <h2 style="text-align:center;">
-            <br>¿Qué vas a hacer hoy?
-          </h2>
+          <h3 style="text-align:center;">
+            <br>A continuación dispones de recursos<br>que te ayudarán en tu servicio a Dios.
+          </h3>
           <br>
         </div>
       </div>
 
       <div class="col-sm-12 integrity-opener">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm">
             <div class="text-image parbase section">
               <div>
               <div>
                 <div class="col">
-                  <a href="socio_inscrito.php">
-                    <center><i class="fas fa-user-check fa-7x"></i></center>
+                  <a href="assets/PRESENTACION_POSITIVA.pdf">
+                    <center><i class="fas fa-file-pdf fa-7x"></i></center>
                   </a>
                 </div>
                 <div class="col">
                   <p style="text-align:center;"><br>
-                    SOCIO INSCRITO<br>
-                    Diligencia aquí la<br>transferencia de un<br>socio ya registrado.
+                    PRESENTACIÓN POSITIVA
                   </p>
                 </div>
               </div>
@@ -113,28 +112,83 @@
             </div>
           </div>
 
-          <div class="col-sm-6">
+          <div class="col-sm">
             <div class="text-image parbase section">
               <div>
               <div>
                 <div class="col">
-                  <a href="socio_nuevo.php">
-                    <center><i class="fas fa-user-plus fa-7x"></i></center>
+                  <a href="assets/MANUAL_DE_POLITICAS_DE_RRHH.pdf">
+                    <center><i class="fas fa-file-pdf fa-7x"></i></center>
                   </a>
                 </div>
                 <div class="col">
                   <p style="text-align:center;"><br>
-                    SOCIO NUEVO<br>
-                    Diligencia aquí el registro<br>de un nuevo socio.
+                    MANUAL DE POLITICAS<br>DE RR-HH
                   </p>
                 </div>
               </div>
               </div>
             </div>
           </div>
-      </div>
-      <div class="row">
-        <br>
+
+          <div class="col-sm">
+            <div class="text-image parbase section">
+              <div>
+              <div>
+                <div class="col">
+                  <a href="assets/ESTATUTOS_REFORMADOS.pdf">
+                    <center><i class="fas fa-file-pdf fa-7x"></i></center>
+                  </a>
+                </div>
+                <div class="col">
+                  <p style="text-align:center;"><br>
+                    ESTATUTOS REFORMADOS
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+          <div class="text-image parbase section">
+            <div>
+            <div>
+              <div class="col">
+                <a href="assets/POLITICAS_ADMINISTRATIVAS.pdf">
+                  <center><i class="fas fa-file-pdf fa-7x"></i></center>
+                </a>
+              </div>
+              <div class="col">
+                <p style="text-align:center;"><br>
+                  POLITICAS ADMINISTRATIVAS
+                </p>
+              </div>
+            </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="col-sm">
+          <div class="text-image parbase section">
+            <div>
+            <div>
+              <div class="col">
+                <a href="ddsm.php">
+                  <center><i class="fas fa-folder-open fa-7x"></i></center>
+                </a>
+              </div>
+              <div class="col">
+                <p style="text-align:center;"><br>
+                  MATERIALES DDSM
+                </p>
+              </div>
+            </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="row"><br></div>
       </div>
     </div>
   </div>

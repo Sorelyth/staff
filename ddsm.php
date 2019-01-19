@@ -63,16 +63,7 @@
         <a href="index.php">Inicio</a>
       </li>
       <li id="top-menu-1" class="top-menu-item">
-        <a href="material.php">Materiales DDSM</a>
-      </li>
-      <li id="top-menu-2" class="top-menu-item">
-        <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
-      </li>
-      <li id="top-menu-3" class="top-menu-item">
-        <a href="informe.php">Informes</a>
-      </li>
-      <li id="top-menu-4" class="top-menu-item">
-        <a href="transferencia.php">Reporte de transferencias</a>
+        <a href="recursos.php">Recursos</a>
       </li>
     </ul>
   </div>
@@ -288,11 +279,13 @@
         ©1994-2018 Cru. All Rights Reserved.
       </span>
     </div>
-  <div class="tc">
-    <a href="https://www.facebook.com/crulac" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
-    <a href="https://www.instagram.com/cru_lac" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
-    <a href="https://twitter.com/Cru_LAC" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-twitter"></a>
-  </div>
+    <div class="tc">
+      <a href="https://www.facebook.com/CruVPC/" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
+      <a href="https://www.instagram.com/cru.colombia" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
+      <a href="ops.colombia@cru.org" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa fa-envelope"></a>
+      <a href="+57%203184447781" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-whatsapp"></a>
+      <a href="tel:" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fas fa-mobile-alt"></a>
+    </div>
   </div>
   </div>
 </footer>

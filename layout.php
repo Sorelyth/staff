@@ -9,7 +9,7 @@
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Informes</title>
+  <title>Layout</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -64,10 +64,10 @@
         <a href="index.php">Inicio</a>
       </li>
       <li id="top-menu-1" class="top-menu-item">
-        <a href="material.php">Materiales DDSM</a>
+        <a href="recursos.php">Recursos</a>
       </li>
       <li id="top-menu-2" class="top-menu-item">
-        <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
+        <a href="assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
       </li>
       <li id="top-menu-3" class="top-menu-item">
         <a href="informe.php">Informes</a>
@@ -88,74 +88,6 @@
           <h2 style="text-align:center;">
             <br>¿Qué vas a hacer hoy?
           </h2>
-          <br>
-        </div>
-      </div>
-
-
-      <div class="col-sm-12 integrity-opener">
-        <div class="row">
-
-          <?php if(isAdmin($_SESSION['idusuario'])){ ?>
-
-          <div class="col-sm-4">
-            <div class="text-image parbase section">
-              <div>
-              <div>
-                <div class="col">
-                  <a href="buscar_informes.php">
-                    <center><i class="fas fa-search fa-7x"></i></center>
-                  </a>
-                </div>
-                <div class="col">
-                  <p style="text-align:center;"><br>
-                    BUSCAR INFORMES
-                  </p>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-        <?php } ?>
-          <div class="col-sm-4">
-            <div class="text-image parbase section">
-              <div>
-              <div>
-                <div class="col">
-                  <a href="informe_nuevo.php">
-                    <center><i class="fas fa-calendar-plus fa-7x"></i></center>
-                  </a>
-                </div>
-                <div class="col">
-                  <p style="text-align:center;"><br>
-                    CREAR INFORME
-                  </p>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-4">
-            <div class="text-image parbase section">
-              <div>
-              <div>
-                <div class="col">
-                  <a href="">
-                    <center><i class="fas fa-eye fa-7x"></i></center>
-                  </a>
-                </div>
-                <div class="col">
-                  <p style="text-align:center;"><br>
-                    VER INFORMES<br>ANTIGUOS
-                  </p>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
           <br>
         </div>
       </div>
@@ -180,9 +112,11 @@
       </span>
     </div>
   <div class="tc">
-    <a href="https://www.facebook.com/crulac" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
-    <a href="https://www.instagram.com/cru_lac" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
-    <a href="https://twitter.com/Cru_LAC" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-twitter"></a>
+    <a href="https://www.facebook.com/CruVPC/" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
+    <a href="https://www.instagram.com/cru.colombia" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
+    <a href="ops.colombia@cru.org" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa fa-envelope"></a>
+    <a href="+57%203184447781" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-whatsapp"></a>
+    <a href="tel:" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fas fa-mobile-alt"></a>
   </div>
   </div>
   </div>
