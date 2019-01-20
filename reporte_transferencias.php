@@ -48,7 +48,7 @@
   <div class="cru-container">
     <ul>
       <li id="top-menu-0" class="top-menu-item">
-        <a href="material.php">Materiales DDSM</a>
+        <a href="recursos.php">Recursos</a>
       </li>
       <li id="top-menu-1" class="top-menu-item">
         <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
