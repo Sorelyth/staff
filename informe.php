@@ -9,7 +9,7 @@
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Informes</title>
+  <title>Informes | Cru</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -76,7 +76,43 @@
         <a href="reporte_transferencias.php">Reporte de transferencias</a>
       </li>
     </ul>
+    <a href="#" class="icon icon-search search search-toggle"></a>
   </div>
+</div>
+<div id="cru-mobile-menu">
+  <ul class="first-level">
+    <li class="search"><a href=""><span class="mobile-menu-label">Search</span><span class="icon"></span></a></li>
+    <li class="has-children">
+      <a href="index.php">
+        <span class="mobile-menu-label">Inicio</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <li class="has-children">
+      <a href="recursos.php">
+        <span class="mobile-menu-label">Recursos</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <li class="has-children">
+      <a href="assets/Manual_de_identidad.pdf">
+        <span class="mobile-menu-label">Manual de identidad corporativa</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <li class="has-children">
+      <a href="informes.php">
+        <span class="mobile-menu-label">Informes</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <li class="has-children">
+      <a href="reporte_transferencias.php">
+        <span class="mobile-menu-label">Reporte de transferencias</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+  </ul>
 </div>
 </section>
 

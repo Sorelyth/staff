@@ -9,7 +9,7 @@
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Informes antiguos</title>
+  <title>Informes antiguos | Cru</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -75,7 +75,39 @@
         <a href="informes_antiguos.php">Ver informes antiguos</a>
       </li>
     </ul>
+    <a href="#" class="icon icon-search search search-toggle"></a>
   </div>
+</div>
+<div id="cru-mobile-menu">
+  <ul class="first-level">
+    <li class="search"><a href=""><span class="mobile-menu-label">Search</span><span class="icon"></span></a></li>
+    <li class="has-children">
+      <a href="index.php">
+        <span class="mobile-menu-label">Inicio</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <?php if(isAdmin($_SESSION['idusuario'])){ ?>
+    <li class="has-children">
+      <a href="buscar_informes.php">
+        <span class="mobile-menu-label">Buscar informes</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <?php } ?>
+    <li class="has-children">
+      <a href="informe_nuevo.php">
+        <span class="mobile-menu-label">Crear informe</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <li class="has-children">
+      <a href="informes_antiguos.php">
+        <span class="mobile-menu-label">Ver informes antiguos</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+  </ul>
 </div>
 </section>
 

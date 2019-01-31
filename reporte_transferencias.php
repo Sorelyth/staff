@@ -10,7 +10,7 @@
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Reporte de transferencias</title>
+  <title>Reporte de transferencias | Cru</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -47,14 +47,24 @@
 <div id="cru-nav" class="visible-sm-up">
   <div class="cru-container">
     <ul>
+<<<<<<< HEAD
 	<li id="top-menu-0" class="top-menu-item">
 		<a href="index.php">Inicio</a>
 	</li>
+=======
+      <li id="top-menu-0" class="top-menu-item">
+        <a href="index.php">Inicio</a>
+      </li>
+>>>>>>> ecc9d1aebe6896e22a83168003372973f854b124
       <li id="top-menu-1" class="top-menu-item">
         <a href="recursos.php">Recursos</a>
       </li>
       <li id="top-menu-2" class="top-menu-item">
+<<<<<<< HEAD
         <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
+=======
+        <a href="assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
+>>>>>>> ecc9d1aebe6896e22a83168003372973f854b124
       </li>
       <li id="top-menu-3" class="top-menu-item">
         <a href="informe.php">Informes</a>
@@ -63,7 +73,43 @@
         <a href="reporte_transferencias.php">Reporte de transferencias</a>
       </li>
     </ul>
+    <a href="#" class="icon icon-search search search-toggle"></a>
   </div>
+</div>
+<div id="cru-mobile-menu">
+  <ul class="first-level">
+    <li class="search"><a href=""><span class="mobile-menu-label">Search</span><span class="icon"></span></a></li>
+    <li class="has-children">
+      <a href="index.php">
+        <span class="mobile-menu-label">Inicio</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <li class="has-children">
+      <a href="recursos.php">
+        <span class="mobile-menu-label">Recursos</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <li class="has-children">
+      <a href="assets/Manual_de_identidad.pdf">
+        <span class="mobile-menu-label">Manual de identidad corporativa</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <li class="has-children">
+      <a href="informes.php">
+        <span class="mobile-menu-label">Informes</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <li class="has-children">
+      <a href="reporte_transferencias.php">
+        <span class="mobile-menu-label">Reporte de transferencias</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+  </ul>
 </div>
 </section>
 
@@ -176,9 +222,11 @@ toValidate1.change(function () {
       </span>
     </div>
   <div class="tc">
-    <a href="https://www.facebook.com/crulac" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
-    <a href="https://www.instagram.com/crulac" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
-    <a href="https://twitter.com/Cru_LAC" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-twitter"></a>
+    <a href="https://www.facebook.com/CruVPC/" target="_blank" class="br-pill bg-cru-scorpion w2 pa2 fab fa-facebook"></a>
+    <a href="https://www.instagram.com/cru.colombia" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-instagram"></a>
+    <a href="ops.colombia@cru.org" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa fa-envelope"></a>
+    <a href="+57%203184447781" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fab fa-whatsapp"></a>
+    <a href="tel:" target="_blank" class="br-pill bg-cru-scorpion ml2 w2 pa2 fas fa-mobile-alt"></a>
   </div>
   </div>
   </div>

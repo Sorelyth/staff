@@ -10,7 +10,7 @@
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title>Materiales DDSM</title>
+  <title>Materiales DDSM | Cru</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -66,7 +66,25 @@
         <a href="recursos.php">Recursos</a>
       </li>
     </ul>
+    <a href="#" class="icon icon-search search search-toggle"></a>
   </div>
+</div>
+<div id="cru-mobile-menu">
+  <ul class="first-level">
+    <li class="search"><a href=""><span class="mobile-menu-label">Search</span><span class="icon"></span></a></li>
+    <li class="has-children">
+      <a href="index.php">
+        <span class="mobile-menu-label">Inicio</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+    <li class="has-children">
+      <a href="recursos.php">
+        <span class="mobile-menu-label">Recursos</span>
+        <span class="icon"></span>
+      </a>
+    </li>
+  </ul>
 </div>
 </section>
 
