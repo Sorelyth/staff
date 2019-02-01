@@ -75,7 +75,6 @@
         <a href="reporte_transferencias.php">Reporte de transferencias</a>
       </li>
     </ul>
-    <a href="#" class="icon icon-search search search-toggle"></a>
   </div>
 </div>
 <div id="cru-mobile-menu">

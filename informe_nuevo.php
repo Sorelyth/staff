@@ -75,7 +75,6 @@
         <a href="informes_antiguos.php">Ver informes antiguos</a>
       </li>
     </ul>
-    <a href="#" class="icon icon-search search search-toggle"></a>
   </div>
 </div>
 <div id="cru-mobile-menu">
@@ -120,7 +119,7 @@
           <br>
         </div>
         <br>
-        <form method="post" action="">
+        <form method="post" action="informe.php" onsubmit="return nuevoinforme();">
           <input type="number" id="idinforme" hidden>
           <div class="form-group row">
           <label for="idmes" class="col-sm-3 col-form-label"><i class="fas fa-calendar"></i> Mes y año del informe </label>
@@ -211,9 +210,9 @@
 
           <div class="form-group row">
             <label for="pregunta4" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Este mes fue un tiempo concentrado de DDSM?</p></label>
-            <select class="col-sm-1" id="pregunta4" name="pregunta4" required><option value=""></option>
-              <option value="Si" onclick="tiempoconcentrado(1);">Sí</option>
-              <option value="No" onclick="tiempoconcentrado(2);">No</option>
+            <select class="col-sm-1" id="pregunta4" name="pregunta4" onchange="tiempoconcentrado(this.value);" required><option value=""></option>
+              <option value="1">Sí</option>
+              <option value="2">No</option>
             </select>
           </div>
 
@@ -277,10 +276,10 @@
                       <div class="modal-body">
                         <div class="form-group row">
                         <label for="discipulo_name" class="col-sm-1 col-form-label"><i class="fas fa-address-book"></i> Nombre</label>
-                          <input type="text" class="col-sm-2 form-control" id="discipulo_name" name="discipulo_name" required>
+                          <input type="text" class="col-sm-2 form-control" id="discipulo_name" name="discipulo_name">
                           <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                           <label for="discipulo_lastname" class="col-sm-1 col-form-label"><i class="fas fa-address-book"></i> Apellidos</label>
-                          <input type="text" class="col-sm-3 form-control" id="discipulo_lastname" name="discipulo_lastname" required>
+                          <input type="text" class="col-sm-3 form-control" id="discipulo_lastname" name="discipulo_lastname">
                         </div>
                         <div class="row" style="text-align:center;">
                           <div class="col-sm-3"></div>
@@ -338,7 +337,7 @@
                 <input type="file" class="col-sm-4" id="seguridadsocial" name="seguridadsocial">
             </div>
 
-            <center><button type="submit" class="btn btn-light btn-lg" onclick="nuevoinforme();" id="enviarinforme">Finalizar</button></center>
+            <center><button type="submit" class="btn btn-light btn-lg" id="enviarinforme">Finalizar</button></center>
             <br>
           </form>
           <br>
@@ -350,7 +349,7 @@
 <script>
 $("#enviarinforme").prop('disabled', true);
 
-var toValidate = $('#pregunta4,#pregunta5,#pregunta6,#pregunta7,#pregunta8,#pregunta9,#pregunta10,#pregunta11,#pregunta12,#pregunta13,#pregunta14,#pregunta15,#pregunta16,#pregunta17,#seguridadsocial,#cuentadecobro'),
+var toValidate = $('#idmes,#year,#pregunta4,#pregunta5,#pregunta6,#pregunta7,#pregunta8,#pregunta9,#pregunta10,#pregunta11,#pregunta12,#pregunta13,#pregunta14,#pregunta15,#pregunta16,#pregunta17,#cuentadecobro'),
     valid = false;
 toValidate.change(function () {
     if ($(this).val().length > 0) {

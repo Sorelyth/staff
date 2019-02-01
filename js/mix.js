@@ -106,6 +106,7 @@ function seleccionarcoach(idcoach){
 }
 
 function tiempoconcentrado(respuesta){
+  //alert(respuesta);
   var div_pregunta = document.getElementById("div_pregunta5");
   if(respuesta==1){
     div_pregunta.innerHTML='<div class="form-group row">'+
@@ -157,22 +158,28 @@ function nuevodiscipulo(){
   });
 }
 function nuevoinforme(){
-  var mes = document.getElementById("idmes").value;
-  var year = document.getElementById("year").value;
-  $.ajax({
-    type: "post",
-    dataType: "html",
-    data: {accion: "crear_informe",mes:mes,year:year},
-    url: "ajax_requests.php",
-    cache: false,
-    // beforeSend: function() {
-    //    $('#res3').html('loading please wait...');
-    // },
-    success: function(response) {
-      $("#idinforme").val(response);
-    }
-  });
-  if(confirm("¿Seguro de guardar este informe?")){seguircreacion();}
+  if(confirm("¿Seguro de guardar este informe?")){
+    var mes = document.getElementById("idmes").value;
+    var year = document.getElementById("year").value;
+    $.ajax({
+      type: "post",
+      dataType: "html",
+      data: {accion: "crear_informe",mes:mes,year:year},
+      url: "ajax_requests.php",
+      cache: false,
+      // beforeSend: function() {
+      //    $('#res3').html('loading please wait...');
+      // },
+      success: function(response) {
+        //alert(response);
+        $("#idinforme").val(response);
+        seguircreacion();
+      }
+    });
+    return true;
+    //window.location.href="informe.php";
+  }
+  else{return false;}
 }
 function seguircreacion(){
   var idinforme = document.getElementById("idinforme").value;
@@ -275,7 +282,7 @@ function seguircreacion(){
           //alert(response);
         }
       });
-      if(i==numerodediscipulos){ alert("Informe guardado satisfactoriamente.");window.location.href="informe.php"}
+      if(i==numerodediscipulos){ alert("Informe guardado satisfactoriamente.");}
     }
   }
 }

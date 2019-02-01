@@ -47,24 +47,18 @@
 <div id="cru-nav" class="visible-sm-up">
   <div class="cru-container">
     <ul>
-<<<<<<< HEAD
-	<li id="top-menu-0" class="top-menu-item">
-		<a href="index.php">Inicio</a>
-	</li>
-=======
+
       <li id="top-menu-0" class="top-menu-item">
         <a href="index.php">Inicio</a>
       </li>
->>>>>>> ecc9d1aebe6896e22a83168003372973f854b124
+
       <li id="top-menu-1" class="top-menu-item">
         <a href="recursos.php">Recursos</a>
       </li>
       <li id="top-menu-2" class="top-menu-item">
-<<<<<<< HEAD
-        <a href="pdf_viewer/web/viewer.html?file=%2Fstaff/assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
-=======
+
         <a href="assets/Manual_de_identidad.pdf">Manual de identidad corporativa</a>
->>>>>>> ecc9d1aebe6896e22a83168003372973f854b124
+
       </li>
       <li id="top-menu-3" class="top-menu-item">
         <a href="informe.php">Informes</a>
@@ -73,7 +67,6 @@
         <a href="reporte_transferencias.php">Reporte de transferencias</a>
       </li>
     </ul>
-    <a href="#" class="icon icon-search search search-toggle"></a>
   </div>
 </div>
 <div id="cru-mobile-menu">

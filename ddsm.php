@@ -66,7 +66,6 @@
         <a href="recursos.php">Recursos</a>
       </li>
     </ul>
-    <a href="#" class="icon icon-search search search-toggle"></a>
   </div>
 </div>
 <div id="cru-mobile-menu">

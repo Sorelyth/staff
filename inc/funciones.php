@@ -571,7 +571,7 @@ function cuantosDiscipulos($idusuario){
 }
 //---------------
 function selectFase($iddiscipulo){
-  echo '<select class="col-sm-2" name="fase_'.$iddiscipulo.'" id="fase_'.$iddiscipulo.'" required><option value="0" selected> </option>';
+  echo '<select class="col-sm-2" name="fase_'.$iddiscipulo.'" id="fase_'.$iddiscipulo.'" required><option value="0"> </option>';
   echo '<option value=1> Conectar </option>';
   echo '<option value=2> Experimentar </option>';
   echo '<option value=3> Comprometer </option>';
@@ -597,7 +597,7 @@ function tablaDiscipulosInformes($idusuario){
     echo '<label for="fase_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;">Fase</label>';
     echo selectFase($iddiscipulo);
     echo '<label for="historia_'.$iddiscipulo.'" class="col-sm-2" style="font-weight:bold;">Historia  de guerra con esta persona en este mes</label>';
-    echo '<input class="col-sm-3" type="text" name="historia_'.$iddiscipulo.'" id="historia_'.$iddiscipulo.'">';
+    echo '<textarea class="col-sm-3" name="historia_'.$iddiscipulo.'" id="historia_'.$iddiscipulo.'"></textarea>';
     echo '</div>';
     $k++;
   }
