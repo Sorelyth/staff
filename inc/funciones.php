@@ -731,6 +731,35 @@ function llenarInformeUltimo($idinforme,$iddiscipulo,$respuesta2,$respuesta3,$re
   return true;
 }
 //-----------------------
+function subirAdjuntosInforme($idusuario,$idinforme){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $cuentadecobro_dir = '../attachments/cuentasdecobro/';
+  $cuentadecobro_filename = basename($_FILES['cuentadecobro']['name']);
+  //$cuentadecobro_filename = $idusuario.'_'.$idinforme.'_cuentadecobro';
+  // $sentencia="INSERT INTO informes_text_content (id_informe,respuesta) VALUES(".$idinforme.",'".$cuentadecobro_dir.$cuentadecobro_filename."')";
+  // $res = mysqli_query($mysqli, $sentencia);
+  // //echo $sentencia;
+  // if (mysqli_connect_errno()) {
+  //     printf("Connect failed: %s\n", mysqli_connect_error());
+  //     exit();
+  // }
+  // if (!$res) {
+  //   echo $sentencia;
+  //   printf("Error: %s\n", mysqli_error($mysqli));
+  // }
+  if(!empty($_FILES['seguridadsocial']['name'])){
+    $seguridadsocial_dir = '../attachments/seguridadsocial/';
+    $seguridadsocial_filename = $idusuario.'_'.$idinforme.'_seguridadsocial';
+    move_uploaded_file($_FILES['seguridadsocial']['tmp_name'], $seguridadsocial_dir.$seguridadsocial_filename);
+  }
+  if (move_uploaded_file($_FILES['cuentadecobro']['tmp_name'], $cuentadecobro_dir.$cuentadecobro_filename)) {
+    return "si";
+  } else {
+    return printf("error: %s",$_FILES['cuentadecobro']['error']);
+  }
+}
+//-----------------------
 function informeDiscipulos($idinforme,$iddiscipulo,$fase,$historia,$idusuario){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);

@@ -119,7 +119,7 @@
           <br>
         </div>
         <br>
-        <form method="post" action="informe.php" onsubmit="return nuevoinforme();">
+        <form method="post" action="informe.php" onsubmit="return nuevoinforme();" enctype="multipart/form-data">
           <input type="number" id="idinforme" hidden>
           <div class="form-group row">
           <label for="idmes" class="col-sm-3 col-form-label"><i class="fas fa-calendar"></i> Mes y año del informe </label>
@@ -329,12 +329,14 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label" for="cuentadecobro"><h4 style="font-weight:bold;"><i class="fas fa-file-invoice-dollar"></i>Subir cuenta de cobro</h4></label>
-                <input type="file" class="col-sm-4" id="cuentadecobro" name="cuentadecobro" required>
+                <label class="col-sm-3 col-form-label" for="cuentadecobro"><h4 style="font-weight:bold;"><i class="fas fa-file-invoice-dollar fa-2x"></i> Subir cuenta de cobro: </h4>
+                <small class="form-text text-muted">Sólo puede ser un archivo PDF</small></label>
+                <input type="file" class="col-sm-4" id="cuentadecobro" name="cuentadecobro"  accept="application/pdf" required>
             </div>
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label" for="seguridadsocial"><h4 style="font-weight:bold;"><i class="fas fa-clipboard"></i>Subir planilla de seguridad social</h4></label>
-                <input type="file" class="col-sm-4" id="seguridadsocial" name="seguridadsocial">
+                <label class="col-sm-3 col-form-label" for="seguridadsocial"><h4 style="font-weight:bold;"><i class="fas fa-clipboard fa-2x"></i> Subir planilla de seguridad social: </h4>
+                <small class="form-text text-muted">Súbelo sólo si eres cotizante. Sólo puede ser un archivo PDF</small></label>
+                <input type="file" class="col-sm-4" id="seguridadsocial" name="seguridadsocial" accept="application/pdf">
             </div>
 
             <center><button type="submit" class="btn btn-light btn-lg" id="enviarinforme">Finalizar</button></center>

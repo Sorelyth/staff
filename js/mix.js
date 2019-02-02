@@ -258,6 +258,19 @@ function seguircreacion(){
         //alert(idinforme);
       }
     });
+    $.ajax({
+      type: "post",
+      dataType: "html",
+      data: {accion: "subir_adjuntos_informe",idinforme:idinforme},
+      url: "ajax_requests.php",
+      cache: false,
+      // beforeSend: function() {
+      //    $('#res3').html('loading please wait...');
+      // },
+      success: function(response) {
+        //alert(response);
+      }
+    });
     var numerodediscipulos = document.getElementById("cuantosdiscipulos").value;
     //alert(numerodediscipulos);
     var i;
