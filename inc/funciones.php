@@ -824,7 +824,7 @@ function buscarInformesMes($mes,$year){
   if(mysqli_stmt_num_rows($result)>0){
     $html_ret = '<h3 style="font-weight: bold;"><center>';
     $html_ret .= ''.getMes($mes).' de '.$year.'';
-    $htnl_ret .= '</center></h3>';
+    $html_ret .= '</center></h3>';
     while(mysqli_stmt_fetch($result)){
       $html_ret .= '<div class="row">';
       $html_ret .= '<div class="col-sm-2">';
@@ -857,7 +857,7 @@ function buscarInformesPersonaMes($idpersona,$mes,$year){
   if(mysqli_stmt_num_rows($result)>0){
     $html_ret = '<h3 style="font-weight: bold;"><center>';
     $html_ret .= ''.getMes($mes).' de '.$year.'';
-    $htnl_ret .= '</center></h3>';
+    $htl_ret .= '</center></h3>';
     while(mysqli_stmt_fetch($result)){
       $html_ret .= '<div class="row">';
       $html_ret .= '<div class="col-sm-4">';
