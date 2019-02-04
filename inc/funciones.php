@@ -828,8 +828,9 @@ function buscarInformesMes($mes,$year){
     while(mysqli_stmt_fetch($result)){
       $html_ret .= '<div class="row">';
       $html_ret .= '<div class="col-sm-2" style="font-weight: bold; text-align:right;">';
-      $nombre = getNombreyApellido($idpersona);
-      $html_ret .= ' '.$nombre.' ';
+      $nombre = getNombre($idpersona);
+      $apellidos = getApellidos($idpersona);
+      $html_ret .= ' '.$nombre.' '.$apellidos.' ';
       $html_ret .= '</div>';
       //$html_ret .= '<div class="col-sm-1"></div>';
       $html_ret .= '<div class="col-sm-1">';
