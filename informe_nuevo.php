@@ -331,7 +331,7 @@
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label" for="cuentadecobro"><h4 style="font-weight:bold;"><i class="fas fa-file-invoice-dollar fa-2x"></i> Subir cuenta de cobro: </h4>
                 <small class="form-text text-muted">Sólo puede ser un archivo PDF</small></label>
-                <input type="file" class="col-sm-4" id="cuentadecobro" name="cuentadecobro"  accept="application/pdf" required>
+                <input type="file" class="col-sm-4" id="cuentadecobro" name="cuentadecobro"  accept="application/pdf">
             </div>
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label" for="seguridadsocial"><h4 style="font-weight:bold;"><i class="fas fa-clipboard fa-2x"></i> Subir planilla de seguridad social: </h4>
