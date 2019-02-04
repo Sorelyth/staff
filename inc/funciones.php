@@ -794,7 +794,7 @@ function buscarInformesPersona($idpersona){
     $html_ret .='</center></h3>';
     while(mysqli_stmt_fetch($result)){
       $html_ret .= '<div class="row">';
-      $html_ret .= '<div class="col-sm-2" style="font-weight: bold;">';
+      $html_ret .= '<div class="col-sm-2" style="font-weight: bold; text-align:right;">';
       $html_ret .= ' '.getMes($idmes).' de '.$year;
       $html_ret .= '</div>';
       //$html_ret .= '<div class="col-sm-1"></div>';
@@ -827,7 +827,7 @@ function buscarInformesMes($mes,$year){
     $html_ret .= '</center></h3>';
     while(mysqli_stmt_fetch($result)){
       $html_ret .= '<div class="row">';
-      $html_ret .= '<div class="col-sm-2">';
+      $html_ret .= '<div class="col-sm-2" style="font-weight: bold; text-align:right;">';
       $html_ret .= ' '.getNombreyApellido($idpersona).' ';
       $html_ret .= '</div>';
       //$html_ret .= '<div class="col-sm-1"></div>';
@@ -860,7 +860,7 @@ function buscarInformesPersonaMes($idpersona,$mes,$year){
     $htl_ret .= '</center></h3>';
     while(mysqli_stmt_fetch($result)){
       $html_ret .= '<div class="row">';
-      $html_ret .= '<div class="col-sm-2">';
+      $html_ret .= '<div class="col-sm-2" style="font-weight: bold; text-align:right;">';
       $html_ret .= ' '.getNombreyApellido($idpersona).' ';
       $html_ret .= '</div>';
       //$html_ret .= '<div class="col-sm-1"></div>';
