@@ -830,7 +830,7 @@ function buscarInformesMes($mes,$year){
       $html_ret .= '</div>';
       $html_ret .= '<div class="col-sm-1"></div>';
       $html_ret .= '<div class="col-sm-1">';
-      $html_ret .= '<button class="btn btn-light" onclick="mostrarinforme('.$idpersona.','.$idinforme.')"><i class="fab fa-wpforms fa-2x></i>"</button>';
+      $html_ret .= '<button class="btn btn-light" onclick="mostrarinforme('.$idpersona.','.$idinforme.')"><i class="fab fa-wpforms fa-2x"></i></button>';
       $html_ret .= '</div></div><br>';
       $html_ret .= nl2br("\n");
     }
