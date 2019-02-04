@@ -735,8 +735,8 @@ function subirAdjuntosInforme($idusuario,$idinforme){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
   $cuentadecobro_dir = 'attachments/cuentasdecobro/';
-  $cuentadecobro_path = $cuentadecobro_dir.basename($_FILES['cuentadecobro']['name']);
-  chmod($cuentadecobro_dir, 0755);
+  $cuentadecobro_path = basename($_FILES['cuentadecobro']['name']);
+  chmod($cuentadecobro_path, 0755);
   //$cuentadecobro_filename = $idusuario.'_'.$idinforme.'_cuentadecobro';
   // $sentencia="INSERT INTO informes_text_content (id_informe,respuesta) VALUES(".$idinforme.",'".$cuentadecobro_dir.$cuentadecobro_filename."')";
   // $res = mysqli_query($mysqli, $sentencia);
@@ -751,7 +751,7 @@ function subirAdjuntosInforme($idusuario,$idinforme){
   // }
   if(!empty($_FILES['seguridadsocial']['name'])){
     $seguridadsocial_dir = 'attachments/seguridadsocial/';
-    $seguridadsocial_path = $seguridadsocial_dir.$idusuario.'_'.$idinforme.'_seguridadsocial';
+    $seguridadsocial_path = $idusuario.'_'.$idinforme.'_seguridadsocial';
     chmod($seguridadsocial_path, 0755);
     move_uploaded_file($_FILES['seguridadsocial']['tmp_name'], $seguridadsocial_path);
   }
