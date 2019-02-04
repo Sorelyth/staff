@@ -800,7 +800,7 @@ function buscarInformesPersona($idpersona){
       //$html_ret .= '<div class="col-sm-1"></div>';
       $html_ret .= '<div class="col-sm-1">';
       $html_ret .= '<button class="btn btn-light" onclick="mostrarinforme('.$idpersona.','.$idinforme.')"><i class="fab fa-wpforms fa-2x"></i></button>';
-      $html_ret .= '</div></div>';
+      $html_ret .= '</div></div><br>';
       $html_ret .= nl2br("\n");
     }
     return $html_ret;
@@ -822,13 +822,15 @@ function buscarInformesMes($mes,$year){
   mysqli_stmt_store_result($result);
   mysqli_stmt_bind_result($result,$idinforme,$idpersona);
   if(mysqli_stmt_num_rows($result)>0){
-    $html_ret = '<h4><strong><center>'.getMes($mes).' de '.$year.'</center></strong></h4>';
+    $html_ret = '<h3 style="font-weight: bold;"><center>';
+    $html_ret .= ''.getMes($mes).' de '.$year.'';
+    $htnl_ret .= '</center></h3>';
     while(mysqli_stmt_fetch($result)){
       $html_ret .= '<div class="row">';
-      $html_ret .= '<div class="col-sm-4">';
+      $html_ret .= '<div class="col-sm-2">';
       $html_ret .= ' '.getNombreyApellido($idpersona).' ';
       $html_ret .= '</div>';
-      $html_ret .= '<div class="col-sm-1"></div>';
+      //$html_ret .= '<div class="col-sm-1"></div>';
       $html_ret .= '<div class="col-sm-1">';
       $html_ret .= '<button class="btn btn-light" onclick="mostrarinforme('.$idpersona.','.$idinforme.')"><i class="fab fa-wpforms fa-2x"></i></button>';
       $html_ret .= '</div></div><br>';
@@ -853,16 +855,18 @@ function buscarInformesPersonaMes($idpersona,$mes,$year){
   mysqli_stmt_store_result($result);
   mysqli_stmt_bind_result($result,$idinforme);
   if(mysqli_stmt_num_rows($result)>0){
-    $html_ret = '<h4><strong><center>'.getMes($idmes).' de '.$year.'</center></strong></h4>';
+    $html_ret = '<h3 style="font-weight: bold;"><center>';
+    $html_ret .= ''.getMes($mes).' de '.$year.'';
+    $htnl_ret .= '</center></h3>';
     while(mysqli_stmt_fetch($result)){
       $html_ret .= '<div class="row">';
       $html_ret .= '<div class="col-sm-4">';
       $html_ret .= ' '.getNombreyApellido($idpersona).' ';
       $html_ret .= '</div>';
-      $html_ret .= '<div class="col-sm-1"></div>';
+      //$html_ret .= '<div class="col-sm-1"></div>';
       $html_ret .= '<div class="col-sm-1">';
-      $html_ret .= '<button class="btn btn-light" onclick="mostrarinforme('.$idpersona.','.$idinforme.')"><i class="fab fa-wpforms fa-2x></i>"</button>';
-      $html_ret .= '</div></div>';
+      $html_ret .= '<button class="btn btn-light" onclick="mostrarinforme('.$idpersona.','.$idinforme.')"><i class="fab fa-wpforms fa-2x"></i></button>';
+      $html_ret .= '</div></div><br>';
       $html_ret .= nl2br("\n");
     }
     return $html_ret;
