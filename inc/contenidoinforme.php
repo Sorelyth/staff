@@ -71,10 +71,10 @@ function contenidoInforme($idinforme){
   echo '<div class="form-group row"><label for="pregunta4" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Este mes fue un tiempo concentrado de DDSM?</p></label>';
   echo '<p class="col-sm-1" id="pregunta4">'.$respuestas[3].'</p></div>';
   echo nl2br("\n");
-  if($respuestas[3]=="Si"){echo '<label for="pregunta5" class="col-sm-3 col-form-label"><p style="font-weight:bold;">';
+  if($respuestas[3]==1){echo '<label for="pregunta5" class="col-sm-3 col-form-label"><p style="font-weight:bold;">';
   echo '¿Qué te enseñó Dios? ¿Cómo te ayudaron y ayudaste a tus líderes en el proceso del DDSM durante este mes?</p></label>';
   }
-  if($respuestas[3]=="No"){echo '<label for="pregunta5" class="col-sm-3 col-form-label"><p style="font-weight:bold;">';
+  if($respuestas[3]==2){echo '<label for="pregunta5" class="col-sm-3 col-form-label"><p style="font-weight:bold;">';
   echo '¿Qué te enseñó Dios? ¿Qué acciones tomaste con tu equipo ';
   echo 'relacionadas con la consecución de nuevos socios personales y de ciudad? ¿Cuantas citas de desafío a nuevos ';
   echo 'socios tuviste este mes? ¿Qué acciones tuviste con tus actuales socios que comunicaron, ';

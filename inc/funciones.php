@@ -643,8 +643,8 @@ function mostrarTablaDiscipulos($idusuario,$idinforme){
     echo '<label for="fase_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;"> Fase: </label>';
     echo getFaseeHistoria($idinforme,$iddiscipulo)[0];
     echo '</div>';
-    echo '<label for="historia_'.$iddiscipulo.'" class="col-sm-2" style="font-weight:bold;"> Historia  de guerra con esta persona en este mes:</label>';
-    echo '<p readonly class="col-sm-3" id="historia_'.$iddiscipulo.'">'.getFaseeHistoria($idinforme,$iddiscipulo)[1].'</p>';
+    echo '<label for="historia_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;"> Historia  de guerra con esta persona en este mes:</label>';
+    echo '<p readonly class="col-sm-2" id="historia_'.$iddiscipulo.'">'.getFaseeHistoria($idinforme,$iddiscipulo)[1].'</p>';
     $k++;
   }
   mysqli_stmt_close($stmt);
