@@ -5,9 +5,8 @@
   print_r($_FILES);
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-function mandar(event){
-  event.preventDefault();
+<script language="javascript">
+function mandar(){
 $.ajax({
   type: "post",
   dataType: "html",
