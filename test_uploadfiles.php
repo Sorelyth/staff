@@ -5,7 +5,7 @@
   print_r($_FILES);
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script language="javascript">
+<script type="text/javascript">
 function mandar(){
 $.ajax({
   type: "post",
