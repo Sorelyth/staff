@@ -1,6 +1,6 @@
 <?php
   include 'inc/funciones.php';
-  include 'attachments/cuentasdecobro/eso.php'
+  include 'attachments/cuentasdecobro/eso.php';
   session_start();
   print_r($_FILES);
 ?>
