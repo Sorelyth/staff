@@ -735,7 +735,7 @@ function subirAdjuntosInforme($idusuario,$idinforme){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
   $cuentadecobro_dir = "../attachments/cuentasdecobro/";
-  $cuentadecobro_path = $cuentadecobro_dir.basename($_FILES['cuentadecobro']['name']);
+  $cuentadecobro_path = $_FILES['cuentadecobro']['name'];
   //chmod($cuentadecobro_path, 777);
   if (move_uploaded_file($_FILES['cuentadecobro']['tmp_name'], $cuentadecobro_path)) {
     return "si";
