@@ -734,15 +734,16 @@ function llenarInformeUltimo($idinforme,$iddiscipulo,$respuesta2,$respuesta3,$re
 function subirAdjuntosInforme($idusuario,$idinforme){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
-  $cuentadecobro_dir = "../attachments/cuentasdecobro/";
-  $cuentadecobro_path = $_FILES['cuentadecobro']['name'];
+  $cuentadecobro_dir = "attachments/cuentasdecobro/";
+  $cuentadecobro_filename = $idusuario.'_'.$idinforme.'_cuentadecobro.pdf';
+  $cuentadecobro_path = $cuentadecobro_dir.$cuentadecobro_filename;
   //chmod($cuentadecobro_path, 777);
   if (move_uploaded_file($_FILES['cuentadecobro']['tmp_name'], $cuentadecobro_path)) {
     return "si";
   } else {
     return printf("error: %s",$_FILES['cuentadecobro']['error']);
   }
-  //$cuentadecobro_filename = $idusuario.'_'.$idinforme.'_cuentadecobro';
+
   // $sentencia="INSERT INTO informes_text_content (id_informe,respuesta) VALUES(".$idinforme.",'".$cuentadecobro_dir.$cuentadecobro_filename."')";
   // $res = mysqli_query($mysqli, $sentencia);
   // //echo $sentencia;
