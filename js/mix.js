@@ -467,19 +467,3 @@ function seleccionarsocio(idsocio,idtiposocio){
     }
   });
 }
-function mandar(){
-  $.ajax({
-    type: "post",
-    dataType: "html",
-    data: {accion: "subir_adjuntos_informe",idinforme:1},
-    url: "ajax_requests.php",
-    cache: false,
-    // beforeSend: function() {
-    //    $('#res3').html('loading please wait...');
-    // },
-    success: function(response) {
-      alert("lo hizo: "+response);
-    }
-  });
-  return true;
-}
