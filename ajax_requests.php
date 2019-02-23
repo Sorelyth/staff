@@ -11,12 +11,13 @@ if(isset($_POST['accion']) && !empty($_POST['accion'])){
     case 'nuevo_discipulo' : echo nuevoDiscipulo($_POST['nombre'],$_POST['apellidos'],$_SESSION['idusuario']);break;
     case 'crear_informe' : echo crearInforme($_SESSION['idusuario'],$_POST['mes'],$_POST['year']);break;
     case 'llenar_informe' : echo llenarInforme($_POST['idinforme'],$_POST['respuesta1'],$_POST['respuesta2'],$_POST['respuesta3'],$_POST['respuesta4']);break;
+    case 'llenar_pregunta_informe' : echo llenarPreguntaInforme($_POST['idinforme'],$_POST['respuesta']);break;
     case 'llenar_informe_ultimo' : echo llenarInformeUltimo($_POST['idinforme'],$_POST['respuesta1'],$_POST['respuesta2'],$_POST['respuesta3'],$_POST['respuesta4'],$_POST['respuesta5']);break;
     case 'subir_adjuntos_informe' : echo subirAdjuntosInforme($_SESSION['idusuario'],$_POST['idinforme']);break;
     case 'informe_discipulos' : echo informeDiscipulos($_POST['idinforme'],$_POST['iddiscipulo'],$_POST['fase'],$_POST['historia'],$_SESSION['idusuario']);break;
     case 'contenido_informe' : echo contenidoInforme($_POST['idinforme']); break;
     case 'buscar_persona' : echo buscarPersona($_POST['buscar']);break;
-    case 'seleccion_persona' : echo getNombreyApellido($_POST['idpersona']);break;
+    case 'seleccion_persona' : getNombreyApellido($_POST['idpersona']);break;
     case 'buscar_informes_persona' : echo buscarInformesPersona($_POST['idpersona']);break;
     case 'buscar_informes_mes' : echo buscarInformesMes($_POST['mes'],$_POST['year']);break;
     case 'buscar_informes_persona_mes' : echo buscarInformesPersonaMes($_POST['idpersona'],$_POST['mes'],$_POST['year']);break;

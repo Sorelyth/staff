@@ -10,7 +10,7 @@
 <html lang="es">
 <head>
   <link rel="shortcut icon" href="img/icono.png">
-  <title><?php echo getNombreyApellido($_POST['idusuario']); ?></title>
+  <title><?php getNombreyApellido($_POST['idpersona']); ?></title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">

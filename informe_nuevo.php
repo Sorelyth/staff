@@ -4,6 +4,35 @@
   include 'inc/funciones.php';
   if(!isset($_SESSION['idusuario'])){ header('Location: login.php');}
   if(isset($_POST['out'])){session_destroy();header('Location: login.php');}
+  if(isset($_POST['enviarinforme'])){
+    $idinforme = crearInforme($_SESSION['idusuario'],$_POST['idmes'],$_POST['year']);
+    if($idinforme==0){
+      echo "<script>alert('Error: El informe del mes y año seleccionados ya existe.')</script>";
+    }
+    else{
+      $numerodediscipulos = $_POST["cuantosdiscipulos"];
+      for($j=1;$j<=$numerodediscipulos;$j++){
+        $var_iddiscipulo = "iddiscipulo_".$j;
+        $iddiscipulo = $_POST[$var_iddiscipulo];
+        $var_fase = "fase_".$iddiscipulo;
+        $fase = $_POST[$var_fase];
+        $var_historia = "historia_".$iddiscipulo;
+        $historia = $_POST[$var_historia];
+        informeDiscipulos($idinforme,$iddiscipulo,$fase,$historia,$_SESSION['idusuario']);
+      }
+
+      for ($i=1;$i<=17;$i++){
+        $pregunta = "pregunta".$i;
+        $respuesta = $_POST[$pregunta];
+        llenarPreguntaInforme($idinforme,$respuesta);
+      }
+      $subio = subirAdjuntosInforme($_SESSION['idusuario'],$idinforme);
+      //echo "<script>alert('".$subio."');</script>";
+      echo "<script>alert('Informe guardado satisfactoriamente');window.location.href='index.php';</script>";
+    //header("Location: index.php");
+  }
+  }
+  //print_r($_FILES);
 ?>
 <!doctype html>
 <html lang="es">
@@ -119,8 +148,8 @@
           <br>
         </div>
         <br>
-        <form method="post" action="informe.php" onsubmit="return nuevoinforme();" enctype="multipart/form-data">
-          <input type="number" id="idinforme" hidden>
+        <form method="post" action=""  enctype="multipart/form-data" id="formulario">
+          <input type="number" id="idinforme" name="idinforme" hidden>
           <div class="form-group row">
           <label for="idmes" class="col-sm-3 col-form-label"><i class="fas fa-calendar"></i> Mes y año del informe </label>
           <?php selectMes();?>
@@ -211,8 +240,8 @@
           <div class="form-group row">
             <label for="pregunta4" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Este mes fue un tiempo concentrado de DDSM?</p></label>
             <select class="col-sm-1" id="pregunta4" name="pregunta4" onchange="tiempoconcentrado(this.value);" required><option value=""></option>
-              <option value="1">Sí</option>
-              <option value="2">No</option>
+              <option value=1>Sí</option>
+              <option value=2>No</option>
             </select>
           </div>
 
@@ -285,7 +314,7 @@
                           <div class="col-sm-3"></div>
                           <button type="button" class="btn btn-secondary" onclick="cerrarmodaldiscipulo();">Cerrar</button>
                           <div class="col-sm-1"></div>
-                          <button type="button" class="btn btn-primary" onclick="nuevodiscipulo();">Guardar</button>
+                          <input type="submit" class="btn btn-primary" onclick="nuevodiscipulo();">Guardar</button>
                         </div>
                       </div>
                   </div>
@@ -330,16 +359,16 @@
 
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label" for="cuentadecobro"><h4 style="font-weight:bold;"><i class="fas fa-file-invoice-dollar fa-2x"></i> Subir cuenta de cobro: </h4>
-                <small class="form-text text-muted">Sólo puede ser un archivo PDF</small></label>
+                <small class="form-text text-muted">Sólo puede ser un archivo PDF que no pese más de 2MB.</small></label>
                 <input type="file" class="col-sm-4" id="cuentadecobro" name="cuentadecobro"  accept="application/pdf">
             </div>
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label" for="seguridadsocial"><h4 style="font-weight:bold;"><i class="fas fa-clipboard fa-2x"></i> Subir planilla de seguridad social: </h4>
-                <small class="form-text text-muted">Súbelo sólo si eres cotizante. Sólo puede ser un archivo PDF</small></label>
+                <small class="form-text text-muted">Súbelo sólo si eres cotizante. Sólo puede ser un archivo PDF que no pese más de 2MB</small></label>
                 <input type="file" class="col-sm-4" id="seguridadsocial" name="seguridadsocial" accept="application/pdf">
             </div>
 
-            <center><button type="submit" class="btn btn-light btn-lg" id="enviarinforme">Finalizar</button></center>
+            <center><button type="submit" class="btn btn-light btn-lg" id="enviarinforme" name="enviarinforme">Finalizar</button></center>
             <br>
           </form>
           <br>
@@ -347,7 +376,9 @@
       </div>
     </div>
 </section>
-
+<script>
+$("")
+</script>
 <script>
 $("#enviarinforme").prop('disabled', true);
 

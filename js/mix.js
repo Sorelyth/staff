@@ -151,7 +151,8 @@ function nuevodiscipulo(){
     // },
     success: function() {
         alert("Se ha guardado tu discípulo con éxito");
-       $("#agregardiscipuloModal").hide();
+        var modal = document.getElementById("discipulo_modal");
+        modal.style.display="none";
        $("#losdiscipulos").load(" #losdiscipulos");
 
     }
@@ -171,106 +172,41 @@ function nuevoinforme(){
       //    $('#res3').html('loading please wait...');
       // },
       success: function(response) {
-        //alert(response);
+        alert(response);
         $("#idinforme").val(response);
-        seguircreacion();
       }
     });
+    //var idinforme = document.getElementById("idinforme").value;
+    //alert(idinforme);
+    //seguircreacion(idinforme);
     return true;
-    //window.location.href="informe.php";
   }
-  else{return false;}
+  else {return false;}
 }
-function seguircreacion(){
-  var idinforme = document.getElementById("idinforme").value;
+
+function seguircreacion(idinforme){
+
   if(idinforme==0){alert("Error: el informe para el mes seleccionado ya existe");}
     else{
     //alert(idinforme);
-    var respuesta1 = document.getElementById("pregunta1").value;
-    var respuesta2 = document.getElementById("pregunta2").value;
-    var respuesta3 = document.getElementById("pregunta3").value;
-    var respuesta4 = document.getElementById("pregunta4").value;
-    var respuesta5 = document.getElementById("pregunta5").value;
-    var respuesta6 = document.getElementById("pregunta6").value;
-    var respuesta7 = document.getElementById("pregunta7").value;
-    var respuesta8 = document.getElementById("pregunta8").value;
-    var respuesta9 = document.getElementById("pregunta9").value;
-    var respuesta10 = document.getElementById("pregunta10").value;
-    var respuesta11 = document.getElementById("pregunta11").value;
-    var respuesta12 = document.getElementById("pregunta12").value;
-    var respuesta13 = document.getElementById("pregunta13").value;
-    var respuesta14 = document.getElementById("pregunta14").value;
-    var respuesta15 = document.getElementById("pregunta15").value;
-    var respuesta16 = document.getElementById("pregunta16").value;
-    var respuesta17 = document.getElementById("pregunta17").value;
-    $.ajax({
-      type: "post",
-      dataType: "html",
-      data: {accion: "llenar_informe",idinforme:idinforme,respuesta1:respuesta1,respuesta2:respuesta2,respuesta3:respuesta3,respuesta4:respuesta4},
-      url: "ajax_requests.php",
-      cache: false,
-      // beforeSend: function() {
-      //    $('#res3').html('loading please wait...');
-      // },
-      success: function(response) {
-        //alert(response);
-      }
-    });
-    $.ajax({
-      type: "post",
-      dataType: "html",
-      data: {accion: "llenar_informe",idinforme:idinforme,respuesta1:respuesta5,respuesta2:respuesta6,respuesta3:respuesta7,respuesta4:respuesta8},
-      url: "ajax_requests.php",
-      cache: false,
-      // beforeSend: function() {
-      //    $('#res3').html('loading please wait...');
-      // },
-      success: function() {
-        //alert(response);
-        //alert(idinforme);
-      }
-    });
-    $.ajax({
-      type: "post",
-      dataType: "html",
-      data: {accion: "llenar_informe",idinforme:idinforme,respuesta1:respuesta9,respuesta2:respuesta10,respuesta3:respuesta11,respuesta4:respuesta12},
-      url: "ajax_requests.php",
-      cache: false,
-      // beforeSend: function() {
-      //    $('#res3').html('loading please wait...');
-      // },
-      success: function() {
-        //alert(response);
-        //alert(idinforme);
-      }
-    });
-    $.ajax({
-      type: "post",
-      dataType: "html",
-      data: {accion: "llenar_informe_ultimo",idinforme:idinforme,respuesta1:respuesta13,respuesta2:respuesta14,respuesta3:respuesta15,respuesta4:respuesta16,respuesta5:respuesta17},
-      url: "ajax_requests.php",
-      cache: false,
-      // beforeSend: function() {
-      //    $('#res3').html('loading please wait...');
-      // },
-      success: function() {
-        //alert(response);
-        //alert(idinforme);
-      }
-    });
-    $.ajax({
-      type: "post",
-      dataType: "html",
-      data: {accion: "subir_adjuntos_informe",idinforme:idinforme},
-      url: "ajax_requests.php",
-      cache: false,
-      // beforeSend: function() {
-      //    $('#res3').html('loading please wait...');
-      // },
-      success: function(response) {
-        //alert(response);
-      }
-    });
+    for(i=1;i<18;i++){
+      var pregunta = "pregunta"+i;
+      var respuesta = document.getElementById(pregunta).value;
+      $.ajax({
+        type: "post",
+        dataType: "html",
+        data: {accion: "llenar_pregunta_informe",idinforme:idinforme,respuesta:respuesta},
+        url: "ajax_requests.php",
+        cache: false,
+        // beforeSend: function() {
+        //    $('#res3').html('loading please wait...');
+        // },
+        success: function(response) {
+          //alert(response);
+        }
+      });
+    }
+
     var numerodediscipulos = document.getElementById("cuantosdiscipulos").value;
     //alert(numerodediscipulos);
     var i;
@@ -285,7 +221,7 @@ function seguircreacion(){
       $.ajax({
         type: "post",
         dataType: "html",
-        data: {accion: "informe_discipulos",iddiscipulo:iddiscipulo,idinforme:idinforme,fase:fase,historia:historia},
+        data: {accion: "informe_discipulos",idinforme:idinforme,iddiscipulo:iddiscipulo,fase:fase,historia:historia},
         url: "ajax_requests.php",
         cache: false,
         // beforeSend: function() {
@@ -295,11 +231,10 @@ function seguircreacion(){
           //alert(response);
         }
       });
-      if(i==numerodediscipulos){ alert("Informe guardado satisfactoriamente.");}
+      if(i==numerodediscipulos){alert("Informe guardado satisfactoriamente.");return true;}
     }
   }
 }
-
 function logout(){
   post('index.php',{out:0});
 }

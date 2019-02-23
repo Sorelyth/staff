@@ -528,6 +528,12 @@ function UpdateInfoUsuario($id_user,$name,$lastname,$doc_id,$phone,$address,$idm
   header('Location: index.php');
 }
 //----
+function transformarSioNo($valor){
+  if($valor==2){$r='No';}
+  else{ $r='Sí';}
+  return $r;
+}
+//----
 function transformarbooleano($valor){
   if($valor==0){$r='No';}
   else{ $r='Sí';}
@@ -586,15 +592,15 @@ function tablaDiscipulosInformes($idusuario){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$iddiscipulo,$nombre,$apellidos);
-  echo '<input type="number" readonly id="cuantosdiscipulos" value='.cuantosDiscipulos($idusuario).' hidden>';
+  echo '<input type="number" readonly id="cuantosdiscipulos" name="cuantosdiscipulos" value='.cuantosDiscipulos($idusuario).' hidden>';
   $k=1;
   while(mysqli_stmt_fetch($stmt)){
     echo '<br>';
     echo '<div class="form-group row">';
-    echo '<input type="number" readonly id="iddiscipulo_'.$k.'" value='.$iddiscipulo.' hidden>';
+    echo '<input type="number" readonly id="iddiscipulo_'.$k.'" name="iddiscipulo_'.$k.'" value='.$iddiscipulo.' hidden>';
     echo '<label for="nombre_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;">Nombre y apellido</label>';
     echo '<input id="nombre_'.$iddiscipulo.'" name="nombre_'.$iddiscipulo.'" type="text" readonly class="col-sm-2" style="font-weight:bold;" value="'.$nombre.' '.$apellidos.'">';
-    echo '<label for="fase_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;">Fase</label>';
+    echo '<label for="fase_'.$iddiscipulo.'"  class="col-sm-1" style="font-weight:bold;">Fase</label>';
     echo selectFase($iddiscipulo);
     echo '<label for="historia_'.$iddiscipulo.'" class="col-sm-2" style="font-weight:bold;">Historia  de guerra con esta persona en este mes</label>';
     echo '<textarea class="col-sm-3" name="historia_'.$iddiscipulo.'" id="historia_'.$iddiscipulo.'"></textarea>';
@@ -632,19 +638,19 @@ function mostrarTablaDiscipulos($idusuario,$idinforme){
   mysqli_stmt_execute($stmt);
   mysqli_stmt_store_result($stmt);
   mysqli_stmt_bind_result($stmt,$iddiscipulo,$nombre,$apellidos);
-  echo '<input type="number" readonly id="cuantosdiscipulos" value='.cuantosDiscipulos($idusuario).' hidden>';
+  echo '<input type="number" readonly id="cuantosdiscipulos" name="cuantosdiscipulos" value='.cuantosDiscipulos($idusuario).' hidden>';
   $k=1;
   while(mysqli_stmt_fetch($stmt)){
     echo '<br>';
     echo '<div class="form-group row">';
     echo '<input type="number" readonly id="iddiscipulo_'.$k.'" value='.$iddiscipulo.' hidden>';
-    echo '<label for="nombre_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;">Nombre y apellido: </label>';
-    echo '<input id="nombre_'.$iddiscipulo.'" name="nombre_'.$iddiscipulo.'" type="text" readonly class="col-sm-2" style="font-weight:bold;" value="'.$nombre.' '.$apellidos.'">';
-    echo '<label for="fase_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;"> Fase: </label>';
-    echo getFaseeHistoria($idinforme,$iddiscipulo)[0];
+    echo '<div class="col-sm-2" style="font-weight:bold;">Nombre y apellido: ';
+    echo $nombre.' '.$apellidos.'</div>';
+    echo '<div class="col-sm-1" style="font-weight:bold;"> Fase: ';
+    echo getFaseeHistoria($idinforme,$iddiscipulo)[0].'</div>';
+    echo '<div class="col-sm-1" style="font-weight:bold;"> Historia  de guerra con esta persona en este mes:</div>';
+    echo '<textarea readonly class="col-sm-4" id="historia_'.$iddiscipulo.'">'.getFaseeHistoria($idinforme,$iddiscipulo)[1].'</textarea>';
     echo '</div>';
-    echo '<label for="historia_'.$iddiscipulo.'" class="col-sm-1" style="font-weight:bold;"> Historia  de guerra con esta persona en este mes:</label>';
-    echo '<p readonly class="col-sm-2" id="historia_'.$iddiscipulo.'">'.getFaseeHistoria($idinforme,$iddiscipulo)[1].'</p>';
     $k++;
   }
   mysqli_stmt_close($stmt);
@@ -697,7 +703,7 @@ function crearInforme($id_user,$mes,$year){
   }
 }
 //----------------
-function llenarInforme($idinforme,$iddiscipulo,$respuesta2,$respuesta3,$respuesta4){
+function llenarInforme($idinforme,$respuesta1,$respuesta2,$respuesta3,$respuesta4){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
   $sentencia="INSERT INTO informes_text_content (id_informe,respuesta) VALUES(".$idinforme.",'".$respuesta1."'), (".$idinforme.",'".$respuesta2."'),(".$idinforme.",'".$respuesta3."'),(".$idinforme.",'".$respuesta4."')";
@@ -714,7 +720,7 @@ function llenarInforme($idinforme,$iddiscipulo,$respuesta2,$respuesta3,$respuest
   return true;
 }
 //------
-function llenarInformeUltimo($idinforme,$iddiscipulo,$respuesta2,$respuesta3,$respuesta4,$respuesta5){
+function llenarInformeUltimo($idinforme,$respuesta1,$respuesta2,$respuesta3,$respuesta4,$respuesta5){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
   $sentencia="INSERT INTO informes_text_content (id_informe,respuesta) VALUES(".$idinforme.",'".$respuesta1."'), (".$idinforme.",'".$respuesta2."'),(".$idinforme.",'".$respuesta3."'),(".$idinforme.",'".$respuesta4."'),(".$idinforme.",'".$respuesta5."')";
@@ -731,17 +737,34 @@ function llenarInformeUltimo($idinforme,$iddiscipulo,$respuesta2,$respuesta3,$re
   return true;
 }
 //-----------------------
-function subirAdjuntosInforme($idusuario,$idinforme){
+function llenarPreguntaInforme($idinforme,$respuesta){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="INSERT INTO informes_text_content (id_informe,respuesta) VALUES(".$idinforme.",'".$respuesta."')";
+  $res = mysqli_query($mysqli, $sentencia);
+  //echo $sentencia;
+  if (mysqli_connect_errno()) {
+      printf("Connect failed: %s\n", mysqli_connect_error());
+      exit();
+  }
+  if (!$res) {
+    echo $sentencia;
+    printf("Error: %s\n", mysqli_error($mysqli));
+  }
+  return true;
+}
+//-----------------------
+function subirAdjuntosInforme($idusuario,$idinforme){
+  // include 'db_config.php';
+  // $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
   $cuentadecobro_dir = "attachments/cuentasdecobro/";
   $cuentadecobro_filename = $idusuario.'_'.$idinforme.'_cuentadecobro.pdf';
   $cuentadecobro_path = $cuentadecobro_dir.$cuentadecobro_filename;
   //chmod($cuentadecobro_path, 777);
   if (move_uploaded_file($_FILES['cuentadecobro']['tmp_name'], $cuentadecobro_path)) {
-    return "si";
+    $html_ret = "si ";
   } else {
-    return printf("error: %s",$_FILES['cuentadecobro']['error']);
+    $html_ret = printf("error: %s",$_FILES['cuentadecobro']['error']);
   }
 
   // $sentencia="INSERT INTO informes_text_content (id_informe,respuesta) VALUES(".$idinforme.",'".$cuentadecobro_dir.$cuentadecobro_filename."')";
@@ -755,12 +778,16 @@ function subirAdjuntosInforme($idusuario,$idinforme){
   //   echo $sentencia;
   //   printf("Error: %s\n", mysqli_error($mysqli));
   // }
-  if(!empty($_FILES['seguridadsocial']['name'])){
-    $seguridadsocial_dir = 'attachments/seguridadsocial/';
-    $seguridadsocial_path = $idusuario.'_'.$idinforme.'_seguridadsocial';
-    chmod($seguridadsocial_path, 0755);
-    move_uploaded_file($_FILES['seguridadsocial']['tmp_name'], $seguridadsocial_path);
+
+  $seguridadsocial_dir = 'attachments/seguridadsocial/';
+  $seguridadsocial_path = $seguridadsocial_dir.$idusuario.'_'.$idinforme.'_seguridadsocial.pdf';
+  //chmod($seguridadsocial_path, 0755);
+  if (move_uploaded_file($_FILES['seguridadsocial']['tmp_name'], $seguridadsocial_path)) {
+    $html_ret .= "si";
+  } else {
+    $html_ret .= printf("error: %s",$_FILES['seguridadsocial']['error']);
   }
+  return $html_ret;
 }
 //-----------------------
 function informeDiscipulos($idinforme,$iddiscipulo,$fase,$historia,$idusuario){

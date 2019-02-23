@@ -69,7 +69,9 @@ function contenidoInforme($idinforme){
   echo '<p  id="pregunta3">'.$respuestas[2].'</p>';
   echo '<div class="alert alert-primary" role="alert" style="background-color:#3eb1c8;"><h4 style="color:white;font-weight:bold;">Tercer esencial:  Discipular y desarrollar un equipo de soporte misionero DDSM.</h4></div>';
   echo '<div class="form-group row"><label for="pregunta4" class="col-sm-3 col-form-label"><p style="font-weight:bold;">¿Este mes fue un tiempo concentrado de DDSM?</p></label>';
-  echo '<p class="col-sm-1" id="pregunta4">'.$respuestas[3].'</p></div>';
+  echo '<p class="col-sm-1" id="pregunta4">';
+  echo transformarSioNo($respuestas[3]);
+  echo '</p></div>';
   echo nl2br("\n");
   if($respuestas[3]==1){echo '<label for="pregunta5" class="col-sm-3 col-form-label"><p style="font-weight:bold;">';
   echo '¿Qué te enseñó Dios? ¿Cómo te ayudaron y ayudaste a tus líderes en el proceso del DDSM durante este mes?</p></label>';
@@ -101,8 +103,8 @@ function contenidoInforme($idinforme){
   echo '<p style="font-weight:bold;">Personas que mantuvieron su fase: '.$respuestas[11].'</p>';
   echo nl2br("\n");
   echo '<p style="font-weight:bold;">Personas nuevas en cada fase: '.$respuestas[12].'</p>';
-  echo '<p style="font-weight:bold;">Sus nombres: </p>';
-  echo $respuestas[13];
+  echo '<p style="font-weight:bold;">Sus nombres: ';
+  echo '<textarea readonly>'.$respuestas[13].'</textarea></p>';
   echo nl2br("\n");
   echo '<hr class="my-6">';
   echo nl2br("\n");
@@ -125,6 +127,14 @@ function contenidoInforme($idinforme){
   echo '<label for="pregunta17" class="col-sm-3 col-form-label"><h3 style="font-weight:bold;">';
   echo '¿Hay algo significativo fuera de lo anteriormente preguntado que quieras compartirnos?</h3></label>';
   echo '<p class="col-sm-8 form-control" id="pregunta17">'.$respuestas[16].'</p>';
+  echo nl2br("\n");
+  echo '<div class="row">';
+  echo '<a href="attachments/cuentasdecobro/'.$idusuario.'_'.$idinforme.'_cuentadecobro.pdf" target="_blank"><h4 style="font-weight:bold;">Cuenta de cobro: <i class="fas fa-file-invoice-dollar fa-2x"></i></h4></a>';
+  echo '</div>';
+  echo nl2br("\n");
+  echo '<div class="row">';
+  echo '<a href="attachments/seguridadsocial/'.$idusuario.'_'.$idinforme.'_seguridadsocial.pdf" target="_blank"><h4 style="font-weight:bold;">Seguridad social: <i class="fas fa-clipboard fa-2x"></i></h4></a>';
+  echo '</div>';
   mysqli_close($mysqli);
 }
 ?>
