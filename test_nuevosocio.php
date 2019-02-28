@@ -115,12 +115,6 @@
             <br>Selecciona a tus socios registrados o agrega uno nuevo.
           </h2>
           <br>
-          <div class="form-group row">
-            <div class="col-sm-1"></div>
-            <?php selectSocios($_SESSION['idusuario']); ?>
-            <div class="col-sm-3"></div>
-            <div class="col-sm-1"><button class="btn btn-primary" onclick="modalnuevosocio();">Agregar nuevo socio</button></div>
-          </div>
           <!-- Modal -->
           <div class="modal" id="socio_modal">
               <div class="modal-body">
@@ -132,66 +126,27 @@
                   </select>
                 </div>
                 <div id="formulario_socio"></div>
-                
+                <div class="row" style="text-align:center;">
+
+                  
                 </div>
               </div>
           </div>
         </div>
         <br>
-        <div id="info_socio"></div>
-        <div id="formulario_transferencia"></div>
+
       </div>
     </div>
   </div>
 </section>
-<script>
-// $("#guardarsocio").prop('disabled', true);
-// var toValidate1 = $('#socio_name,#socio_id,#socio_email,#socio_address'),
-//     valid1 = false;
-// toValidate1.change(function () {
-//     if ($(this).val().length > 0) {
-//         $(this).data('valid1', true);
-//     } else {
-//         $(this).data('valid1', false);
-//     }
-//     toValidate1.each(function () {
-//         if ($(this).data('valid1') == true) {
-//             valid1 = true;
-//         } else {
-//             valid1 = false;
-//         }
-//     });
-//     if (valid1 === true) {
-//         $("#guardarsocio").prop('disabled', false);
-//     } else {
-//         $("#guardarsocio").prop('disabled', true);
-//     }
-// });
 
-// var toValidate2 = $('#year'),
-//     valid2 = false;
-// toValidate2.change(function () {
-//     if ($(this).val().length > 0) {
-//         $(this).data('valid2', true);
-//     } else {
-//         $(this).data('valid2', false);
-//     }
-//     toValidate2.each(function () {
-//         if ($(this).data('valid2') == true) {
-//             valid2 = true;
-//         } else {
-//             valid2 = false;
-//         }
-//     });
-//     if (valid2 === true) {
-//         $("#informespormes").prop('disabled', false);
-//     } else {
-//         $("#informespormes").prop('disabled', true);
-//     }
-// });
-
-</script>
 <footer class="white bg-cru-scorpion-dark pv4 hidden-print" id="main-footer">
+  <script>
+  var modal = document.getElementById("socio_modal");
+  modal.style.display="block";
+
+
+  </script>
   <div class="container">
     <div class="row pb4">
       <div class="col-lg-2 col-md col-sm-6 mv3"></div>

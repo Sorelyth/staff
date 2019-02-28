@@ -327,65 +327,6 @@ function buscarinformesporpersonaymes(){
     }
   });
 }
-function modalnuevosocio(){
-  var modal = document.getElementById("socio_modal");
-  modal.style.display="block";
-}
-function cerrarmodalsocio(){
-  var modal = document.getElementById("socio_modal");
-  modal.style.display="none";
-}
-function seleccionartiposocio(){
-  var tiposocio = document.getElementById("idtiposocio").value;
-  var div_formulario_socio = document.getElementById("formulario_socio");
-  if(tiposocio==1){
-    div_formulario_socio.innerHTML = '<div class="form-group row"><label class="col-sm-2" for="socio_name">Nombre completo</label>'+
-    '<input type="text" name="socio_name" id="socio_name" class="col-sm-6" required></div>'+
-    '<div class="form-group row"><label class="col-sm-2" for="socio_id">Documento de identificación</label>'+
-    '<input type="text" name="socio_id" id="socio_id" class="col-sm-6" required></div>'+
-    '<div class="form-group row"><label class="col-sm-2" for="socio_email">Correo electrónico</label>'+
-    '<input type="email" name="socio_email" id="socio_email" class="col-sm-6" required></div>'+
-    '<div class="form-group row"><label class="col-sm-2" for="socio_phone">Número de teléfono</label>'+
-    '<input type="text" name="socio_phone" id="socio_phone" class="col-sm-6" required></div>'+
-    '<div class="form-group row"><label class="col-sm-2" for="socio_address">Dirección y ciudad</label>'+
-    '<input type="text" name="socio_address" id="socio_address" class="col-sm-6" required></div>';
-  }
-  if(tiposocio==2){
-    div_formulario_socio.innerHTML = '<div class="form-group row"><label class="col-sm-2" for="socio_empresa">Nombre jurídico de la empresa</label>'+
-    '<input type="text" name="socio_empresa" id="socio_empresa" class="col-sm-6" required></div>'+
-    '<div class="form-group row"><label class="col-sm-2" for="socio_id">NIT</label>'+
-    '<input type="text" name="socio_id" id="socio_id" class="col-sm-6" required></div>'+
-    '<div class="form-group row"><label class="col-sm-2" for="socio_name">Nombre completo del contacto de la empresa</label>'+
-    '<input type="text" name="socio_name" id="socio_name" class="col-sm-6" required></div>'+
-    '<div class="form-group row"><label class="col-sm-2" for="socio_email">Correo electrónico</label>'+
-    '<input type="email" name="socio_email" id="socio_email" class="col-sm-6" required></div>'+
-    '<div class="form-group row"><label class="col-sm-2" for="socio_phone">Número de teléfono</label>'+
-    '<input type="text" name="socio_phone" id="socio_phone" class="col-sm-6" required></div>'+
-    '<div class="form-group row"><label class="col-sm-2" for="socio_address">Dirección y ciudad</label>'+
-    '<input type="text" name="socio_address" id="socio_address" class="col-sm-6" required></div>';
-  }
-  if(tiposocio==0){ div_formulario_socio.innerHTML = '';}
-}
-function nuevosocio(){
-  // var nombre = document.getElementById("discipulo_name").value;
-  // var apellidos = document.getElementById("discipulo_lastname").value;
-  // $.ajax({
-  //   type: "post",
-  //   dataType: "html",
-  //   data: {accion: "nuevo_discipulo",nombre:nombre,apellidos:apellidos},
-  //   url: "ajax_requests.php",
-  //   cache: false,
-  //   // beforeSend: function() {
-  //   //    $('#res3').html('loading please wait...');
-  //   // },
-  //   success: function() {
-  //       alert("Se ha guardado tu discípulo con éxito");
-  //      $("#agregardiscipuloModal").hide();
-  //      $("#losdiscipulos").load(" #losdiscipulos");
-  //
-  //   }
-  // });
-}
 function seleccionarsocio(idsocio,idtiposocio){
   $.ajax({
     type: "post",
@@ -401,4 +342,102 @@ function seleccionarsocio(idsocio,idtiposocio){
        $("#info_socio").html(htmldata);
     }
   });
+}
+function modalnuevosocio(){
+  var modal = document.getElementById("socio_modal");
+  modal.style.display="block";
+}
+function cerrarmodalsocio(){
+  var modal = document.getElementById("socio_modal");
+  modal.style.display="none";
+}
+function seleccionartiposocio(){
+  var tiposocio = document.getElementById("idtiposocio").value;
+  var div_formulario_socio = document.getElementById("formulario_socio");
+  if(tiposocio==1){
+    div_formulario_socio.innerHTML = '<form action="" id="form_nuevo_socio" onsubmit="return nuevosocio();" method="post"><div class="form-group row"><label class="col-sm-2" for="socio_name">Nombre completo</label>'+
+    '<input type="text" name="socio_name" id="socio_name" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_id">Documento de identificación</label>'+
+    '<input type="text" name="socio_id" id="socio_id" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_email">Correo electrónico</label>'+
+    '<input type="email" name="socio_email" id="socio_email" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_phone">Número de teléfono</label>'+
+    '<input type="text" name="socio_phone" id="socio_phone" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_address">Dirección y ciudad</label>'+
+    '<input type="text" name="socio_address" id="socio_address" class="col-sm-6" required></div>'+
+    '<div class="row" style="text-align:center;">'+
+    '<div class="col-sm-3"></div><button type="button" class="btn btn-secondary" onclick="cerrarmodalsocio();">Cerrar</button>'+
+    '<div class="col-sm-1"></div><input type="submit" class="btn btn-primary" id="guardarsocio" value="Guardar"><div></form>';
+  }
+  if(tiposocio==2){
+    div_formulario_socio.innerHTML = '<form action="" id="form_nuevo_socio" onsubmit="return nuevosocio();" method="post"><div class="form-group row"><label class="col-sm-2" for="socio_empresa">Nombre jurídico de la empresa</label>'+
+    '<input type="text" name="socio_empresa" id="socio_empresa" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_id">NIT</label>'+
+    '<input type="text" name="socio_id" id="socio_id" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_name">Nombre completo del contacto de la empresa</label>'+
+    '<input type="text" name="socio_name" id="socio_name" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_email">Correo electrónico</label>'+
+    '<input type="email" name="socio_email" id="socio_email" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_phone">Número de teléfono</label>'+
+    '<input type="text" name="socio_phone" id="socio_phone" class="col-sm-6" required></div>'+
+    '<div class="form-group row"><label class="col-sm-2" for="socio_address">Dirección y ciudad</label>'+
+    '<input type="text" name="socio_address" id="socio_address" class="col-sm-6" required></div>'+
+    '<div class="row" style="text-align:center;">'+
+    '<div class="col-sm-3"></div><button type="button" class="btn btn-secondary" onclick="cerrarmodalsocio();">Cerrar</button>'+
+    '<div class="col-sm-1"></div><input type="submit" class="btn btn-primary" id="guardarsocio" value="Guardar"><div></form>';
+  }
+  if(tiposocio==0){ div_formulario_socio.innerHTML = '';}
+}
+function nuevosocio(){
+  var tiposocio = document.getElementById("idtiposocio").value;
+  if(tiposocio==1){
+    var socioname = document.getElementById("socio_name").value;
+    var socioid = document.getElementById("socio_id").value;
+    var socioemail = document.getElementById("socio_email").value;
+    var sociophone = document.getElementById("socio_phone").value;
+    var socioaddress = document.getElementById("socio_address").value;
+    var retorno = false;
+    $.ajax({
+      type: "post",
+      dataType: "html",
+      data: {accion: "nuevo_socio_persona",tiposocio:tiposocio,socioname:socioname,socioid:socioid,socioemail:socioemail,sociophone:sociophone,socioaddress:socioaddress},
+      url: "ajax_requests.php",
+      cache: false,
+      // beforeSend: function() {
+      //    $('#res3').html('loading please wait...');
+      // },
+      success: function(response) {
+        alert(response);
+         $("#socio_modal").hide();
+         //$("#losdiscipulos").load(" #losdiscipulos");
+         var retorno = true;
+      }
+    });
+    return retorno;
+  }
+  if(tiposocio==2){
+    var socioempresa = document.getElementById("socio_empresa").value;
+    var socioname = document.getElementById("socio_name").value;
+    var socioid = document.getElementById("socio_id").value;
+    var socioemail = document.getElementById("socio_email").value;
+    var sociophone = document.getElementById("socio_phone").value;
+    var socioaddress = document.getElementById("socio_address").value;
+    $.ajax({
+      type: "post",
+      dataType: "html",
+      data: {accion: "nuevo_socio_empresa",tiposocio:tiposocio,socioempresa:socioempresa,socioname:socioname,socioid:socioid,socioemail:socioemail,sociophone:sociophone,socioaddress:socioaddress},
+      url: "ajax_requests.php",
+      cache: false,
+      // beforeSend: function() {
+      //    $('#res3').html('loading please wait...');
+      // },
+      success: function(response) {
+        alert(response);
+         $("#socio_modal").hide();
+         var retorno = true;
+         //$("#losdiscipulos").load(" #losdiscipulos");
+      }
+    });
+    return retorno;
+  }
 }

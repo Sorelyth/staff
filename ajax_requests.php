@@ -22,6 +22,9 @@ if(isset($_POST['accion']) && !empty($_POST['accion'])){
     case 'buscar_informes_mes' : echo buscarInformesMes($_POST['mes'],$_POST['year']);break;
     case 'buscar_informes_persona_mes' : echo buscarInformesPersonaMes($_POST['idpersona'],$_POST['mes'],$_POST['year']);break;
     case 'info_socio' : echo infoSocio($_POST['idsocio'],$_POST['idtiposocio']);break;
+    case 'nuevo_socio_persona' : echo nuevoSocioPersona($_SESSION['idusuario'],$_POST['tiposocio'],$_POST['socioname'],$_POST['socioid'],$_POST['socioemail'],$_POST['socioaddress'],$_POST['sociophone']);break;
+    case 'nuevo_socio_empresa' : echo nuevoSocioEmpresa($_SESSION['idusuario'],$_POST['tiposocio'],$_POST['socioempresa'],$_POST['socioname'],$_POST['socioid'],$_POST['socioemail'],$_POST['socioaddress'],$_POST['sociophone']);break;
+
   }
 }
 ?>

@@ -254,6 +254,49 @@ function getidDepartamento($idusuario){
   return $iddepartamento;
 }
 //----
+function getMes($idmes){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT mes FROM meses WHERE id=".$idmes."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$mes);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $mes;
+}
+//-----
+function getIdSocio($idusuario,$idtiposocio,$socioname){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id FROM socios WHERE id_tipo_socio=".$idtiposocio." AND id_user=".$idusuario." AND nombre_completo='".$socioname."'";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$idsocio);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+  mysqli_close($mysqli);
+  return $idsocio;
+}
+//----
+function existeSocio($idusuario,$idtiposocio,$socioname){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT id FROM socios WHERE id_tipo_socio=".$idtiposocio." AND id_user=".$idusuario." AND nombre_completo='".$socioname."'";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  if(mysqli_stmt_num_rows($stmt)>0){
+    mysqli_stmt_close($stmt);
+    return true;
+  }
+  else{mysqli_stmt_close($stmt);return false;}
+  mysqli_close($mysqli);
+}
+//----
 function existeEmail($email){
   include 'db_config.php';
   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
@@ -315,20 +358,6 @@ function cambiarCoach($idcoach,$idusuario){
   mysqli_stmt_close($result);
   mysqli_close($mysqli);
   return $html_ret;
-}
-//-----
-function getMes($idmes){
-  include 'db_config.php';
-  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
-  $sentencia="SELECT mes FROM meses WHERE id=".$idmes."";
-  $stmt = mysqli_prepare($mysqli,$sentencia);
-  mysqli_stmt_execute($stmt);
-  mysqli_stmt_store_result($stmt);
-  mysqli_stmt_bind_result($stmt,$mes);
-  mysqli_stmt_fetch($stmt);
-  mysqli_stmt_close($stmt);
-  mysqli_close($mysqli);
-  return $mes;
 }
 //-----
 function selectMes(){
@@ -887,7 +916,7 @@ function buscarInformesPersonaMes($idpersona,$mes,$year){
   if(mysqli_stmt_num_rows($result)>0){
     $html_ret = '<h3 style="font-weight: bold;"><center>';
     $html_ret .= ''.getMes($mes).' de '.$year.'';
-    $htl_ret .= '</center></h3>';
+    $html_ret .= '</center></h3>';
     while(mysqli_stmt_fetch($result)){
       $html_ret .= '<div class="row">';
       $html_ret .= '<div class="col-sm-2" style="font-weight: bold; text-align:right;">';
@@ -928,17 +957,129 @@ function selectSocios($idusuario){
   mysqli_close($mysqli);
 }
 //------
-// function infoSocio($idsocio,$idtiposocio){
-//   include 'db_config.php';
-//   $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
-//   $sentencia="SELECT info FROM socios_info WHERE id_socio=".$idsocio."";
-//   $stmt = mysqli_prepare($mysqli,$sentencia);
-//   mysqli_stmt_execute($stmt);
-//   mysqli_stmt_store_result($stmt);
-//   mysqli_stmt_bind_result($stmt,$info);
-//   while(mysqli_stmt_fetch($stmt)){
-//   }
-//   mysqli_stmt_close($stmt);
-//   mysqli_close($mysqli);
-// }
+function infoSocio($idsocio,$idtiposocio){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  $sentencia="SELECT nombre_completo FROM socios WHERE id=".$idsocio."";
+  $stmt = mysqli_prepare($mysqli,$sentencia);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_store_result($stmt);
+  mysqli_stmt_bind_result($stmt,$info);
+  $html_ret = '';
+    if($idtiposocio==1){
+      $html_ret .= '<div class="form-group row"><label class="col-sm-2" for="socio_name">Nombre completo</label>';
+      mysqli_stmt_fetch($stmt);
+      $html_ret .= '<input type="text" name="socio_name" id="socio_name" class="col-sm-6" readonly value="'.$info.'"></div>';
+      $html_ret .= '<div class="form-group row"><label class="col-sm-2" for="socio_id">Documento de identificación</label>';
+      $sentencia="SELECT info FROM socios_info WHERE id_socio=".$idsocio."";
+      $stmt = mysqli_prepare($mysqli,$sentencia);
+      mysqli_stmt_execute($stmt);
+      mysqli_stmt_store_result($stmt);
+      mysqli_stmt_bind_result($stmt,$info);
+      mysqli_stmt_fetch($stmt);
+      $html_ret .= '<input type="text" name="socio_id" id="socio_id" class="col-sm-6" readonly value="'.$info.'"></div>';
+      $html_ret .='<div class="form-group row"><label class="col-sm-2" for="socio_email">Correo electrónico</label>';
+      mysqli_stmt_fetch($stmt);
+      $html_ret .= '<input type="email" name="socio_email" id="socio_email" class="col-sm-6" readonly value="'.$info.'"></div>';
+      $html_ret .= '<div class="form-group row"><label class="col-sm-2" for="socio_phone">Número de teléfono</label>';
+      mysqli_stmt_fetch($stmt);
+      $html_ret .= '<input type="text" name="socio_phone" id="socio_phone" class="col-sm-6" readonly value="'.$info.'"></div>';
+      $html_ret .= '<div class="form-group row"><label class="col-sm-2" for="socio_address">Dirección y ciudad</label>';
+      mysqli_stmt_fetch($stmt);
+      $html_ret .= '<input type="text" name="socio_address" id="socio_address" class="col-sm-6" readonly value="'.$info.'"></div>';
+    }
+    if($idtiposocio==2){
+      $html_ret .= '<div class="form-group row"><label class="col-sm-2" for="socio_empresa">Nombre jurídico de la empresa</label>';
+      $html_ret .= '<input type="text" name="socio_empresa" id="socio_empresa" class="col-sm-6" readonly value="'.$info.'"></div>';
+      $sentencia="SELECT info FROM socios_info WHERE id_socio=".$idsocio."";
+      $stmt = mysqli_prepare($mysqli,$sentencia);
+      mysqli_stmt_execute($stmt);
+      mysqli_stmt_store_result($stmt);
+      mysqli_stmt_bind_result($stmt,$info);
+      mysqli_stmt_fetch($stmt);
+      $html_ret .= '<div class="form-group row"><label class="col-sm-2" for="socio_id">NIT</label>';
+      $html_ret .= '<input type="text" name="socio_id" id="socio_id" class="col-sm-6" readonly value="'.$info.'"></div>';
+      $html_ret .= '<div class="form-group row"><label class="col-sm-2" for="socio_name">Nombre completo del contacto de la empresa</label>';
+      mysqli_stmt_fetch($stmt);
+      $html_ret .= '<input type="text" name="socio_name" id="socio_name" class="col-sm-6" readonly value="'.$info.'"></div>';
+      $html_ret .= '<div class="form-group row"><label class="col-sm-2" for="socio_email">Correo electrónico</label>';
+      mysqli_stmt_fetch($stmt);
+      $html_ret .= '<input type="email" name="socio_email" id="socio_email" class="col-sm-6" readonly value="'.$info.'"></div>';
+      $html_ret .= '<div class="form-group row"><label class="col-sm-2" for="socio_phone">Número de teléfono</label>';
+      mysqli_stmt_fetch($stmt);
+      $html_ret .= '<input type="text" name="socio_phone" id="socio_phone" class="col-sm-6" readonly value="'.$info.'"></div>';
+      $html_ret .= '<div class="form-group row"><label class="col-sm-2" for="socio_address">Dirección y ciudad</label>';
+      mysqli_stmt_fetch($stmt);
+      $html_ret .= '<input type="text" name="socio_address" id="socio_address" class="col-sm-6" readonly value="'.$info.'"></div>';
+    }
+    mysqli_stmt_close($stmt);
+    mysqli_close($mysqli);
+    return $html_ret;
+  }
+
 //------
+function nuevoSocioPersona($idusuario,$idtiposocio,$socioname,$socioid,$socioemail,$socioaddress,$sociophone){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  if(!existeSocio($idusuario,$idtiposocio,$socioname)){
+    $sentencia="INSERT INTO socios (id_tipo_socio,id_user,nombre_completo) VALUES(".$idtiposocio.",".$idusuario.",'".$socioname."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    //echo $sentencia;
+    if (mysqli_connect_errno()) {
+        printf("Connect failed: %s\n", mysqli_connect_error());
+        exit();
+    }
+    if (!$res) {
+      echo $sentencia;
+      printf("Error: %s\n", mysqli_error($mysqli));
+    }
+    $idsocio = getIdSocio($idusuario,$idtiposocio,$socioname);
+    $sentencia="INSERT INTO socios_info (id_socio,info) VALUES(".$idsocio.",'".$socioid."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    $sentencia="INSERT INTO socios_info (id_socio,info) VALUES(".$idsocio.",'".$socioemail."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    $sentencia="INSERT INTO socios_info (id_socio,info) VALUES(".$idsocio.",'".$socioaddress."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    $sentencia="INSERT INTO socios_info (id_socio,info) VALUES(".$idsocio.",'".$sociophone."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    return "Tu socio ha sido guardado con éxito";
+  }
+  else{
+    $html_ret = "Este socio ya aparece registrado en tu lista";
+    return $html_ret;
+  }
+}
+//------
+function nuevoSocioEmpresa($idusuario,$idtiposocio,$socioempresa,$socioname,$socioid,$socioemail,$socioaddress,$sociophone){
+  include 'db_config.php';
+  $mysqli=mysqli_connect($db_host,$db_user ,$db_password,$db_schema);
+  if(!existeSocio($idusuario,$idtiposocio,$socioempresa)){
+    $sentencia="INSERT INTO socios (id_tipo_socio,id_user,nombre_completo) VALUES(".$idtiposocio.",".$idusuario.",'".$socioempresa."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    //echo $sentencia;
+    if (mysqli_connect_errno()) {
+        printf("Connect failed: %s\n", mysqli_connect_error());
+        exit();
+    }
+    if (!$res) {
+      echo $sentencia;
+      printf("Error: %s\n", mysqli_error($mysqli));
+    }
+    $idsocio = getIdSocio($idusuario,$idtiposocio,$socioempresa);
+    $sentencia="INSERT INTO socios_info (id_socio,info) VALUES(".$idsocio.",'".$socioname."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    $sentencia="INSERT INTO socios_info (id_socio,info) VALUES(".$idsocio.",'".$socioid."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    $sentencia="INSERT INTO socios_info (id_socio,info) VALUES(".$idsocio.",'".$socioemail."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    $sentencia="INSERT INTO socios_info (id_socio,info) VALUES(".$idsocio.",'".$socioaddress."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    $sentencia="INSERT INTO socios_info (id_socio,info) VALUES(".$idsocio.",'".$sociophone."')";
+    $res = mysqli_query($mysqli, $sentencia);
+    return "Tu socio ha sido guardado con éxito";
+  }
+  else{
+    $html_ret = "Este socio ya aparece registrado en tu lista";
+    return $html_ret;
+  }
+}
