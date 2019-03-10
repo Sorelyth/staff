@@ -340,8 +340,39 @@ function seleccionarsocio(idsocio,idtiposocio){
     success: function(htmldata) {
     //alert(htmldata);
        $("#info_socio").html(htmldata);
+       formulariodetransferencia();
     }
   });
+}
+function formulariodetransferencia(){
+//   Monto (Sin comas ni puntos): *
+// Banco *
+// Tipo de Transacción: *
+// Fecha de la Consignación o Transferencia: *
+// MM
+// /
+// DD
+// /
+// YYYY
+// Ciudad desde donde Consignan o Transfieren:
+// Destinación de esta donación ... (Si es para un Proyecto Específico escriba cual en "Otro") *
+// Donación Normal
+// Other:
+// Adjuntar archivo de Transferencia o Consignación *
+  var div_formulario_transferencia = document.getElementById("formulario_transferencia");
+  div_formulario_socio.innerHTML = '<div class="form-group row"><label class="col-sm-2" for="socio_name">Nombre completo</label>'+
+  '<input type="text" name="socio_name" id="socio_name" class="col-sm-6" required></div>'+
+  '<div class="form-group row"><label class="col-sm-2" for="socio_id">Documento de identificación</label>'+
+  '<input type="text" name="socio_id" id="socio_id" class="col-sm-6" required></div>'+
+  '<div class="form-group row"><label class="col-sm-2" for="socio_email">Correo electrónico</label>'+
+  '<input type="email" name="socio_email" id="socio_email" class="col-sm-6" required></div>'+
+  '<div class="form-group row"><label class="col-sm-2" for="socio_phone">Número de teléfono</label>'+
+  '<input type="text" name="socio_phone" id="socio_phone" class="col-sm-6" required></div>'+
+  '<div class="form-group row"><label class="col-sm-2" for="socio_address">Dirección y ciudad</label>'+
+  '<input type="text" name="socio_address" id="socio_address" class="col-sm-6" required></div>'+
+  '<div class="row" style="text-align:center;">'+
+  '<div class="col-sm-3"></div><button type="button" class="btn btn-secondary" onclick="cerrarmodalsocio();">Cerrar</button>'+
+  '<div class="col-sm-1"></div><input type="submit" class="btn btn-primary" id="guardarsocio" value="Guardar"><div>';
 }
 function modalnuevosocio(){
   var modal = document.getElementById("socio_modal");

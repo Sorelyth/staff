@@ -132,14 +132,14 @@
                   </select>
                 </div>
                 <div id="formulario_socio"></div>
-                
+
                 </div>
               </div>
           </div>
+          <br>
+          <div id="info_socio"></div>
+          <div id="formulario_transferencia"></div>
         </div>
-        <br>
-        <div id="info_socio"></div>
-        <div id="formulario_transferencia"></div>
       </div>
     </div>
   </div>
